@@ -10,6 +10,7 @@ class Overview extends React.Component {
       <div>
         <h3>Product Overview</h3>
         <p>Hello product overview world</p>
+        <p>I just want to make sure it works!</p>
       </div>
     )
   }
