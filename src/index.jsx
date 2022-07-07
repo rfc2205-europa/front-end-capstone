@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 const root = createRoot(document.getElementById("root"));
 
 // component imports
-import Overview from './components/Overview.jsx'
+import Overview from './components/overview/Overview.jsx'
 
 class App extends React.Component {
   constructor(props) {
