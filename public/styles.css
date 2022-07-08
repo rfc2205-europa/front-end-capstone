@@ -12,3 +12,28 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ------------- review ------------- */
+.review {
+
+  height: 100%;
+}
+.review-rating {
+  margin: 10px;
+  text-align: center;
+  float:left;
+  width: 30%;
+  height: 200px;
+  border: 1px dashed #000
+}
+.review-review {
+  margin: 10px;
+  text-align: center;
+  float:right;
+  width: 65%;
+  height: 200px;
+  border: 1px dashed #000
+}
+
+/* ------------- review ------------- */
+
