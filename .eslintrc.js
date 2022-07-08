@@ -2,6 +2,7 @@ module.exports = {
   'env': {
     'browser': true,
     'commonjs': true,
+    'esm': true,
     'es2021': true,
   },
   'extends': [
