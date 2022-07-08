@@ -16,13 +16,16 @@ module.exports.handleGetRequests = (req, res) => {
   console.log('options:', options);
   axios(options)
       .then((response) => {
-        console.log(response.data);
+        res.status(200).send(response.data);
+      })
+      .catch((error) => {
+        res.status(404).send('get error:', error);
       });
-  res.sendStatus(200);
 };
 
 module.exports.handlePostRequests = (req, res) => {
   const options = {};
+  // post reviews
   if (req.body.type === 'review') {
     options.url = req.body.api;
     options.method = 'post';
@@ -39,6 +42,111 @@ module.exports.handlePostRequests = (req, res) => {
       'characteristics': req.body.characteristics,
     };
     console.log('review post options:', options);
-    res.sendStatus(201);
+    axios(options)
+        .then((response) => {
+          res.status(201).send(response);
+        })
+        .catch((error) => {
+          res.status(404).send('post review error:', error);
+        });
+  } else if (req.body.type === 'questions.question') {
+    options.url = req.body.api;
+    options.method = 'post';
+    options.headers = {'Authorization': config.token};
+    options.data = {
+      'body': req.body.body,
+      'name': req.body.name,
+      'email': req.body.email,
+      'product_id': req.body.product_id,
+    };
+    axios(options)
+        .then((response) => {
+          res.status(201).send(response);
+        })
+        .catch((error) => {
+          res.status(404).send('post question error:', error);
+        });
+  } else if (req.body.type === 'questions.answer') {
+    options.url = req.body.api;
+    options.method = 'post';
+    options.headers = {'Authorization': config.token};
+    options.data = {
+      'body': req.body.body,
+      'name': req.body.name,
+      'email': req.body.email,
+      'photos': req.body.photos,
+    };
+    console.log('answer post options:', options);
+    axios(options)
+        .then((response) => {
+          res.status(201).send(response);
+        })
+        .catch((error) => {
+          res.status(404).send('post answer error:', error);
+        });
+  }
+};
+
+module.exports.handlePutRequests = (req, res) => {
+  // put reviews
+  if (req.body.type === 'review') {
+    // mark review as helpful
+    if (req.body.api.includes('helpful')) {
+      axios.put(req.body.api)
+          .then((response) => {
+            res.status(204).send(response);
+          })
+          .catch((error) => {
+            res.status(404).send('review helpful error:', error);
+          });
+    } else if (req.body.api.includes('report')) {
+      axios.put(req.body.api)
+          .then((response) => {
+            res.status(204).send(response);
+          })
+          .catch((error) => {
+            res.status(404).send('review report error:', error);
+          });
+    }
+  } else if (req.body.type === ('question')) {
+    if (req.body.api.includes('helpful')) {
+      console.log('marking question as helpful');
+      axios.put(req.body.api)
+          .then((response) => {
+            res.status(204).send(response);
+          })
+          .catch((error) => {
+            res.status(404).send('question helpful error:', error);
+          });
+    } else if (req.body.api.includes('report')) {
+      console.log('reporting question');
+      axios.put(req.body.api)
+          .then((response) => {
+            res.status(204).send(response);
+          })
+          .catch((error) => {
+            res.status(404).send('question report error:', error);
+          });
+    }
+  } else if (req.body.type === 'answer') {
+    if (req.body.api.includes('helpful')) {
+      console.log('marking answer as helpful');
+      axios.put(req.body.api)
+          .then((response) => {
+            res.status(204).send(response);
+          })
+          .catch((error) => {
+            res.status(404).send('answer helpful error:', error);
+          });
+    } else if (req.body.api.includes('report')) {
+      console.log('reporting answer');
+      axios.put(req.body.api)
+          .then((response) => {
+            res.status(204).send(response);
+          })
+          .catch((error) => {
+            res.status(404).send('answer report error:', error);
+          });
+    }
   }
 };

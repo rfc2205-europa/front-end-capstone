@@ -19,7 +19,7 @@ app.get('/*', controllers.handleGetRequests);
 app.post('/*', controllers.handlePostRequests);
 
 // put request handling
-app.put('/*', controllers.handleGetRequests);
+app.put('/*', controllers.handlePutRequests);
 
 app.listen(config.port);
 console.log(`Listening at http://localhost:${config.port}`);
