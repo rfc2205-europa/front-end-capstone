@@ -13,13 +13,13 @@ app.use(bodyParser.json());
 // then send api response back to client in response
 
 // get request forwarding
-app.get('/*', controllers.handleRequests);
+app.get('/*', controllers.handleGetRequests);
 
 // post request handling
-app.post('/*', controllers.handleRequests);
+app.post('/*', controllers.handlePostRequests);
 
 // put request handling
-app.put('/*', controllers.handleRequests);
+app.put('/*', controllers.handleGetRequests);
 
 app.listen(config.port);
 console.log(`Listening at http://localhost:${config.port}`);
