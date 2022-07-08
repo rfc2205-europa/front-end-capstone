@@ -1,4 +1,4 @@
-const config = require('../config.js')
+const config = require('../config.js');
 
 module.exports.handleRequests = (req, res) => {
   console.log('\nMethod:', req.method);
@@ -6,4 +6,4 @@ module.exports.handleRequests = (req, res) => {
   console.log('\napi endpoint:', req.originalUrl);
   console.log('\napi queries:', req.query);
   res.sendStatus(200);
-}
+};
