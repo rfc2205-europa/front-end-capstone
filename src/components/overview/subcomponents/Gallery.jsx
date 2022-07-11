@@ -6,10 +6,23 @@ class Gallery extends React.Component {
   }
 
   render() {
+    if (this.props.photos) {
+      console.log(this.props.photos)
+      return (
+        <div className='gallery'>
+          <div>
+            <img
+              src={this.props.photos[0].url}
+              style={{height: '100%', width: '100%'}}
+            />
+          </div>
+        </div>
+      )
+    }
     return (
-      <div>
+      <div className='gallery'>
         <div>
-          Placeholder for Gallery
+          <p>loading images</p>
         </div>
       </div>
     )

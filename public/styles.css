@@ -13,6 +13,59 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ------------- overview ------------- */
+.topRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bottomRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery {
+  display: flex;
+  margin: .5%;
+  width: 58%;
+  height: 500px;
+  justify-content: center;
+  border: 1px solid black
+}
+
+.productInfo {
+  margin: .5%;
+  padding: 5px;
+  display: grid;
+  width: 38%;
+  border: 1px solid black
+}
+
+.cartOne {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cartTwo {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.productOverview {
+  display: flex;
+  margin: .5%;
+  width: 58%;
+  height: 300px;
+  justify-content: center;
+  border: 1px solid black
+}
+
+.description {
+  font-style: italic
+}
+/* ------------- overview ------------- */
+
 /* ------------- review ------------- */
 .review {
 
