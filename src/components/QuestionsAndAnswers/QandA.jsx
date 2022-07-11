@@ -12,11 +12,11 @@ class QandA extends React.Component {
 
   fetch = () => {
     axios.request({
+      url: 'http://localhost:3005/qa/questions',
       method: 'get',
       data: {
         api: "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642",
-      },
-      url: 'http://localhost:3005/qa/questions'
+      }
     })
     .then((data)=> {
       console.log(data);
@@ -25,6 +25,8 @@ class QandA extends React.Component {
       console.log('There was an error in fetching data: ', err);
     })
   }
+
+
 
   render() {
     return (
