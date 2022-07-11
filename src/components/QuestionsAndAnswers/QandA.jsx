@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Search from './Search.jsx';
-import QuestionsList from './QuestionsList.jsx';
-import QuestionItem from './QuestionItem.jsx'
+import QuestionsList from './QuestionsList/QuestionsList.jsx';
+import QuestionItem from './QuestionsList/QuestionItem.jsx';
+import style from './style.css'
 
 
 const service = axios.create({
@@ -14,7 +15,8 @@ class QandA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      smallView: true
     }
   }
 
@@ -25,7 +27,7 @@ class QandA extends React.Component {
 
   //fetches questions from api
   fetch(product_id) {
-    var product_id = product_id || '66666';
+    var product_id = product_id || '66646';
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
@@ -45,8 +47,7 @@ class QandA extends React.Component {
       <div>
         <h3>Questions and Answers</h3>
         <Search />
-        <QuestionsList />
-        <button>Add More Answered Questions</button><button>Add A Question</button>
+        <QuestionsList questions={this.state.questions.results}/>
       </div>
     )
   }

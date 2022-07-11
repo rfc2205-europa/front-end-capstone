@@ -17,7 +17,7 @@ class Search extends React.Component {
 
   render(){
     return(
-      <div>Search form
+      <div className="search" >
         <form>
           <input type="text" placeholder="Have a Question Search For Answers" onChange={this.handleChange}>
           </input><input type="submit"></input>
