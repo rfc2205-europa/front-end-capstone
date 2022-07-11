@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QandA Component Testing renders the QandA component correctly 1`] = `
+<div>
+  <h3>
+    Questions and Answers
+  </h3>
+</div>
+`;
