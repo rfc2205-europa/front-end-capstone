@@ -43,6 +43,23 @@ class Cart extends React.Component {
     })
   }
 
+  addToCart = (e) => {
+    console.log(this.state);
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.style)
+    console.log(this.props.style)
+    if (this.props.style !== prevProps.style) {
+      console.log('change');
+      this.setState({
+        size: null,
+        qty: null,
+        purchaseQty: null,
+      })
+    }
+  }
+
   render() {
     if (this.props.style) {
       let { skus } = this.props.style;
@@ -54,6 +71,7 @@ class Cart extends React.Component {
         skuArray.push(skuObj)
       }
       let sizeRange = Array.from(Array(this.state.qty+1).keys())
+      sizeRange.shift();
       return (
         <div>
           <div className='cartOne'>
@@ -72,7 +90,7 @@ class Cart extends React.Component {
             </select>
           </div>
           <div className='cartTwo'>
-            <button>Add to Cart</button>
+            <button onClick={this.addToCart}>Add to Cart</button>
           </div>
         </div>
       )

@@ -11,7 +11,7 @@ class Styles extends React.Component {
       return (
         <div>
         <div>
-          Style Selector
+          <strong>Style</strong> > {this.props.selectedStyle.name}
         </div>
         <div style={{display: 'flex', justifyContent:'space-around', flexWrap: 'wrap'}}>
         {this.props.styles.results.map(style => {

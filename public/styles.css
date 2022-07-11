@@ -30,7 +30,7 @@ body {
   width: 58%;
   height: 500px;
   justify-content: center;
-  border: 1px solid black
+  /* border: 1px solid black */
 }
 
 .productInfo {
@@ -38,7 +38,8 @@ body {
   padding: 5px;
   display: grid;
   width: 38%;
-  border: 1px solid black
+  height: auto;
+  /* border: 1px solid black */
 }
 
 .cartOne {
@@ -58,7 +59,7 @@ body {
   width: 58%;
   height: 300px;
   justify-content: center;
-  border: 1px solid black
+  /* border: 1px solid black */
 }
 
 .description {

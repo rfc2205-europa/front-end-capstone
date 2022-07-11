@@ -14,7 +14,7 @@ class StyleThumb extends React.Component {
     return (
       <img
         src={this.props.photo}
-        style={{height: '120px', width: '80px', margin:'5px', 'border-radius': '50%'}}
+        style={{height: '120px', width: '120px', margin:'5px', borderRadius: '50%'}}
         id={this.props.id}
         onClick={this.onClick}
       />

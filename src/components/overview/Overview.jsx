@@ -82,7 +82,6 @@ class Overview extends React.Component {
     for(var x = 0; x < this.state.styles.results.length; x++) {
       var style = this.state.styles.results[x]
       if (id === style.style_id) {
-        console.log('match')
         this.setState({
           selectedStyle: style,
         })

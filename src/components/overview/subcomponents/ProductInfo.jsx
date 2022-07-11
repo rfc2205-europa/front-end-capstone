@@ -15,13 +15,14 @@ class ProductInfo extends React.Component {
             <div className='info'>
               <p>Rating Placeholder</p>
               <p>{this.props.product.category}</p>
-              <p>{this.props.product.name} - {this.props.selectedStyle.name}</p>
-              <strike style={{color: 'red'}}>${this.props.selectedStyle.original_price}</strike>
-              <p>${this.props.selectedStyle.sale_price}</p>
+              <p>{this.props.product.name}</p>
+              <strike>${this.props.selectedStyle.original_price}</strike>
+              <p style={{color: 'red'}}>${this.props.selectedStyle.sale_price}</p>
             </div>
             <div className='styles'>
               <Styles
                 styles={this.props.styles}
+                selectedStyle={this.props.selectedStyle}
                 handleStyles={this.props.handleStyles}
               />
             </div>
@@ -34,12 +35,13 @@ class ProductInfo extends React.Component {
             <div className='info'>
               <p>Rating Placeholder</p>
               <p>{this.props.product.category}</p>
-              <p>{this.props.product.name} - {this.props.selectedStyle.name}</p>
+              <p>{this.props.product.name}</p>
               <p>${this.props.selectedStyle.original_price}</p>
             </div>
             <div className='styles'>
               <Styles
                 styles={this.props.styles}
+                selectedStyle={this.props.selectedStyle}
                 handleStyles={this.props.handleStyles}
               />
             </div>
