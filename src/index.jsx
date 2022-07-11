@@ -5,6 +5,7 @@ const root = createRoot(document.getElementById("root"));
 
 // component imports
 import Overview from './components/overview/Overview.jsx'
+import Review from './components/reviews/Review.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
       <div>
         <h1>Hello World</h1>
         <Overview />
+        <Review/>
       </div>
     )
   }
