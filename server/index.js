@@ -15,7 +15,7 @@ app.use(cors());
 // then send api response back to client in response
 
 // get request forwarding
-app.get('/*', controllers.handleGetRequests);
+app.post('/retrieve', controllers.handleGetRequests);
 
 // post request handling
 app.post('/*', controllers.handlePostRequests);
