@@ -12,12 +12,7 @@ class QuestionItem extends React.Component {
 
     let body, ans;
     let ansArray = [];
-
-    let sArray = ansArray.sort((a,b)=>{
-      return a.helpfulness-b.helpfulness;
-    })
-    console.log(sArray)
-
+    let sArray = [];
 
     if (this.props.info !== undefined) {
       let { question_body, answers } = this.props.info;
@@ -25,8 +20,11 @@ class QuestionItem extends React.Component {
       for (const key in answers) {
         ansArray.push(answers[key]);
       }
+      sArray= ansArray.sort((a,b)=>{
+        return b.helpfulness-a.helpfulness;
+      })
       if(this.props.view){
-      ans = ansArray.slice(0,2).map((answer) => (
+      ans = sArray.slice(0,2).map((answer) => (
         <div className="answers">
           <h5>{answer.body}</h5>
           <h5>helpfulness:{answer.helpfulness}</h5>
@@ -34,7 +32,7 @@ class QuestionItem extends React.Component {
         </div>
       ))
       }else{
-        ans = ansArray.map((answer) => (
+        ans = sArray.map((answer) => (
           <div className="answers">
             <h5>{answer.body}</h5>
             <h5>helpfulness:{answer.helpfulness}</h5>

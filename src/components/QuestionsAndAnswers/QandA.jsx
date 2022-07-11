@@ -3,13 +3,13 @@ import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
 import QuestionItem from './QuestionsList/QuestionItem.jsx';
-import style from './style.css'
+import style from './style.css';
 
 
 const service = axios.create({
   baseURL: 'http://localhost:3005',
-  changeOrigin: true
-})
+  changeOrigin: true,
+});
 
 class QandA extends React.Component {
   constructor(props) {
