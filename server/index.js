@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const controllers = require('./reqControllers.js');
 const config = require('../config.js');
@@ -7,6 +8,7 @@ const config = require('../config.js');
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // add authentication header
 // send api request with originalUrl
