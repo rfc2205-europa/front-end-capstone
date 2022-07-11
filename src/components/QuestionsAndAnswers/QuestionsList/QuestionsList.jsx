@@ -23,11 +23,13 @@ class QuestionsList extends React.Component {
   }
 
   render() {
-    let list, questions;
+    let list, questions, buttonText;
     if (this.props.questions !== undefined) {
       if (this.state.smallView) {
+        buttonText = 'Add More Answered Questions'
         questions = this.props.questions.slice(0, 2)
       } else {
+        buttonText = 'Remove Added Questions and Answers'
         questions = this.props.questions
       }
       list = questions.map((q) => (
@@ -39,7 +41,7 @@ class QuestionsList extends React.Component {
     return (
       <div>
         <div>{list}</div>
-        <button onClick={this.moreAnsQues}>Add More Answered Questions</button><button>Add A Question</button>
+        <button onClick={this.moreAnsQues}>{buttonText}</button><button>Add A Question</button>
       </div>
     )
   }
