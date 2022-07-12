@@ -122,15 +122,25 @@ module.exports.handlePutRequests = (req, res) => {
     }
   } else if (req.body.type === ('question')) {
     if (req.body.api.includes('helpful')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('marking question as helpful');
-      axios.put(req.body.api)
+      axios(configSetting)
           .then((response) => {
-            res.status(204).send(response);
+            res.sendStatus(204);
           })
           .catch((error) => {
             res.status(404).send('question helpful error:', error);
           });
     } else if (req.body.api.includes('report')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('reporting question');
       axios.put(req.body.api)
           .then((response) => {
@@ -142,6 +152,11 @@ module.exports.handlePutRequests = (req, res) => {
     }
   } else if (req.body.type === 'answer') {
     if (req.body.api.includes('helpful')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('marking answer as helpful');
       axios.put(req.body.api)
           .then((response) => {
@@ -151,6 +166,11 @@ module.exports.handlePutRequests = (req, res) => {
             res.status(404).send('answer helpful error:', error);
           });
     } else if (req.body.api.includes('report')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('reporting answer');
       axios.put(req.body.api)
           .then((response) => {
