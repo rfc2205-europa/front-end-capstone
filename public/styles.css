@@ -75,7 +75,7 @@ body {
   color:aquamarine;
   outline-color: blue */
 
-  /* background-color: rgba(51, 51, 51, 0.05); */
+  background-color: rgba(51, 51, 51, 0.05);
   border-radius: 8px;
   border-width: 0;
   border:none;
@@ -86,8 +86,7 @@ body {
   font-weight: 500;
   line-height: 20px;
   list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0;
   padding: 10px 12px;
   text-align: center;
   transition: all 200ms;
@@ -98,83 +97,47 @@ body {
   touch-action: manipulation;
 }
 
-.btn-container {
-  display: flex;
-  justify-content:space-between;
 
+.btn-moreRevew {
+  position: relative;
+  bottom: -40px;
 }
 
-/* .btn-moreRevew {
-  position: relative;
-} */
-
-/* .btn-addRevew {
+.btn-addRevew {
   position: relative;
   bottom: 5px;
-} */
+
+}
 
 .review {
   height: 100%;
 }
 
 .review-review {
-  margin-right: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  font-family: "Times New Roman", Times, serif;
-  /* margin: 10px; */
+  margin: 10px;
   text-align: center;
   float:right;
-  width: 66%;
-  height: 700px;
+  width: 65%;
+  height: 550px;
   border: 2px solid #000
 }
 
 .review-allReview {
-  display: flex;
-  flex-direction: column;
-  width: 97%;
-  height: 80%;
+
+  width: 90%;
+  height: 55%;
   margin: 10px auto;
-  overflow-y: auto;
-  /* border: 1px dashed black; */
-  /* min-height: min-content; */
-}
-
-.review-summary-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.reviewSummary {
-  text-align: left;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 20px;
+  border: 1px dashed black;
 }
 
 .review-singleReview {
   margin: 5px auto;
-  width: 95%;
+  width: 90%;
   text-align: left;
-
-}
-.review-singleReview-divider-container {
-  display: flex;
-  justify-content: flex-start;
+  border: 1px dashed pink
 }
 
-.review-singleReview-divider {
-  /* width: 2px;
-  margin: 6px 0;
-  background: blue;
-  align-self: stretch; */
-  margin-top: 5px;
-  height: 1px;
-  flex-grow: 1;
-  background-color: #bfbfbf;
-}
+
 .review-rating {
   display: flex;
   flex-direction: column;
@@ -333,5 +296,40 @@ body {
 .single-showMore {
   color:#aaa
 }
+
 /* ------------- review ------------- */
+/* ------------- QandA ------------- */
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first_line {
+  display: flex;
+  justify-content: space-between;
+}
+.item {
+  padding: 5px;
+}
+.answers{
+  border-style: dotted;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.tile{
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+.bottom_line {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ------------- QandA ------------- */
 

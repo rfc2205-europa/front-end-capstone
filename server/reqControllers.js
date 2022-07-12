@@ -3,17 +3,17 @@ const axios = require('axios');
 
 module.exports.handleGetRequests = (req, res) => {
   console.log('\nMethod:', req.method);
-  console.log('auth token:', config.token);
+  // console.log('auth token:', config.token);
   console.log('\napi endpoint:', req.originalUrl);
   // console.log('\napi queries:', req.query);
   // console.log('body:', req.body.api);
   const options = {};
   const apiUrl = req.body.api;
-  console.log('type of url', typeof(apiUrl));
+  // console.log('type of url', typeof(apiUrl));
   options.url = apiUrl;
   options.method = 'get';
   options.headers = {'Authorization': config.token};
-  console.log('options:', options);
+  // console.log('options:', options);
   axios(options)
       .then((response) => {
         res.status(200).send(response.data);
@@ -27,6 +27,11 @@ module.exports.handleGetRequests = (req, res) => {
 
 module.exports.handlePostRequests = (req, res) => {
   const options = {};
+  // handle click events
+  if (req.body.type === 'click') {
+    console.log(req.body.clickEvent);
+    res.send('click received');
+  }
   // post reviews
   if (req.body.type === 'review') {
     options.url = req.body.api;
@@ -122,19 +127,29 @@ module.exports.handlePutRequests = (req, res) => {
     }
   } else if (req.body.type === ('question')) {
     if (req.body.api.includes('helpful')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('marking question as helpful');
-      axios.put(req.body.api)
+      axios(configSetting)
           .then((response) => {
-            res.status(204).send(response);
+            res.sendStatus(204);
           })
           .catch((error) => {
             res.status(404).send('question helpful error:', error);
           });
     } else if (req.body.api.includes('report')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('reporting question');
-      axios.put(req.body.api)
+      axios(configSetting)
           .then((response) => {
-            res.status(204).send(response);
+            res.sendStatus(204);
           })
           .catch((error) => {
             res.status(404).send('question report error:', error);
@@ -142,19 +157,29 @@ module.exports.handlePutRequests = (req, res) => {
     }
   } else if (req.body.type === 'answer') {
     if (req.body.api.includes('helpful')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('marking answer as helpful');
-      axios.put(req.body.api)
+      axios(configSetting)
           .then((response) => {
-            res.status(204).send(response);
+            res.sendStatus(204);
           })
           .catch((error) => {
             res.status(404).send('answer helpful error:', error);
           });
     } else if (req.body.api.includes('report')) {
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
       console.log('reporting answer');
-      axios.put(req.body.api)
+      axios(configSetting)
           .then((response) => {
-            res.status(204).send(response);
+            res.sendStatus(204);
           })
           .catch((error) => {
             res.status(404).send('answer report error:', error);
