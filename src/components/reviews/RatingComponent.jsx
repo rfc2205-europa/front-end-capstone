@@ -4,8 +4,8 @@ import RatingStat from './RatingStat.jsx';
 
 var RatingComponent = function({ratings}) {
   return (
-    <div className = 'review review-rating d-flex p-2'>
-      <h4>rating</h4>
+    <div className = 'review review-rating'>
+      <p className = 'review-rating-title'>ratings and reviews</p>
       <AverageStar/>
       <RatingStat/>
     </div>

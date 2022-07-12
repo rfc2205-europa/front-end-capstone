@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import RatingComponent from './RatingComponent.jsx';
 import ReviewComponent from './ReviewComponent.jsx';
-
+import ReactDom from 'react-dom';
 const service = axios.create({
   baseURL: 'http://127.0.0.1:3005',
   changeOrigin: true,
@@ -13,21 +13,21 @@ class Review extends React.Component {
     super(props);
     this.state = {
       sortMethod: 'relevant',
-      modelView: false,
+      // modelView: false,
       ratings: [],
       reviews: [],
     }
     this.fetchRatingData = this.fetchRatingData.bind(this);
     this.fetchReviewData = this.fetchReviewData.bind(this);
     this.changeSortMethod = this.changeSortMethod.bind(this);
-    this.changeModelView = this.changeModelView.bind(this);
+    // this.changeModelView = this.changeModelView.bind(this);
   }
 
-  changeModelView() {
-    this.setState({
-      modelView: !this.state.modelView
-    })
-  }
+  // changeModelView() {
+  //   this.setState({
+  //     modelView: !this.state.modelView
+  //   })
+  // }
 
   changeSortMethod(method) {
     this.setState({
@@ -76,9 +76,9 @@ class Review extends React.Component {
     return (
       <div className = {this.state.modelView? 'review modelView':'review'}>
         <h3>Product Review</h3>
-        <div>{this.state.sortMethod}</div>
         <RatingComponent ratings={this.state.ratings}/>
-        <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod} modelFunc = {this.changeModelView}/>
+        <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod}/>
+        {/* <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod} modelFunc = {this.changeModelView}/> */}
       </div>
     )
   }

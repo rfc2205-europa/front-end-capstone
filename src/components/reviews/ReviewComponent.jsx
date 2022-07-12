@@ -4,7 +4,7 @@ import AllReview from './AllReview.jsx';
 import AddReview from './AddReview.jsx';
 import SearchBar from './SearchBar.jsx';
 
-var ReviewComponent = function({reviews, sortFunc, modelFunc}) {
+var ReviewComponent = function({reviews, sortFunc}) {
 
   const [moreReview, setMoreReview] = useState(2);
   const [displayReview, setDisplayReview] = useState(reviews.slice(0,2));
@@ -27,7 +27,8 @@ var ReviewComponent = function({reviews, sortFunc, modelFunc}) {
         <Sorting num = {reviews.length} sortFunc = {sortFunc}/>
         <SearchBar/>
       </div>
-      <AllReview displayReview = {displayReview} modelFunc = {modelFunc}/>
+      {/* <AllReview displayReview = {displayReview} modelFunc = {modelFunc}/> */}
+      <AllReview displayReview = {displayReview}/>
       <div className='btn-container'>
         <button className="btn btn-moreRevew" onClick = {clickMoreReview}>More Review</button>
         <AddReview/>
