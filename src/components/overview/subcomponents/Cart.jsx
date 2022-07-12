@@ -48,10 +48,10 @@ class Cart extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps.style)
-    console.log(this.props.style)
+    // console.log(prevProps.style)
+    // console.log(this.props.style)
     if (this.props.style !== prevProps.style) {
-      console.log('change');
+      // console.log('change');
       this.setState({
         size: null,
         qty: null,
