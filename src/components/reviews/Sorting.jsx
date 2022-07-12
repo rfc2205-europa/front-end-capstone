@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-var Sorting = function({sortFunc}) {
+var Sorting = function({num, sortFunc}) {
 
   var selectSort = function(e) {
     sortFunc(e.target.value)
@@ -8,11 +8,12 @@ var Sorting = function({sortFunc}) {
 
   return (
     <div>
-      <label>sort by </label>
-      <select id = 'search' onChange = {selectSort}>
+      <label className='reviewSummary'>{num} reviews, sorted by </label>
+      <select className='reviewSummary' onChange = {selectSort}>
+
+        <option value = 'relevant'>Relevant</option>
         <option value = 'helpful'>Helpful</option>
         <option value = 'newest'>Newest</option>
-        <option value = 'relevant'>Relevant</option>
       </select>
     </div>
   )
