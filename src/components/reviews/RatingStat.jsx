@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 var RatingStat = function() {
   return (
-    <div className="d-grid gap-2">
+    <div className="rating-stats d-grid gap-2">
       <div className="progress">
         <div className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" style={{width: '35%'}} aria-valuemax="100"></div>
       </div>
