@@ -17,9 +17,11 @@ module.exports.handleGetRequests = (req, res) => {
   axios(options)
       .then((response) => {
         res.status(200).send(response.data);
+        // res.send(response);
       })
       .catch((error) => {
         res.status(404).send('get error:', error);
+        // res.send(error);
       });
 };
 
@@ -92,17 +94,27 @@ module.exports.handlePutRequests = (req, res) => {
   if (req.body.type === 'review') {
     // mark review as helpful
     if (req.body.api.includes('helpful')) {
-      axios.put(req.body.api)
-          .then((response) => {
-            res.status(204).send(response);
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
+      axios(configSetting)
+          .then(function(response) {
+            res.sendStatus(204);
           })
-          .catch((error) => {
+          .catch(function(error) {
             res.status(404).send('review helpful error:', error);
           });
     } else if (req.body.api.includes('report')) {
-      axios.put(req.body.api)
+      const configSetting = {
+        method: 'put',
+        url: req.body.api,
+        headers: {'Authorization': config.token},
+      };
+      axios(configSetting)
           .then((response) => {
-            res.status(204).send(response);
+            res.sendStatus(204);
           })
           .catch((error) => {
             res.status(404).send('review report error:', error);
