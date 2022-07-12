@@ -3,17 +3,17 @@ const axios = require('axios');
 
 module.exports.handleGetRequests = (req, res) => {
   console.log('\nMethod:', req.method);
-  console.log('auth token:', config.token);
+  // console.log('auth token:', config.token);
   console.log('\napi endpoint:', req.originalUrl);
   // console.log('\napi queries:', req.query);
   // console.log('body:', req.body.api);
   const options = {};
   const apiUrl = req.body.api;
-  console.log('type of url', typeof(apiUrl));
+  // console.log('type of url', typeof(apiUrl));
   options.url = apiUrl;
   options.method = 'get';
   options.headers = {'Authorization': config.token};
-  console.log('options:', options);
+  // console.log('options:', options);
   axios(options)
       .then((response) => {
         res.status(200).send(response.data);
@@ -27,6 +27,11 @@ module.exports.handleGetRequests = (req, res) => {
 
 module.exports.handlePostRequests = (req, res) => {
   const options = {};
+  // handle click events
+  if (req.body.type === 'click') {
+    console.log(req.body.clickEvent);
+    res.send('click received');
+  }
   // post reviews
   if (req.body.type === 'review') {
     options.url = req.body.api;

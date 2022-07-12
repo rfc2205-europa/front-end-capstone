@@ -7,7 +7,7 @@ class Gallery extends React.Component {
 
   render() {
     if (this.props.photos) {
-      console.log(this.props.photos)
+      // console.log(this.props.photos)
       return (
         <div className='gallery'>
           <div>
