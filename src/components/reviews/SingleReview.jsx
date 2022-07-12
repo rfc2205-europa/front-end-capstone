@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import ReactDom from 'react-dom';
 
 const service = axios.create({
   baseURL: 'http://127.0.0.1:3005',
@@ -8,21 +9,27 @@ const service = axios.create({
 
 var ModalView = function({src, clickFunc}) {
 
-  return (
-  <div className='modal-content'>
-    <span className="close" onClick = {clickFunc}>&times;</span>
-    <img src = {src} className = 'largeImage'></img>
-  </div>
+  return ReactDom.createPortal(
+  <>
+    <div className='modalView'/>
+    <div className='modal-content'>
+      <span className="close" onClick = {clickFunc}>&times;</span>
+      <img src = {src} className = 'largeImage'></img>
+    </div>
+  </>,
+  document.getElementById('portal')
   )
 }
 
-var SingleReview = function({review, modelFunc}) {
+var SingleReview = function({review}) {
   const [showMore, setShowMore] = useState(false);
   const [displayReview, setDisplayReview] = useState({reviewer_name:'',date:'',summary:'',body:'', helpfulness:'', photos: []})
   const [modelLink, setModelLink] = useState('')
   const [vote, setVote] = useState(review.helpfulness);
   const [whetherVote, setWhetherVote] = useState(false);
   const [report, setReport] = useState('Report');
+  const [openModal, setOpenModal] = useState(false);
+  const [stars, setStars] = useState([]);
 
   var handleVote = function(e) {
     e.preventDefault();
@@ -86,13 +93,15 @@ var SingleReview = function({review, modelFunc}) {
     formatReview.photos = review.photos;
     formatReview.response = review.response;
     formatReview.recommend = review.recommend;
+    formatReview.rating = review.rating;
     return formatReview;
   }
 
   var handleThumbnailClick = function(e) {
     e.preventDefault();
     console.log(e.target.src)
-    modelFunc();
+    setOpenModal(!openModal)
+    // modelFunc();
     if (modelLink) {
       setModelLink('')
     } else {
@@ -101,14 +110,28 @@ var SingleReview = function({review, modelFunc}) {
   }
 
   useEffect(() => {
-    setDisplayReview(firstDisplayFormat(review))
+    var formatReview = firstDisplayFormat(review)
+    setDisplayReview(formatReview)
     setVote(review.helpfulness)
+    let stars = [];
+    for (var i = 0; i < 5; i++) {
+      if (i <= formatReview.rating) {
+        stars.push(<span key={i} className='single-rating-star'>&#9733;</span>)
+      } else {
+        stars.push(<span key={i} className='single-rating-star'>&#9734;</span>)
+      }
+    }
+    setStars(stars);
   },[])
+
+
 
   return (
     <div className = 'review-singleReview'>
       <div className='single-rating-reviewer-container'>
-        <span className='single-rating'><sup>⭐️⭐️⭐️</sup></span>
+        <span className='single-rating'>
+          {stars}
+        </span>
         <span className='single-reviewer'>{displayReview.reviewer_name}, {displayReview.date}</span>
       </div>
       <div className='single-title'>{displayReview.summary}</div>
