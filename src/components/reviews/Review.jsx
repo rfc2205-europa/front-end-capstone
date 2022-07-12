@@ -12,20 +12,28 @@ class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortMethod: 'helpful',
+      sortMethod: 'relevant',
+      modelView: false,
       ratings: [],
       reviews: [],
     }
     this.fetchRatingData = this.fetchRatingData.bind(this);
     this.fetchReviewData = this.fetchReviewData.bind(this);
     this.changeSortMethod = this.changeSortMethod.bind(this);
+    this.changeModelView = this.changeModelView.bind(this);
+  }
+
+  changeModelView() {
+    this.setState({
+      modelView: !this.state.modelView
+    })
   }
 
   changeSortMethod(method) {
     this.setState({
       sortMethod: method
     })
-    this.fetchReviewData()
+    this.fetchReviewData(method)
   }
 
   componentDidMount() {
@@ -34,7 +42,7 @@ class Review extends React.Component {
   }
 
   fetchRatingData() {
-    var product_id = '66666';
+    var product_id = '66663';
     var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`}
     service.post('/retrieve', body)
      .then((res) => {
@@ -47,10 +55,10 @@ class Review extends React.Component {
     })
   }
 
-  fetchReviewData() {
-    console.log('fetch!')
+  fetchReviewData(sort = 'relevant') {
     var product_id = '66666';
-    var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}&sort=${this.state.sortMethod}`}
+    var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}&sort=${sort}`}
+    console.log(body.api, this.state.sortMethod)
     service.post('/retrieve', body)
      .then((res) => {
       this.setState({
@@ -66,11 +74,11 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div className = 'review'>
+      <div className = {this.state.modelView? 'review modelView':'review'}>
         <h3>Product Review</h3>
         <div>{this.state.sortMethod}</div>
         <RatingComponent ratings={this.state.ratings}/>
-        <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod}/>
+        <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod} modelFunc = {this.changeModelView}/>
       </div>
     )
   }

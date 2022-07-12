@@ -9,9 +9,6 @@ var AverageStar = function() {
         <h4 className='rating-score'> <sup>⭐️⭐️⭐️</sup> </h4>
       </span>
 
-{/* &starf;
-&bigstar; */}
-
     </div>
   )
 }
