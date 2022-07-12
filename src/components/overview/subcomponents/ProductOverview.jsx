@@ -10,6 +10,7 @@ class ProductOverview extends React.Component {
       return (
         <div className='productOverview'>
           <div>
+            <strong className='description'>{this.props.product.slogan}</strong>
             <p className='description'>{this.props.product.description}</p>
           </div>
         </div>

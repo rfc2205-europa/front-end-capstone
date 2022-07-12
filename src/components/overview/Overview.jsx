@@ -20,11 +20,11 @@ class Overview extends React.Component {
   fetchData() {
     var id = null || 66646;
     var data = JSON.stringify({
-      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products"
+      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=25"
     });
     var config = {
       method: 'post',
-      url: 'http://localhost:3005/retrieve?count=25',
+      url: 'http://localhost:3005/retrieve',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -32,7 +32,7 @@ class Overview extends React.Component {
     };
     axios(config)
     .then((response) => {
-      id = response.data[0].id
+      id = response.data[7].id
       console.log('selected id:', id);
     })
     // specific product
@@ -94,7 +94,7 @@ class Overview extends React.Component {
     if (this.state.selectedStyle) {
       let { photos } = this.state.selectedStyle;
       return (
-        <div onClick={this.onClick}>
+        <div style={{display: 'block'}}>
           <div className='topRow'>
             <Gallery photos={photos}/>
             <ProductInfo
