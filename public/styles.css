@@ -138,8 +138,6 @@ body {
   height: 80%;
   margin: 10px auto;
   overflow-y: auto;
-  /* border: 1px dashed black; */
-  /* min-height: min-content; */
 }
 
 .review-summary-container {
