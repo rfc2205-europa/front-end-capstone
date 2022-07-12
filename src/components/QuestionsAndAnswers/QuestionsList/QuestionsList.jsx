@@ -25,9 +25,6 @@ class QuestionsList extends React.Component {
   render() {
     let list, questions, buttonText;
     if (this.props.questions !== undefined) {
-      questions = this.props.questions.sort((a,b)=>{
-        return b.helpfulness-a.helpfulness
-      })
       if (this.state.smallView) {
         buttonText = 'Add More Answered Questions'
         questions = this.props.questions.slice(0, 2)
@@ -41,6 +38,7 @@ class QuestionsList extends React.Component {
     } else {
       list = <QuestionItem />
     }
+
     return (
       <div>
         <div>{list}</div>

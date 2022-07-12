@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
-import QuestionItem from './QuestionsList/QuestionItem.jsx';
 import style from './style.css';
 
 
