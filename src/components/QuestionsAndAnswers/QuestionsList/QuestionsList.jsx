@@ -24,7 +24,11 @@ class QuestionsList extends React.Component {
 
   render() {
     let list, questions, buttonText;
+
+    //defines list variable value
     if (this.props.questions !== undefined) {
+
+      //determines the size of list and controls button label for change
       if (this.state.smallView) {
         buttonText = 'Add More Answered Questions'
         questions = this.props.questions.slice(0, 2)
@@ -32,10 +36,13 @@ class QuestionsList extends React.Component {
         buttonText = 'Remove Added Questions and Answers'
         questions = this.props.questions
       }
+
+      //dynamic list render of questions if props is available
       list = questions.map((q) => (
-        <QuestionItem info={q} view={this.state.smallView} key={Math.random()} />
+        <QuestionItem info={q} view={this.state.smallView} key={Math.random()} fetch={this.props.fetch} />
       ))
     } else {
+
       list = <QuestionItem />
     }
 

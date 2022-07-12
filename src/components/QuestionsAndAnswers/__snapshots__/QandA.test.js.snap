@@ -33,7 +33,13 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
           <h5
             onClick={[Function]}
           >
-            Helpful? Yes 
+            Helpful? Yes (
+            )
+          </h5>
+          <h5
+            onClick={[Function]}
+          >
+            Report
           </h5>
           <button>
             add answer
