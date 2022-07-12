@@ -13,10 +13,15 @@ module.exports = {
       'jsx': true,
     },
     'ecmaVersion': 'latest',
+    'sourceType': 'module',
   },
   'plugins': [
     'react',
   ],
   'rules': {
   },
+  'ignore': [
+    'constructor', 'render', 'componentDidUpdate',
+    'getDerivedStateFromProps', 'componentDidMount',
+  ],
 };
