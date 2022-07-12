@@ -22,6 +22,18 @@ class QuestionsList extends React.Component {
     }
   }
 
+
+  /*
+
+
+  TODO:
+
+  collapse list and reveal a button to submit a new question based of an empty
+
+  If no questions have been submitted for this product, then the list will collapse, and the button to submit a new question (section 1.3.5) will appear near the top of the module.
+
+
+  */
   render() {
     let list, questions, buttonText;
 

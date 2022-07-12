@@ -9,7 +9,8 @@ class QuestionItem extends React.Component {
     this.state = {
       helpfulA: true,
       helpfulQ: true,
-      report: true
+      reportQ: 'Report',
+      reportA: 'Report'
     }
   }
 
@@ -32,7 +33,7 @@ class QuestionItem extends React.Component {
         })
     }
 
-    this.setState({ helpfulQ: false })
+    //this.setState({ helpfulQ: false })
 
   }
 
@@ -55,7 +56,7 @@ class QuestionItem extends React.Component {
         })
     }
 
-    this.setState({ helpfulA: false })
+    //this.setState({ helpfulA: false })
   }
 
   //handles report question click
@@ -65,26 +66,50 @@ class QuestionItem extends React.Component {
     //send put req to server once per load
     //render button label onclick
 
-    // let { question_id } = this.props.info;
-    // axios.put(`http://localhost:3005/qa/questions`, {
-    //   "type": "question",
-    //   "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`
-    // })
-    //   .then((res) => {
-    //     console.log(res)
-        this.props.fetch();
-      // })
-      // .catch((err) => {
-      //   console.log('ERROR IN PUT Helpful Question: ', err)
-      // })
+    let { question_id } = this.props.info;
+    axios.put(`http://localhost:3005/qa/questions`, {
+      "type": "question",
+      "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`
+    })
+      .then((res) => {
+        console.log(res)
+        this.setState({report: 'Reported'})
+      })
+      .catch((err) => {
+        console.log('ERROR IN PUT Helpful Question: ', err)
+      })
 
     //this.setState({report: false})
   }
 
+
+  /*
+
+
+  TODO:
+
+  set helpful click to only work once per answer
+  fix Report label for individual answers
+  format date
+
+
+
+  */
+
   //handles report answer click
-  reportA = () => {
+  reportA = (id) => {
     console.log('report answer')
-    //this.setState({report: false})
+    axios.put(`http://localhost:3005/qa/answers`, {
+      "type": "answer",
+      "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
+    })
+      .then((res) => {
+        console.log(res)
+        this.setState({reportA: 'Reported'})
+      })
+      .catch((err) => {
+        console.log('ERROR IN PUT Helpful Question: ', err)
+      })
   }
 
   render() {
@@ -92,7 +117,6 @@ class QuestionItem extends React.Component {
     let body, ans, help;
     let ansArray = [];
     let sArray = [];
-    let reportButtonLabel = 'Report'
 
     if (this.props.info !== undefined) {
       let { question_body, answers, question_helpfulness } = this.props.info;
@@ -110,7 +134,7 @@ class QuestionItem extends React.Component {
       })
 
       //rendering for accordion list
-      let list;
+      let list, tog;
       if (this.props.view) {
         list = sArray.slice(0, 2)
       } else {
@@ -122,7 +146,7 @@ class QuestionItem extends React.Component {
           <div className="bottom_line">
             <h5>by:{answer.answerer_name}</h5>
             <h5>date:{answer.date}</h5>
-            <h5 onClick={() => { this.helpfulA(answer.id) }}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={this.reportA}>Report</h5>
+            <h5 onClick={() => { this.helpfulA(answer.id) }}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={()=>{this.reportA(answer.id)}}>{this.state.reportA}</h5>
           </div>
         </div>
       ))
@@ -133,7 +157,7 @@ class QuestionItem extends React.Component {
     return (
       <div className="tile">
         <div className="first_line">
-          <h3>Q:{body}</h3><h5 onClick={this.helpfulQ}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{reportButtonLabel}</h5><button>add answer</button>
+          <h3>Q:{body}</h3><h5 onClick={this.helpfulQ}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><button>add answer</button>
         </div>
         <div>A:{ans}</div>
       </div>
