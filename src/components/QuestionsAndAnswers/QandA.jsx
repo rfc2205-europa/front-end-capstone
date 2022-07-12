@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
-import style from './style.css';
+// import style from './style.css';
 
 
 const service = axios.create({

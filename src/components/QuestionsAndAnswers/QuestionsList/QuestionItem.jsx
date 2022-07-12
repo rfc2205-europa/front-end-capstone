@@ -6,11 +6,28 @@ class QuestionItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      helpfulA: true,
+      helpfulQ: true,
+      report: true
     }
   }
 
-  click = () => {
-    console.log('click')
+  //handles helpful question click
+  helpfulQ = () => {
+    console.log('helpful question')
+    //this.setState({helpfulQ: false})
+  }
+
+  //handles helpful answer click
+  helpfulA = () => {
+    console.log('helpful answer')
+      //this.setState({helpfulA: false})
+  }
+
+  //handles report answer click
+  report = () => {
+    console.log('report')
+    //this.setState({report: false})
   }
 
   render() {
@@ -38,7 +55,7 @@ class QuestionItem extends React.Component {
             <div className="bottom_line">
               <h5 >by:{answer.answerer_name}</h5>
               <h5>date:{answer.date}</h5>
-              <h5 onClick={this.click}>Helpful? Yes {answer.helpfulness}</h5>
+              <h5 onClick={this.helpfulA}>Helpful? Yes {answer.helpfulness} </h5><h5 onClick={this.report}>Report</h5>
             </div>
           </div>
         ))
@@ -61,7 +78,7 @@ class QuestionItem extends React.Component {
     return (
       <div className="tile">
         <div className="first_line">
-          <h3>Q:{body}</h3><h5 onClick={this.click}>Helpful? Yes {help}</h5><button>add answer</button>
+          <h3>Q:{body}</h3><h5 onClick={this.helpfulQ}>Helpful? Yes {help}</h5><button>add answer</button>
         </div>
         <div>A:{ans}</div>
       </div>
