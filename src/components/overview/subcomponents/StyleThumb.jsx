@@ -6,7 +6,7 @@ class StyleThumb extends React.Component {
   }
 
   onClick = (e) => {
-    console.log('cliiiiiick');
+    // console.log('cliiiiiick');
     this.props.handleStyles(e.target.id)
   }
 

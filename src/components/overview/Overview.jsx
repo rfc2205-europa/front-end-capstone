@@ -48,7 +48,7 @@ class Overview extends React.Component {
                 config.data = data;
                 axios(config)
                     .then(response => {
-                      console.log(response.data)
+                      // console.log(response.data)
                       this.setState({
                         styles: response.data,
                       })
@@ -94,7 +94,7 @@ class Overview extends React.Component {
     if (this.state.selectedStyle) {
       let { photos } = this.state.selectedStyle;
       return (
-        <div>
+        <div onClick={this.onClick}>
           <div className='topRow'>
             <Gallery photos={photos}/>
             <ProductInfo
