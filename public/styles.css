@@ -335,6 +335,9 @@ body {
 
 /* ------------- QandA ------------- */
 
+
+/* .q_and_a {
+} */
 .search {
   display: flex;
   justify-content: center;
@@ -359,6 +362,13 @@ body {
   border-style: solid;
   border-width: 2px;
   border-radius: 10px;
+}
+
+.qList{
+  height: 550px;
+  width: auto;
+  overflow: auto;
+  border: dotted;
 }
 
 .bottom_line {

@@ -22,7 +22,7 @@ class AnswerItem extends React.Component {
       "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`
     })
       .then((res) => {
-        console.log(res)
+        console.log('response in client from server after report answer: ', res)
         this.setState({
           helpfulA: false
         })
@@ -44,7 +44,7 @@ class AnswerItem extends React.Component {
         "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
       })
         .then((res) => {
-          console.log(res)
+          console.log('response in client from server after report answer: ', res)
           this.setState({
             reportA: 'Reported',
             reportABool: false

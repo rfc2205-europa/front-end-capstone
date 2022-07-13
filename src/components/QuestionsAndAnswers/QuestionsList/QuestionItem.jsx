@@ -26,7 +26,7 @@ class QuestionItem extends React.Component {
         "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/helpful`
       })
         .then((res) => {
-          console.log('response from server after helpful question: ', res)
+          console.log('response in client from server after helpful question: ', res)
           this.setState({
             helpfulQ: false
           })
@@ -53,7 +53,7 @@ class QuestionItem extends React.Component {
         "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`
       })
         .then((res) => {
-          console.log('response from put: ', res)
+          console.log('response in client from server after report question: ', res)
           this.setState({
             reportQ: 'Reported',
             reportQBool: false
@@ -108,6 +108,7 @@ class QuestionItem extends React.Component {
     let body, ans, help, button;
     let ansArray = [];
     let sArray = [];
+    let sortedArrSellerFirst = [];
 
     let { question_body, answers, question_helpfulness } = this.props.info;
     body = question_body;
@@ -121,6 +122,11 @@ class QuestionItem extends React.Component {
     //sort list of answers by helpfulness
     sArray = ansArray.sort((a, b) => {
       return b.helpfulness - a.helpfulness;
+    })
+
+    //sort the answers by seller first
+    sArray.forEach((answer)=>{
+
     })
 
     //rendering for accordion list and conditionals for more answers button
