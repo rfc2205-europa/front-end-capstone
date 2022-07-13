@@ -15,7 +15,9 @@ class StyleRow extends React.Component {
               key={style.name + '-' + style.style_id}
               photo={style.photos[0].thumbnail_url}
               id={style.style_id}
+              selectedStyle={this.props.selectedStyle}
               handleStyles={this.props.handleStyles}
+              handleSelection={this.props.handleSelection}
             />
           )
         })}

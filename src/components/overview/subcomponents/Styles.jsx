@@ -12,7 +12,6 @@ class Styles extends React.Component {
   }
 
   createStyleRows = (styles) => {
-    console.log(styles);
     var productId = this.props.styles.product_id;
     var arrayOfRows = [];
     var row = [];
@@ -25,10 +24,18 @@ class Styles extends React.Component {
         row = [];
       }
     }
-    console.log('final array:', arrayOfRows)
+    console.log('array of style arrays:', arrayOfRows)
     this.setState({
       arrayOfRows: arrayOfRows
     })
+  }
+
+  renderCheckmark = (thumbnail) => {
+    if (thumbnail === this.props.selectedStyle.style_id) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   componentDidMount(prevProps) {
@@ -49,9 +56,17 @@ class Styles extends React.Component {
         <div>
           <strong>Style</strong> > {this.props.selectedStyle.name}
         </div>
-        <div style={{display: 'flex', justifyContent:'space-around', flexWrap: 'wrap'}}>
+        <div style={{display: 'grid', justifyContent:'space-around', flexWrap: 'wrap'}}>
           {this.state.arrayOfRows.map(row => {
-            return <StyleRow key={row[0].style_id} row={row} handleStyles={this.props.handleStyles}/>
+            return (
+              <StyleRow
+                key={row[0].style_id}
+                row={row}
+                selectedStyle={this.props.selectedStyle.style_id}
+                handleStyles={this.props.handleStyles}
+                handleSelection={this.renderCheckmark}
+              />
+            )
           })}
         </div>
       </div>

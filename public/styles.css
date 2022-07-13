@@ -42,6 +42,26 @@ body {
   /* border: 1px solid black */
 }
 
+.parentLayer {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.topLayer {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.bottomLayer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
 .cartOne {
   display: flex;
   justify-content: space-around;

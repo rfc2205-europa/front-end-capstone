@@ -32,7 +32,7 @@ class Overview extends React.Component {
     };
     axios(config)
     .then((response) => {
-      id = response.data[7].id
+      id = response.data[0].id
       console.log('selected id:', id);
     })
     // specific product
