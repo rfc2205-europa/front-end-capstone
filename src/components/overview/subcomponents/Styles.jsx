@@ -1,16 +1,18 @@
 import React from 'react';
-import StyleThumb from './StyleThumb.jsx'
+import StyleRow from './StyleRow.jsx';
+import StyleThumb from './StyleThumb.jsx';
 
 class Styles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrayOfRows: []
+      arrayOfRows: [],
+      arrayToSplice: [],
     }
   }
 
   createStyleRows = (styles) => {
-    var styles = this.props.styles.results;
+    console.log(styles);
     var productId = this.props.styles.product_id;
     var arrayOfRows = [];
     var row = [];
@@ -31,7 +33,12 @@ class Styles extends React.Component {
 
   componentDidMount(prevProps) {
     if (this.props.styles.results) {
-      this.createStyleRows(this.props.styles.results);
+      var spliceCopy = JSON.parse(JSON.stringify(this.props.styles.results));
+      this.setState({
+        arrayToSplice: spliceCopy
+      }, () => {
+        this.createStyleRows(this.state.arrayToSplice);
+      })
     }
   }
 
@@ -43,16 +50,9 @@ class Styles extends React.Component {
           <strong>Style</strong> > {this.props.selectedStyle.name}
         </div>
         <div style={{display: 'flex', justifyContent:'space-around', flexWrap: 'wrap'}}>
-        {this.props.styles.results.map(style => {
-          return (
-            <StyleThumb
-              key={style.name + '-' + style.style_id}
-              photo={style.photos[0].thumbnail_url}
-              id={style.style_id}
-              handleStyles={this.props.handleStyles}
-            />
-          )
-        })}
+          {this.state.arrayOfRows.map(row => {
+            return <StyleRow key={row[0].style_id} row={row} handleStyles={this.props.handleStyles}/>
+          })}
         </div>
       </div>
       )
