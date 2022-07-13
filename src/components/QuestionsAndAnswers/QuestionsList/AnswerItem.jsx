@@ -22,7 +22,6 @@ class AnswerItem extends React.Component {
     })
       .then((res) => {
         console.log(res)
-        //this.props.fetch()
         this.setState({
           helpfulA: false
         })
@@ -34,7 +33,6 @@ class AnswerItem extends React.Component {
 
     //this.setState({ helpfulA: false })
   }
-
 
   //handles report answer click
   reportA = (id) => {
@@ -52,6 +50,13 @@ class AnswerItem extends React.Component {
       })
   }
 
+  //limiter for helpful answers
+  limiter = () => {
+    if(this.state.helpfulA){
+      this.helpfulA(this.props.answer.id)
+      this.props.answer.helpfulness++;
+    }
+  }
 
   render() {
     let { answer } = this.props
@@ -62,7 +67,7 @@ class AnswerItem extends React.Component {
         <div className="bottom_line">
           <h5>by:{answer.answerer_name}</h5>
           <h5>date:{answer.date}</h5>
-          <h5 onClick={() => { this.helpfulA(answer.id) }}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</h5>
+          <h5 onClick={this.limiter}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</h5>
         </div>
       </div>
     )

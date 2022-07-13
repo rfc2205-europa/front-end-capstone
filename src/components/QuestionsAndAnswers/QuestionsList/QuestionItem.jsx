@@ -9,7 +9,8 @@ class QuestionItem extends React.Component {
     super(props);
     this.state = {
       helpfulQ: true,
-      reportQ: 'Report'
+      reportQ: 'Report',
+      smallView: true
     }
   }
 
@@ -25,7 +26,9 @@ class QuestionItem extends React.Component {
       })
         .then((res) => {
           console.log(res)
-          this.props.fetch();
+          this.setState({
+            helpfulQ: false
+          })
         })
         .catch((err) => {
           console.log('ERROR IN PUT Helpful Question: ', err)
@@ -50,7 +53,7 @@ class QuestionItem extends React.Component {
     })
       .then((res) => {
         console.log(res)
-        this.setState({report: 'Reported'})
+        this.setState({ report: 'Reported' })
       })
       .catch((err) => {
         console.log('ERROR IN PUT Helpful Question: ', err)
@@ -62,13 +65,9 @@ class QuestionItem extends React.Component {
 
   /*
 
-
   TODO:
 
-  set helpful click to only work once per answer
   format date
-
-
 
   */
 
@@ -81,16 +80,37 @@ class QuestionItem extends React.Component {
     })
       .then((res) => {
         console.log(res)
-        this.setState({reportA: 'Reported'})
+        this.setState({ reportA: 'Reported' })
       })
       .catch((err) => {
         console.log('ERROR IN PUT Helpful Question: ', err)
       })
   }
 
+  //toggle button and state value to render size of answers list
+  togButton = () => {
+    if (this.state.smallView) {
+      this.setState({
+        smallView: false
+      })
+    } else {
+      this.setState({
+        smallView: true
+      })
+    }
+  }
+
+  //limiter for helpful questions
+  limiter = () => {
+    if (this.state.helpfulQ) {
+      this.helpfulQ(this.props.info.question_id)
+      this.props.info.question_helpfulness++;
+    }
+  }
+
   render() {
 
-    let body, ans, help;
+    let body, ans, help, buttonText;
     let ansArray = [];
     let sArray = [];
 
@@ -111,13 +131,16 @@ class QuestionItem extends React.Component {
 
       //rendering for accordion list
       let list;
-      if (this.props.view) {
+      if (this.state.smallView) {
+        // if (this.props.view) {
+        buttonText = 'View more answers'
         list = sArray.slice(0, 2)
       } else {
         list = sArray
+        buttonText = 'View less answers'
       }
       ans = list.map((answer) => (
-        <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch}/>
+        <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
       ))
     } else {
       body = ''
@@ -126,9 +149,10 @@ class QuestionItem extends React.Component {
     return (
       <div className="tile">
         <div className="first_line">
-          <h3>Q:{body}</h3><h5 onClick={this.helpfulQ}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><button>add answer</button>
+          <h3>Q:{body}</h3><h5 onClick={this.limiter}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><button>add answer</button>
         </div>
         <div>A:{ans}</div>
+        <button onClick={this.togButton}>{buttonText}</button>
       </div>
     )
   }

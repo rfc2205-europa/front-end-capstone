@@ -51,7 +51,7 @@ class QuestionsList extends React.Component {
 
       //dynamic list render of questions if props is available
       list = questions.map((q) => (
-        <QuestionItem info={q} view={this.state.smallView} key={Math.random()} fetch={this.props.fetch} />
+        <QuestionItem info={q} key={Math.random()} fetch={this.props.fetch} />
       ))
     } else {
 

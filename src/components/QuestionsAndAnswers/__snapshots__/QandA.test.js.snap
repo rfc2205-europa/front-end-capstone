@@ -48,6 +48,9 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
         <div>
           A:
         </div>
+        <button
+          onClick={[Function]}
+        />
       </div>
     </div>
     <button
