@@ -13,21 +13,14 @@ class Review extends React.Component {
     super(props);
     this.state = {
       sortMethod: 'relevant',
-      // modelView: false,
       ratings: [],
       reviews: [],
     }
     this.fetchRatingData = this.fetchRatingData.bind(this);
     this.fetchReviewData = this.fetchReviewData.bind(this);
     this.changeSortMethod = this.changeSortMethod.bind(this);
-    // this.changeModelView = this.changeModelView.bind(this);
   }
 
-  // changeModelView() {
-  //   this.setState({
-  //     modelView: !this.state.modelView
-  //   })
-  // }
 
   changeSortMethod(method) {
     this.setState({
@@ -42,10 +35,11 @@ class Review extends React.Component {
   }
 
   fetchRatingData() {
-    var product_id = '66663';
+    var product_id = '66666';
     var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`}
     service.post('/retrieve', body)
      .then((res) => {
+       console.log('review data from the first scratch', res.data);
        this.setState({
          ratings: res.data
        })
@@ -64,7 +58,7 @@ class Review extends React.Component {
       this.setState({
         reviews: res.data.results
       })
-      console.log('review data from the first scratch', res.data.results);
+      // console.log('review data from the first scratch', res.data.results);
      })
      .catch((err) => {
        console.log('there is err in fetching review data!', err)
@@ -78,7 +72,6 @@ class Review extends React.Component {
         <h3>Product Review</h3>
         <RatingComponent ratings={this.state.ratings}/>
         <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod}/>
-        {/* <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod} modelFunc = {this.changeModelView}/> */}
       </div>
     )
   }

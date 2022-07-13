@@ -34,7 +34,6 @@ var SingleReview = function({review}) {
   var handleVote = function(e) {
     e.preventDefault();
     var body = {type: 'review', api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${e.target.id}/helpful`}
-    console.log(body)
     service.put('/', body)
       .then((res) => {
         console.log(res)
@@ -49,7 +48,6 @@ var SingleReview = function({review}) {
   var handleReport = function(e) {
     e.preventDefault();
     var body = {type: 'review', api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${e.target.id}/report`}
-    console.log(body)
     service.put('/', body)
       .then((res) => {
         console.log(res)
@@ -72,7 +70,6 @@ var SingleReview = function({review}) {
     var formatReview = {};
     formatReview.body = ''
     if (review.summary.length > 60) {
-      console.log(review.summary.length, review.summary)
       formatReview.summary = review.summary.slice(0,60);
       formatReview.summary += '...'
       formatReview.body = '...'
@@ -115,7 +112,7 @@ var SingleReview = function({review}) {
     setVote(review.helpfulness)
     let stars = [];
     for (var i = 0; i < 5; i++) {
-      if (i <= formatReview.rating) {
+      if (i <= formatReview.rating - 1) {
         stars.push(<span key={i} className='single-rating-star'>&#9733;</span>)
       } else {
         stars.push(<span key={i} className='single-rating-star'>&#9734;</span>)
