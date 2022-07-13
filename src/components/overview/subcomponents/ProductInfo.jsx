@@ -37,7 +37,7 @@ class ProductInfo extends React.Component {
               <p>{this.props.product.category}</p>
               <p>{this.props.product.name}</p>
               <p>${this.props.selectedStyle.original_price}</p>
-              <p></p>
+              <br/>
             </div>
             <div className='styles'>
               <Styles
