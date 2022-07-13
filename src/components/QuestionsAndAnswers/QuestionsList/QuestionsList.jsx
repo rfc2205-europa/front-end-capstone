@@ -35,15 +35,20 @@ class QuestionsList extends React.Component {
 
   */
   render() {
-    let list, questions, buttonText;
+    let list, questions, buttonText, button;
 
     //defines list variable value
     if (this.props.questions !== undefined) {
 
       //determines the size of list and controls button label for change
       if (this.state.smallView) {
-        buttonText = 'Add More Answered Questions'
-        questions = this.props.questions.slice(0, 2)
+        if(this.props.questions.length > 2){
+          questions = this.props.questions.slice(0, 2)
+          button = <button onClick={this.moreAnsQues}>Add More Answered Questions</button>
+        }else{
+          questions = this.props.questions
+          button = <div></div>
+        }
       } else {
         buttonText = 'Remove Added Questions and Answers'
         questions = this.props.questions
@@ -61,7 +66,7 @@ class QuestionsList extends React.Component {
     return (
       <div>
         <div>{list}</div>
-        <button onClick={this.moreAnsQues}>{buttonText}</button><button>Add A Question</button>
+        {button}<button>Add A Question</button>
       </div>
     )
   }

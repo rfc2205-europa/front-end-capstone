@@ -53,7 +53,7 @@ class QuestionItem extends React.Component {
     })
       .then((res) => {
         console.log(res)
-        this.setState({ report: 'Reported' })
+        this.setState({ reportQ: 'Reported' })
       })
       .catch((err) => {
         console.log('ERROR IN PUT Helpful Question: ', err)
@@ -62,30 +62,19 @@ class QuestionItem extends React.Component {
     //this.setState({report: false})
   }
 
-
   /*
 
   TODO:
 
+  questions:
   format date
+  conditional rendering for questions view button and collapsing of list
+
+  answers:
+  any answers from the seller should appear at the top of the list
+
 
   */
-
-  //handles report answer click
-  reportA = (id) => {
-    console.log('report answer')
-    axios.put(`http://localhost:3005/qa/answers`, {
-      "type": "answer",
-      "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
-    })
-      .then((res) => {
-        console.log(res)
-        this.setState({ reportA: 'Reported' })
-      })
-      .catch((err) => {
-        console.log('ERROR IN PUT Helpful Question: ', err)
-      })
-  }
 
   //toggle button and state value to render size of answers list
   togButton = () => {
@@ -110,7 +99,7 @@ class QuestionItem extends React.Component {
 
   render() {
 
-    let body, ans, help, buttonText;
+    let body, ans, help, buttonText, button;
     let ansArray = [];
     let sArray = [];
 
@@ -129,15 +118,21 @@ class QuestionItem extends React.Component {
         return b.helpfulness - a.helpfulness;
       })
 
-      //rendering for accordion list
+      //rendering for accordion list and conditionals for more answers button
       let list;
       if (this.state.smallView) {
         // if (this.props.view) {
-        buttonText = 'View more answers'
-        list = sArray.slice(0, 2)
+
+        if(sArray.length > 2){
+          list = sArray.slice(0, 2)
+          button = <button onClick={this.togButton}>See more answers</button>
+        }else{
+          button = <div></div>
+          list = sArray
+        }
       } else {
         list = sArray
-        buttonText = 'View less answers'
+        button = <button onClick={this.togButton}>Collapse answers</button>
       }
       ans = list.map((answer) => (
         <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
@@ -152,7 +147,7 @@ class QuestionItem extends React.Component {
           <h3>Q:{body}</h3><h5 onClick={this.limiter}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><button>add answer</button>
         </div>
         <div>A:{ans}</div>
-        <button onClick={this.togButton}>{buttonText}</button>
+        {button}
       </div>
     )
   }
