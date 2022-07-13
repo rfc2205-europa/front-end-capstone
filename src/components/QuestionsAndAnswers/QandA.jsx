@@ -26,13 +26,13 @@ class QandA extends React.Component {
 
   //fetches questions from api
   fetch = (product_id) => {
-    var product_id = product_id || '65742';
+    var product_id = product_id || '65731';
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
         console.log(res);
         this.setState({
-          questions: res.data
+          questions: res.data.results
         })
       })
       .catch((err) => {
@@ -46,7 +46,7 @@ class QandA extends React.Component {
       <div>
         <h3>Questions and Answers</h3>
         <Search />
-        <QuestionsList questions={this.state.questions.results} fetch={this.fetch}/>
+        <QuestionsList questions={this.state.questions} fetch={this.fetch}/>
       </div>
     )
   }

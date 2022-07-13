@@ -36,32 +36,24 @@ class QuestionsList extends React.Component {
   */
   render() {
     let list, questions, button;
-
-    //defines list variable value
-    if (this.props.questions !== undefined) {
-
-      //determines the size of list and controls button label for change
-      if (this.state.smallView) {
-        if(this.props.questions.length > 2){
-          questions = this.props.questions.slice(0, 2)
-          button = <button onClick={this.moreAnsQues}>Add More Answered Questions</button>
-        }else{
-          questions = this.props.questions
-          button = <div></div>
-        }
+    //determines the size of list and controls button label for change
+    if (this.state.smallView) {
+      if (this.props.questions.length > 2) {
+        questions = this.props.questions.slice(0, 2)
+        button = <button onClick={this.moreAnsQues}>Add More Answered Questions</button>
       } else {
-        button = <button onClick={this.moreAnsQues}>Remove Added Questions and Answers</button>
         questions = this.props.questions
+        button = <div></div>
       }
-
-      //dynamic list render of questions if props is available
-      list = questions.map((q) => (
-        <QuestionItem info={q} key={Math.random()} fetch={this.props.fetch} />
-      ))
     } else {
-
-      list = <QuestionItem />
+      button = <button onClick={this.moreAnsQues}>Remove Added Questions and Answers</button>
+      questions = this.props.questions
     }
+
+    //dynamic list render of questions if props is available
+    list = questions.map((q) => (
+      <QuestionItem info={q} key={Math.random()} fetch={this.props.fetch} />
+    ))
 
     return (
       <div>

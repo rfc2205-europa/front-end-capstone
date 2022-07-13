@@ -56,8 +56,8 @@ class AnswerItem extends React.Component {
     }
   }
 
-  //limiter for helpful answers
-  limiter = () => {
+  //limiter single attempt at helpful answers
+  incrementor = () => {
     if (this.state.helpfulA) {
       this.helpfulA(this.props.answer.id)
       this.props.answer.helpfulness++;
@@ -73,7 +73,7 @@ class AnswerItem extends React.Component {
         <div className="bottom_line">
           <h5>by:{answer.answerer_name}</h5>
           <h5>date:{answer.date}</h5>
-          <h5 onClick={this.limiter}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</h5>
+          <h5 onClick={this.incrementor}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</h5>
         </div>
       </div>
     )
