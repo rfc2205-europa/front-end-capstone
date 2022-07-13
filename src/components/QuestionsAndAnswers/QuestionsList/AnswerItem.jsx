@@ -22,7 +22,7 @@ class AnswerItem extends React.Component {
       "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`
     })
       .then((res) => {
-        console.log(res)
+        console.log('response in client from server after report answer: ', res)
         this.setState({
           helpfulA: false
         })
@@ -44,7 +44,7 @@ class AnswerItem extends React.Component {
         "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
       })
         .then((res) => {
-          console.log(res)
+          console.log('response in client from server after report answer: ', res)
           this.setState({
             reportA: 'Reported',
             reportABool: false
@@ -68,9 +68,9 @@ class AnswerItem extends React.Component {
     let { answer } = this.props
 
     return (
-      <div className="answers" key={Math.random()}>
-        <h5>{answer.body}</h5>
-        <div className="bottom_line">
+      <div className="qAnswers" key={Math.random()}>
+        <h5>A: {answer.body}</h5>
+        <div className="qBottom_line">
           <h5>by:{answer.answerer_name}</h5>
           <h5>date:{answer.date}</h5>
           <h5 onClick={this.incrementor}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</h5>

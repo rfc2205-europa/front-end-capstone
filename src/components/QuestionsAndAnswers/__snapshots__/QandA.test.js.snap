@@ -1,30 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`QandA Component Testing renders the QandA component correctly 1`] = `
-<div>
-  <h3>
-    Questions and Answers
-  </h3>
+<div
+  className="q_and_a"
+>
+  <h6>
+    QUESTIONS & ANSWERS
+  </h6>
   <div
-    className="search"
+    className="qSearchForm"
   >
     <form>
       <input
+        className="qSearch"
         onChange={[Function]}
-        placeholder="Have a Question Search For Answers"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         type="text"
-      />
-      <input
-        type="submit"
       />
     </form>
   </div>
-  <div>
-    <div />
-    <div />
-    <button>
-      Add A Question
-    </button>
+  <div
+    className="qList"
+  >
+    <div>
+      <div />
+    </div>
   </div>
+  <div />
+  <button
+    className="qButton"
+  >
+    Add a Question
+  </button>
 </div>
 `;

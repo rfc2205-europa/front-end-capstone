@@ -9,7 +9,7 @@ class QuestionItem extends React.Component {
     super(props);
     this.state = {
       helpfulQ: true,
-      reportQ: 'Report',
+      reportQ: <h5 className="qUnderline">Report</h5>,
       reportQBool: true,
       smallView: true
     }
@@ -26,7 +26,7 @@ class QuestionItem extends React.Component {
         "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/helpful`
       })
         .then((res) => {
-          console.log('response from server after helpful question: ', res)
+          console.log('response in client from server after helpful question: ', res)
           this.setState({
             helpfulQ: false
           })
@@ -53,9 +53,9 @@ class QuestionItem extends React.Component {
         "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`
       })
         .then((res) => {
-          console.log('response from put: ', res)
+          console.log('response in client from server after report question: ', res)
           this.setState({
-            reportQ: 'Reported',
+            reportQ: <h5 className="qUnderline">Reported</h5>,
             reportQBool: false
           })
         })
@@ -108,6 +108,7 @@ class QuestionItem extends React.Component {
     let body, ans, help, button;
     let ansArray = [];
     let sArray = [];
+    let sortedArrSellerFirst = [];
 
     let { question_body, answers, question_helpfulness } = this.props.info;
     body = question_body;
@@ -123,6 +124,11 @@ class QuestionItem extends React.Component {
       return b.helpfulness - a.helpfulness;
     })
 
+    //sort the answers by seller first needs to be implemented
+    sArray.forEach((answer)=>{
+
+    })
+
     //rendering for accordion list and conditionals for more answers button
     let list;
     if (this.state.smallView) {
@@ -130,25 +136,25 @@ class QuestionItem extends React.Component {
 
       if (sArray.length > 2) {
         list = sArray.slice(0, 2)
-        button = <button onClick={this.togButton}>See more answers</button>
+        button = <h5 onClick={this.togButton}>LOAD MORE ANSWERS</h5>
       } else {
         button = <div></div>
         list = sArray
       }
     } else {
       list = sArray
-      button = <button onClick={this.togButton}>Collapse answers</button>
+      button = <h5 onClick={this.togButton}>COLLAPSE ANSWERS</h5>
     }
     ans = list.map((answer) => (
       <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
     ))
 
     return (
-      <div className="tile">
-        <div className="first_line">
-          <h3>Q:{body}</h3><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><button>add answer</button>
+      <div className="qTile">
+        <div className="qFirst_line">
+          <h4>Q: {body}</h4><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><h5 className="qUnderline">Add Answer</h5>
         </div>
-        <div>A:{ans}</div>
+        <div>{ans}</div>
         {button}
       </div>
     )

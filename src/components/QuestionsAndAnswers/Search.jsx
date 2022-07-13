@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Search extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       input: ''
@@ -13,14 +13,23 @@ class Search extends React.Component {
     this.setState({
       input: e.target.value
     })
+    if (this.state.input.length > 1) {
+      this.handleSearch()
+    }
   }
 
-  render(){
-    return(
-      <div className="search" >
+  handleSearch = () => {
+    console.log(this.state.input)
+    this.props.search(this.state.input, this.state.input.length)
+  }
+
+
+  render() {
+    return (
+      <div className="qSearchForm">
         <form>
-          <input type="text" placeholder="Have a Question Search For Answers" onChange={this.handleChange}>
-          </input><input type="submit"></input>
+          <input className= "qSearch" type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange}>
+          </input>
         </form>
       </div>
     )
