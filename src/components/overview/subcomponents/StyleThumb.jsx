@@ -33,12 +33,16 @@ class StyleThumb extends React.Component {
   render () {
      if (this.state.selected) {
       return (
-        <img
-        src={this.props.photo}
-        style={{height: '120px', width: '120px', margin:'5px', border: '3px solid black', borderRadius: '50%'}}
-        id={this.props.id}
-        onClick={this.onClick}
-      />
+        <span className="parentLayer">
+          <span className="topLayer">&#10003;</span>
+          <img
+            src={this.props.photo}
+            style={{height: '120px', width: '120px', margin:'5px', border: '3px solid black', borderRadius: '50%'}}
+            id={this.props.id}
+            onClick={this.onClick}
+            className="bottomLayer"
+          />
+        </span>
       )
      }
      else { return (

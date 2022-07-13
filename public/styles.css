@@ -43,23 +43,24 @@ body {
 }
 
 .parentLayer {
-  position: relative;
-  top: 0;
-  left: 0;
+  position:relative
 }
 
 .topLayer {
-  position: relative;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: -75px;
+  left: 25px;
   z-index: 3;
+  font-size: 120px;
+  color: white;
 }
 
 .bottomLayer {
-  position: absolute;
+  position: relative;
   top: 0px;
   left: 0px;
   z-index: 1;
+  /* border: 1px green solid; */
 }
 
 .cartOne {
