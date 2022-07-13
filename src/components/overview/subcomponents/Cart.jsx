@@ -27,6 +27,9 @@ class Cart extends React.Component {
       skuObj.chars = skus[key]
       skuArray.push(skuObj)
     }
+    if (skuArray.length <= 15) {
+      console.log(skuArray)
+    }
     for (var x = 0; x < skuArray.length; x++) {
       if (skuArray[x].chars.size === this.state.size) {
         this.setState({
@@ -44,18 +47,30 @@ class Cart extends React.Component {
   }
 
   addToCart = (e) => {
-    console.log(this.state);
+    if (this.state.size === null) {
+      alert('Please select a size')
+    } else {
+      console.log(this.state)
+    }
   }
 
-  componentDidUpdate(prevProps) {
-    // console.log(prevProps.style)
-    // console.log(this.props.style)
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.style !== prevProps.style) {
       // console.log('change');
       this.setState({
         size: null,
         qty: null,
         purchaseQty: null,
+      })
+    }
+    if (this.state.size !== null && this.state.purchaseQty === null) {
+      this.setState({
+        purchaseQty: 1
+      })
+    }
+    if (this.state.size !== prevState.size && this.state.size !== 'Select size') {
+      this.setState({
+        purchaseQty: 1
       })
     }
   }
@@ -70,37 +85,77 @@ class Cart extends React.Component {
         skuObj.chars = skus[key]
         skuArray.push(skuObj)
       }
-      let sizeRange = Array.from(Array(this.state.qty+1).keys())
+      if (this.state.qty <= 15) {
+        var sizeRange = Array.from(Array(this.state.qty+1).keys())
+      } else {
+        var sizeRange = Array.from(Array(16).keys())
+      }
       sizeRange.shift();
-      return (
-        <div>
-          <div className='cartOne'>
-            <p>Size</p>
-            <select onChange={this.onSize}>
-              <option value="Please select size">Please select size</option>
-              {skuArray.map(sku => {
-                return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>
-              })}
-            </select>
-            <p>Qty</p>
-            <select onChange={this.onQty}>
-              {sizeRange.map(choice => {
-                return <option key={choice} value={choice}>{choice}</option>
-              })}
-            </select>
+      if (skus.null) {
+        console.log('out of stock')
+        return (
+          <div>
+            <div className='cartOne'>
+              <select className="cartSelect" onChange={this.onSize}>
+                <option
+                  value="Out of stock :("
+                  disabled
+                >Out of stock</option>
+              </select>
+            </div>
           </div>
-          <div className='cartTwo'>
-            <button onClick={this.addToCart}>Add to Cart</button>
+        )
+      } else if (!skus.null && this.state.size === null || this.state.size === 'Select size') {
+        return (
+          <div>
+            <div className='cartOne'>
+              <select className="cartSelect" onChange={this.onSize}>
+                <option value={null}>Select size</option>
+                {skuArray.map(sku => {
+                  return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>
+                })}
+              </select>
+              <select className="cartSelect" onChange={this.onQty}>
+                <option value='-'>-</option>
+              </select>
+            </div>
+            <div className='cartTwo'>
+              <button className="cartButton" onClick={this.addToCart}>Add to Cart</button>
+            </div>
           </div>
-        </div>
-      )
+        )
+      } else if (!skus.null && this.state.size) {
+        // this.setState({
+        //   purchaseQty: 1
+        // })
+        return (
+          <div>
+            <div className='cartOne'>
+              <select className="cartSelect" onChange={this.onSize}>
+                <option value={null}>Select size</option>
+                {skuArray.map(sku => {
+                  return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>
+                })}
+              </select>
+              <select className="cartSelect" onChange={this.onQty}>
+                {sizeRange.map(choice => {
+                  return <option key={choice} value={choice}>{choice}</option>
+                })}>
+              </select>
+            </div>
+            <div className='cartTwo'>
+              <button className="cartButton" onClick={this.addToCart}>Add to Cart</button>
+            </div>
+          </div>
+        )
+      }
     } else {
       return (
         <div>
           <div className='cartOne'>
             <p>Size</p>
             <select onChange={this.onSize}>
-              <option value="select a size">select a size</option>
+              <option value={null}>select a size</option>
             </select>
             <p>Qty</p>
             <select onChange={this.onQty}>

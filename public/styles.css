@@ -50,7 +50,7 @@ body {
   position: absolute;
   top: -75px;
   left: 25px;
-  z-index: 3;
+  z-index: 2;
   font-size: 120px;
   color: white;
 }
@@ -68,10 +68,24 @@ body {
   justify-content: space-around;
 }
 
+.cartSelect {
+  background-color: white;
+  border-radius: 5px;
+  height: 80px;
+  width: 200px;
+}
+
 .cartTwo {
   display: flex;
   height: 100%;
   align-items: center;
+}
+
+.cartButton {
+  background-color: white;
+  border-radius:  25px;
+  height: 80%;
+  width: 100%;
 }
 
 .productOverview {
