@@ -68,11 +68,12 @@ class QuestionItem extends React.Component {
 
   questions:
   format date
-  conditional rendering for questions view button and collapsing of list
+  conditional rendering for questions collapsing of list when there is no questions for an item
+  In order to keep the page manageable, the maximum height of the questions list should be capped such that the entire Questions & Answers module should fit on a single screen. The questions list should become scrollable.
 
   answers:
   any answers from the seller should appear at the top of the list
-
+  The view for the full list of answers should be confined to half of the screen, and the list within should be scrollable.
 
   */
 
