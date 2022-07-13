@@ -18,21 +18,19 @@ class App extends React.Component {
   }
 
   trackClicks = (e) => {
-    console.log(e)
-
-    const getCircularReplacer = () => {
-      const seen = new WeakSet();
-      return (key, value) => {
-        if (typeof value === "object" && value !== null) {
-          if (seen.has(value)) {
-            return;
-          }
-          seen.add(value);
-        }
-        return value;
-      };
-    };
-
+    // console.log(e)
+    // const getCircularReplacer = () => {
+    //   const seen = new WeakSet();
+    //   return (key, value) => {
+    //     if (typeof value === "object" && value !== null) {
+    //       if (seen.has(value)) {
+    //         return;
+    //       }
+    //       seen.add(value);
+    //     }
+    //     return value;
+    //   };
+    // };
     // e = JSON.stringify(e, getCircularReplacer());
     var data = {
       "type": "click",
@@ -44,6 +42,9 @@ class App extends React.Component {
         "element": e.target.outerHTML,
       }
     };
+    if (e.target.value) {
+      data.clickEvent.clientChosenValue = e.target.value
+    }
     var config = {
       method: 'post',
       url: 'http://localhost:3005/',
@@ -53,9 +54,9 @@ class App extends React.Component {
       data: data
     };
     axios(config)
-        .then(res => {
-          console.log(res.data)
-        })
+        // .then(res => {
+        //   console.log(res.data)
+        // })
         .catch(err => {
           console.log('click handling error:', err)
         })
@@ -65,8 +66,8 @@ class App extends React.Component {
     return (
       <div onClick={this.trackClicks}>
         <h1>Hello World</h1>
-        {/* <Overview />
-        <Review/> */}
+        <Overview />
+        <Review/>
         <QandA />
       </div>
     )
