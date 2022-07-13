@@ -10,6 +10,7 @@ class QuestionItem extends React.Component {
     this.state = {
       helpfulQ: true,
       reportQ: 'Report',
+      reportQBool: true,
       smallView: true
     }
   }
@@ -45,19 +46,23 @@ class QuestionItem extends React.Component {
     //qa/questions/:question_id/report
     //send put req to server once per load
     //render button label onclick
-
-    let { question_id } = this.props.info;
-    axios.put(`http://localhost:3005/qa/questions`, {
-      "type": "question",
-      "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`
-    })
-      .then((res) => {
-        console.log(res)
-        this.setState({ reportQ: 'Reported' })
+    if (this.state.reportQBool) {
+      let { question_id } = this.props.info;
+      axios.put(`http://localhost:3005/qa/questions`, {
+        "type": "question",
+        "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`
       })
-      .catch((err) => {
-        console.log('ERROR IN PUT Helpful Question: ', err)
-      })
+        .then((res) => {
+          console.log(res)
+          this.setState({
+            reportQ: 'Reported',
+            reportQBool: false
+          })
+        })
+        .catch((err) => {
+          console.log('ERROR IN PUT Helpful Question: ', err)
+        })
+    }
 
     //this.setState({report: false})
   }
@@ -100,7 +105,7 @@ class QuestionItem extends React.Component {
 
   render() {
 
-    let body, ans, help, buttonText, button;
+    let body, ans, help, button;
     let ansArray = [];
     let sArray = [];
 
@@ -124,10 +129,10 @@ class QuestionItem extends React.Component {
       if (this.state.smallView) {
         // if (this.props.view) {
 
-        if(sArray.length > 2){
+        if (sArray.length > 2) {
           list = sArray.slice(0, 2)
           button = <button onClick={this.togButton}>See more answers</button>
-        }else{
+        } else {
           button = <div></div>
           list = sArray
         }

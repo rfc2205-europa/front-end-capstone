@@ -35,7 +35,7 @@ class QuestionsList extends React.Component {
 
   */
   render() {
-    let list, questions, buttonText, button;
+    let list, questions, button;
 
     //defines list variable value
     if (this.props.questions !== undefined) {
@@ -50,7 +50,7 @@ class QuestionsList extends React.Component {
           button = <div></div>
         }
       } else {
-        buttonText = 'Remove Added Questions and Answers'
+        button = <button onClick={this.moreAnsQues}>Remove Added Questions and Answers</button>
         questions = this.props.questions
       }
 

@@ -6,7 +6,8 @@ class AnswerItem extends React.Component {
     super(props)
     this.state = {
       helpfulA: true,
-      reportA: 'Report'
+      reportA: 'Report',
+      reportABool: true
     }
   }
 
@@ -37,22 +38,27 @@ class AnswerItem extends React.Component {
   //handles report answer click
   reportA = (id) => {
     console.log('report answer')
-    axios.put(`http://localhost:3005/qa/answers`, {
-      "type": "answer",
-      "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
-    })
-      .then((res) => {
-        console.log(res)
-        this.setState({ reportA: 'Reported' })
+    if (this.state.reportABool) {
+      axios.put(`http://localhost:3005/qa/answers`, {
+        "type": "answer",
+        "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
       })
-      .catch((err) => {
-        console.log('ERROR IN PUT Helpful Question: ', err)
-      })
+        .then((res) => {
+          console.log(res)
+          this.setState({
+            reportA: 'Reported',
+            reportABool: false
+          })
+        })
+        .catch((err) => {
+          console.log('ERROR IN PUT Helpful Question: ', err)
+        })
+    }
   }
 
   //limiter for helpful answers
   limiter = () => {
-    if(this.state.helpfulA){
+    if (this.state.helpfulA) {
       this.helpfulA(this.props.answer.id)
       this.props.answer.helpfulness++;
     }
