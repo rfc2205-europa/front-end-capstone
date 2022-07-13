@@ -87,26 +87,27 @@ class QandA extends React.Component {
       listView = this.state.questions
     }
 
+    //conditional rendering for button
     let button;
     if (this.state.smallView) {
       if (this.state.questions.length > 2) {
-        button = <button onClick={this.addQs}>Add More Answered Questions</button>
+        button = <button className="qButton" onClick={this.addQs}>Add More Answered Questions</button>
       } else {
         button = <div></div>
       }
     } else {
-      button = <button onClick={this.addQs}>Remove Added Questions and Answers</button>
+      button = <button className="qButton" onClick={this.addQs}>Remove Added Questions and Answers</button>
     }
 
 
     return (
       <div className="q_and_a">
-        <h3>Questions and Answers</h3>
+        <h6>QUESTIONS & ANSWERS</h6>
         <Search search={this.search} questions={this.state.questions} />
         <div className="qList">
           <QuestionsList questions={listView} smallV={this.state.smallView}fetch={this.fetch} />
         </div>
-        {button}<button>Add a Question</button>
+        {button}<button className="qButton" >Add a Question</button>
       </div>
     )
   }

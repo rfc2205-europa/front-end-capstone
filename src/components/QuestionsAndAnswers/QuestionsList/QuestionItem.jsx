@@ -9,7 +9,7 @@ class QuestionItem extends React.Component {
     super(props);
     this.state = {
       helpfulQ: true,
-      reportQ: 'Report',
+      reportQ: <h5 className="qUnderline">Report</h5>,
       reportQBool: true,
       smallView: true
     }
@@ -55,7 +55,7 @@ class QuestionItem extends React.Component {
         .then((res) => {
           console.log('response in client from server after report question: ', res)
           this.setState({
-            reportQ: 'Reported',
+            reportQ: <h5 className="qUnderline">Reported</h5>,
             reportQBool: false
           })
         })
@@ -136,25 +136,25 @@ class QuestionItem extends React.Component {
 
       if (sArray.length > 2) {
         list = sArray.slice(0, 2)
-        button = <button onClick={this.togButton}>See more answers</button>
+        button = <h5 fontWeight='bold' onClick={this.togButton}>LOAD MORE ANSWERS</h5>
       } else {
         button = <div></div>
         list = sArray
       }
     } else {
       list = sArray
-      button = <button onClick={this.togButton}>Collapse answers</button>
+      button = <h5 onClick={this.togButton}>COLLAPSE ANSWERS</h5>
     }
     ans = list.map((answer) => (
       <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
     ))
 
     return (
-      <div className="tile">
-        <div className="first_line">
-          <h3>Q:{body}</h3><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><button>add answer</button>
+      <div className="qTile">
+        <div className="qFirst_line">
+          <h3>Q: {body}</h3><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><h5 className="qUnderline">Add Answer</h5>
         </div>
-        <div>A:{ans}</div>
+        <div>{ans}</div>
         {button}
       </div>
     )

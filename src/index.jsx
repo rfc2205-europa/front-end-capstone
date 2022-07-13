@@ -65,7 +65,7 @@ class App extends React.Component {
   render() {
     return (
       <div onClick={this.trackClicks}>
-        <h1>Hello World</h1>
+        {/* <h1>Hello World</h1> */}
         {/* <Overview />
         <Review/> */}
         <QandA />

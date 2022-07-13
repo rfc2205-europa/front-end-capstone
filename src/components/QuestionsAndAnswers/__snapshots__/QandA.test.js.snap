@@ -4,16 +4,17 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
 <div
   className="q_and_a"
 >
-  <h3>
-    Questions and Answers
-  </h3>
+  <h6>
+    QUESTIONS & ANSWERS
+  </h6>
   <div
-    className="search"
+    className="qSearchForm"
   >
     <form>
       <input
+        className="qSearch"
         onChange={[Function]}
-        placeholder="Have a Question Search For Answers"
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         type="text"
       />
     </form>
@@ -26,7 +27,9 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
     </div>
   </div>
   <div />
-  <button>
+  <button
+    className="qButton"
+  >
     Add a Question
   </button>
 </div>
