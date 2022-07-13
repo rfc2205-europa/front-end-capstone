@@ -29,7 +29,7 @@ module.exports.handlePostRequests = (req, res) => {
   const options = {};
   // handle click events
   if (req.body.type === 'click') {
-    console.log(req.body.clickEvent);
+    console.log('click tracking info:',req.body.clickEvent);
     res.send('click received');
   }
   // post reviews
