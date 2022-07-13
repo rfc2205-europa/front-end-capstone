@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import AnswerItem from './AnswerItem.jsx'
 //import style from '../style.css';
 
 
@@ -7,10 +8,8 @@ class QuestionItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpfulA: true,
       helpfulQ: true,
-      reportQ: 'Report',
-      reportA: 'Report'
+      reportQ: 'Report'
     }
   }
 
@@ -35,28 +34,6 @@ class QuestionItem extends React.Component {
 
     //this.setState({ helpfulQ: false })
 
-  }
-
-  //handles helpful answer click
-  helpfulA = (id) => {
-    console.log('helpful answer')
-
-    // /qa/answers/:answer_id/helpful
-    if (this.state.helpfulA) {
-      axios.put(`http://localhost:3005/qa/answers`, {
-        "type": "answer",
-        "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`
-      })
-        .then((res) => {
-          console.log(res)
-          this.props.fetch()
-        })
-        .catch((err) => {
-          console.log('ERROR IN PUT Helpful Answer: ', err)
-        })
-    }
-
-    //this.setState({ helpfulA: false })
   }
 
   //handles report question click
@@ -89,7 +66,6 @@ class QuestionItem extends React.Component {
   TODO:
 
   set helpful click to only work once per answer
-  fix Report label for individual answers
   format date
 
 
@@ -134,21 +110,14 @@ class QuestionItem extends React.Component {
       })
 
       //rendering for accordion list
-      let list, tog;
+      let list;
       if (this.props.view) {
         list = sArray.slice(0, 2)
       } else {
         list = sArray
       }
       ans = list.map((answer) => (
-        <div className="answers" key={Math.random()}>
-          <h5>{answer.body}</h5>
-          <div className="bottom_line">
-            <h5>by:{answer.answerer_name}</h5>
-            <h5>date:{answer.date}</h5>
-            <h5 onClick={() => { this.helpfulA(answer.id) }}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={()=>{this.reportA(answer.id)}}>{this.state.reportA}</h5>
-          </div>
-        </div>
+        <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch}/>
       ))
     } else {
       body = ''
