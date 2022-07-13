@@ -124,7 +124,7 @@ class QuestionItem extends React.Component {
       return b.helpfulness - a.helpfulness;
     })
 
-    //sort the answers by seller first
+    //sort the answers by seller first needs to be implemented
     sArray.forEach((answer)=>{
 
     })
@@ -136,7 +136,7 @@ class QuestionItem extends React.Component {
 
       if (sArray.length > 2) {
         list = sArray.slice(0, 2)
-        button = <h5 fontWeight='bold' onClick={this.togButton}>LOAD MORE ANSWERS</h5>
+        button = <h5 onClick={this.togButton}>LOAD MORE ANSWERS</h5>
       } else {
         button = <div></div>
         list = sArray
@@ -152,7 +152,7 @@ class QuestionItem extends React.Component {
     return (
       <div className="qTile">
         <div className="qFirst_line">
-          <h3>Q: {body}</h3><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><h5 className="qUnderline">Add Answer</h5>
+          <h4>Q: {body}</h4><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><h5 className="qUnderline">Add Answer</h5>
         </div>
         <div>{ans}</div>
         {button}
