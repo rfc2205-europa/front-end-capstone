@@ -32,7 +32,7 @@ class QandA extends React.Component {
 
   //fetches questions from api
   fetch = (product_id) => {
-    var product_id = product_id || '66631';
+    var product_id = product_id || '66673';//66642, 66673
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {

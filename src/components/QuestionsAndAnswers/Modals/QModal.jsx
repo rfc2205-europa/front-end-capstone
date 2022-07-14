@@ -14,22 +14,23 @@ class QModal extends React.Component {
       <div className="qModalBackground">
         <div className="qModalContainer">
           <button onClick={() => { this.props.toggle() }}>X</button>
-          <h5>ADD A QUESTION</h5>
+          <h5>Ask Your Question</h5>
+          <p>[Product Name]</p>
           <div>
             <form>
               <div>
-                <label>Your Question</label>
+                <label>Your Question(mandatory)</label>
                 <input type='text'></input>
               </div>
               <div>
-                <label>What is your nickname</label>
+                <label>What is your nickname(mandatory)</label>
                 <input type='text' placeholder="Example: jackson11!"></input>
               </div>
               <div>
                 <p>For privacy reasons, do not use your full name or email address</p>
               </div>
               <div>
-                <label>Your email</label>
+                <label>Your email(mandatory)</label>
                 <input type='text' placeholder="Why did you like the product or not?"></input>
               </div>
               <div>
