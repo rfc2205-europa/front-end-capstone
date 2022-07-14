@@ -29,6 +29,7 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
   <div />
   <button
     className="qButton"
+    onClick={[Function]}
   >
     Add a Question
   </button>

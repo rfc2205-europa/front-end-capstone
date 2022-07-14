@@ -9,7 +9,7 @@ class QuestionItem extends React.Component {
     super(props);
     this.state = {
       helpfulQ: true,
-      reportQ: <h5 className="qUnderline">Report</h5>,
+      reportQ: <u className="qUnderline">Report</u>,
       reportQBool: true,
       smallView: true
     }
@@ -55,7 +55,7 @@ class QuestionItem extends React.Component {
         .then((res) => {
           console.log('response in client from server after report question: ', res)
           this.setState({
-            reportQ: <h5 className="qUnderline">Reported</h5>,
+            reportQ: <u className="qUnderline">Reported</u>,
             reportQBool: false
           })
         })
@@ -74,12 +74,13 @@ class QuestionItem extends React.Component {
   questions:
   format date
   conditional rendering for questions collapsing of list when there is no questions for an item
-  In order to keep the page manageable, the maximum height of the questions list should be capped such that the entire Questions & Answers module should fit on a single screen. The questions list should become scrollable.
 
   answers:
   any answers from the seller should appear at the top of the list
   The view for the full list of answers should be confined to half of the screen, and the list within should be scrollable.
 
+  search:
+  make sure it works proper;y
   */
 
   //toggle button and state value to render size of answers list
@@ -152,7 +153,7 @@ class QuestionItem extends React.Component {
     return (
       <div className="qTile">
         <div className="qFirst_line">
-          <h4>Q: {body}</h4><h5 onClick={this.incrementor}>Helpful? Yes ({help})</h5><h5 onClick={this.reportQ}>{this.state.reportQ}</h5><h5 className="qUnderline">Add Answer</h5>
+          <h5>Q: {body}</h5><p onClick={this.incrementor}>Helpful? Yes ({help})</p><p onClick={this.reportQ}>{this.state.reportQ}</p><p onClick={()=>{this.props.toggleAModal()}}className="qUnderline">Add Answer</p>
         </div>
         <div>{ans}</div>
         {button}
