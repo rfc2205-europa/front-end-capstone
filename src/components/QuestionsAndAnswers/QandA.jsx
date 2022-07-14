@@ -21,18 +21,25 @@ class QandA extends React.Component {
       smallView: true,
       searchView: false,
       openQModalView: false,
-      openAModalView: false
+      openAModalView: false,
+      productId: '66680',//66642, 66680
+      questionId: ''
     }
   }
 
   //fetches data from api on mounting of component
   componentDidMount = () => {
-    this.fetch();
+    //switch this line when the props are drilled for a product id from parent component
+    this.fetch(this.state.productId);
+    //this.fetch(this.props.product_id);
   }
+
+
+  //pass in props of product id
 
   //fetches questions from api
   fetch = (product_id) => {
-    var product_id = product_id || '66680';//66642, 66680
+    //var product_id = product_id || this.state.productId;
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
@@ -95,14 +102,15 @@ class QandA extends React.Component {
   }
 
   //opens answer modal
-  openAModal = () => {
+  openAModal = (question_id) => {
     if (this.state.openAModalView) {
       this.setState({
         openAModalView: false
       })
     }else{
       this.setState({
-        openAModalView: true
+        openAModalView: true,
+        questionId: question_id
       })
     }
   }
@@ -133,13 +141,13 @@ class QandA extends React.Component {
     return (
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
-        {this.state.openQModalView && <QModal toggle={this.openQModal}/>}
-        {this.state.openAModalView && <AModal toggle={this.openAModal}/>}
+        {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId}/>}
+        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId}/>}
         <Search search={this.search} questions={this.state.questions} />
         <div className="qList">
           <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
         </div>
-        {button}<button className="qButton" onClick={this.openQModal}>Add a Question</button>
+        {button}<button className="qButton" onClick={this.openQModal}>Add a Question +</button>
 
       </div>
     )

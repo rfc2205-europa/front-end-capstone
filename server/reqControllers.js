@@ -57,39 +57,41 @@ module.exports.handlePostRequests = (req, res) => {
           res.status(404).send('post review error:', error);
         });
   } else if (req.body.type === 'questions.question') {
-    options.url = req.body.api;
+    console.log(req.body)
     options.method = 'post';
+    options.url = req.body.api;
     options.headers = {'Authorization': config.token};
     options.data = {
-      'body': req.body.body,
-      'name': req.body.name,
-      'email': req.body.email,
-      'product_id': req.body.product_id,
+      "body": req.body.body,
+      "name": req.body.name,
+      "email": req.body.email,
+      "product_id": req.body.product_id,
     };
+    console.log("options: ", options)
     axios(options)
-        .then((response) => {
-          res.status(201).send(response);
+        .then(() => {
+          res.sendStatus(201);
         })
         .catch((error) => {
-          res.status(404).send('post question error:', error);
+          res.sendStatus(404);
         });
   } else if (req.body.type === 'questions.answer') {
     options.url = req.body.api;
     options.method = 'post';
     options.headers = {'Authorization': config.token};
     options.data = {
-      'body': req.body.body,
-      'name': req.body.name,
-      'email': req.body.email,
-      'photos': req.body.photos,
+      "body": req.body.body,
+      "name": req.body.name,
+      "email": req.body.email,
+      "photos": req.body.photos,
     };
     console.log('answer post options:', options);
     axios(options)
-        .then((response) => {
-          res.status(201).send(response);
+        .then(() => {
+          res.sendStatus(201);
         })
         .catch((error) => {
-          res.status(404).send('post answer error:', error);
+          res.status(404);
         });
   }
 };
