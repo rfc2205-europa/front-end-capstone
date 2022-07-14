@@ -148,7 +148,7 @@ class QandA extends React.Component {
     let button;
     if (this.state.smallView) {
       if (this.state.questions.length > 2) {
-        button = <button className="qButton" onClick={this.addQs}>Add More Answered Questions</button>
+        button = <button className="qButton" onClick={this.addQs}>ADD MORE ANSWERED QUESTIONS</button>
       } else {
         button = <div></div>
       }
@@ -166,7 +166,7 @@ class QandA extends React.Component {
         <div className="qList">
           <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
         </div>
-        {button}<button className="qButton" onClick={this.openQModal}>Add a Question +</button>
+        {button}<button className="qButton" onClick={this.openQModal}>ADD A QUESTION +</button>
 
       </div>
     )

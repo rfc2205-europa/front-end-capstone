@@ -574,17 +574,35 @@ body {
 
 
 .q_and_a {
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-top: 50px;
+  padding-left: 275px;
+  padding-right: 275px;
 }
 .qSearch {
   width: 100%;
-  padding: 20px 37px;
+  padding: 18px 20px;
   margin: 8px 0;
   border: 2px solid black;
   box-sizing: border-box;
+  font-size: 12pt;
   font-weight: bold;
 }
+
+.qbold {
+  font-weight: bold;
+}
+
+
+.qw13{
+  font-size: 13pt;
+}
+
+.qw12B{
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+
 
 .qSearchForm {
   padding: 10px;
@@ -593,8 +611,10 @@ body {
 .qFirst_line {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5px;
+  padding-bottom: 2px;
 }
+
+
 .qItem {
   padding: 5px;
 }
@@ -602,7 +622,7 @@ body {
   /* border-width: 2px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px black; */
-  padding: 5px;
+  padding: 2px;
 
 }
 
@@ -613,11 +633,11 @@ body {
   border-radius: 10px;
   padding: 5px;
   margin: 10px;
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(255, 255, 255);
 }
 
 .qList{
-  height: 555px;
+  height: 480px;
   width: auto;
   overflow: auto;
 }
@@ -625,16 +645,18 @@ body {
 .qBottom_line {
   display: flex;
   justify-content: flex-start;
-  padding-top: 5px;
+  padding-top: 3px;
+  padding-left: 22px;
+  font-size: 10pt;
 }
 
 .qButton {
   font-size: 20px;
   border: 2px solid black;
-  padding: 20px 37px;
+  padding: 18px 18px;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12pt;
   font-weight: bold;
   margin-right: 15px;
   background-color: white;
@@ -651,7 +673,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 400px;
+  padding-right: 550px;
+  padding-bottom: 200px;
 }
 
 .qModalContainer {

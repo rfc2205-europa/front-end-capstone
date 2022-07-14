@@ -69,7 +69,7 @@ class AnswerItem extends React.Component {
 
     return (
       <div className="qAnswers" key={Math.random()}>
-        <h5>A: {answer.body}</h5>
+        <h5 className="qbold" className="qw13">A: {answer.body}</h5>
         <div className="qBottom_line">
           <p>by:{answer.answerer_name}</p>
           <p>date:{answer.date}</p>

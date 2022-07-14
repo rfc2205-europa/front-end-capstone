@@ -137,14 +137,14 @@ class QuestionItem extends React.Component {
 
       if (sArray.length > 2) {
         list = sArray.slice(0, 2)
-        button = <h5 onClick={this.togButton}>LOAD MORE ANSWERS</h5>
+        button = <h5 className="qw12B" onClick={this.togButton}>LOAD MORE ANSWERS</h5>
       } else {
         button = <div></div>
         list = sArray
       }
     } else {
       list = sArray
-      button = <h5 onClick={this.togButton}>COLLAPSE ANSWERS</h5>
+      button = <h5 className="qw12B" onClick={this.togButton}>COLLAPSE ANSWERS</h5>
     }
     ans = list.map((answer) => (
       <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
@@ -153,7 +153,7 @@ class QuestionItem extends React.Component {
     return (
       <div className="qTile">
         <div className="qFirst_line">
-          <h5>Q: {body}</h5><p onClick={this.incrementor}>Helpful? Yes ({help})</p><p onClick={this.reportQ}>{this.state.reportQ}</p><p onClick={()=>{this.props.toggleAModal(this.props.info.question_id)}}className="qUnderline">Add Answer</p>
+          <h5 className="qbold">Q: {body}</h5><p onClick={this.incrementor}>Helpful? Yes ({help})</p><p onClick={this.reportQ}>{this.state.reportQ}</p><p onClick={()=>{this.props.toggleAModal(this.props.info.question_id)}}className="qUnderline">Add Answer</p>
         </div>
         <div>{ans}</div>
         {button}
