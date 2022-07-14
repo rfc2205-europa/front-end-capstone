@@ -16,6 +16,7 @@ body {
 /* ------------- overview ------------- */
 .topRow {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -27,10 +28,11 @@ body {
 .gallery {
   display: flex;
   margin: .5%;
+  /* padding-left: -50%; */
   width: 58%;
-  /* max-width: 333px; */
+  /* max-width: 58%; */
   height: 500px;
-  justify-content: center;
+  justify-content: flex-start;
   /* border: 1px solid black */
   z-index: 1;
 }
@@ -50,6 +52,13 @@ body {
 .right {
   position: relative;
   left: -38px;
+}
+
+.galleryOverlay {
+  position: relative;
+  display: flex;
+  top: 45%;
+  left: 55%;
 }
 
 .productInfo {

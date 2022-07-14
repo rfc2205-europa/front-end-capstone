@@ -94,7 +94,7 @@ class Overview extends React.Component {
     if (this.state.selectedStyle) {
       let { photos } = this.state.selectedStyle;
       return (
-        <div style={{display: 'block'}}>
+        <div >
           <div className='topRow'>
             <Gallery
               photos={photos}
