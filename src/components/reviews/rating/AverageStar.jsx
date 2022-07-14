@@ -19,7 +19,7 @@ var AverageStar = function({aveScore}) {
 
   return (
     <div className='rating-score-star-container'>
-      <h1 className='rating-score'>{aveScore.toString().slice(0,3)}</h1>
+      <h1 className='rating-score'>{Math.ceil(aveScore * 10) / 10}</h1>
       <div className='rating-star-container'>
         {starList}
       </div>

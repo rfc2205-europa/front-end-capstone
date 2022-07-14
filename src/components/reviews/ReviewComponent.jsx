@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import Sorting from './Sorting.jsx';
-import AllReview from './AllReview.jsx';
-import AddReview from './AddReview.jsx';
-import SearchBar from './SearchBar.jsx';
+import Sorting from './review/Sorting.jsx';
+import AllReview from './review/AllReview.jsx';
+import AddReview from './review/AddReview.jsx';
+import SearchBar from './review/SearchBar.jsx';
 
 var ReviewComponent = function({reviews, sortFunc}) {
 
