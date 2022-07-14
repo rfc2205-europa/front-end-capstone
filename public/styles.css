@@ -188,31 +188,35 @@ body {
 }
 
 .review-addReview {
-  width: 800px;
-  height: 700px;
+  width: 600px;
+  height: 800px;
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: center;
+  /* gap: 10px; */
+  justify-content: flex-start;
+  /* align-items: center; */
   font-family: "Times New Roman", Times, serif;
 }
 
-.review-addReview-star-container, .review-addReview-recommend-container, .review-addReview-characteristics-container {
+.review-addReview-star-container, .review-addReview-recommend-container, .review-addReview-characteristics-container, .review-addReview-summary-container, .review-addReview-body-container, .review-addReview-nickName-container, .review-addReview-photo-container, .review-addReview-email-container {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
 }
-.review-addReview-star-container, .review-addReview-recommend-container {
+.review-addReview-star-container, .review-addReview-recommend-container,.review-addReview-summary-container {
   height: 30px;
   flex-direction: row;
+  align-items: center;
 }
 .review-addReview-characteristics-container {
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .review-addReview-radio {
   display: inline-flex;
+  /* justify-content: flex-start; */
   align-items: center;
   cursor: pointer;
   margin-right: 10px;
@@ -263,8 +267,8 @@ body {
 .review-addReview-characteristics-text-radio {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  /* align-items: center; */
   height: 25px;
 
 }
@@ -459,8 +463,8 @@ body {
 }
 
 .modal-content {
-  width: 500px;
-  height: 550px;
+  width: 800px;
+  height: 800px;
   position: fixed;
   left: 80%;
   top: 500%;
