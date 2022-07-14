@@ -56,7 +56,6 @@ class Cart extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.style !== prevProps.style) {
-      // console.log('change');
       this.setState({
         size: null,
         qty: null,
@@ -125,9 +124,6 @@ class Cart extends React.Component {
           </div>
         )
       } else if (!skus.null && this.state.size) {
-        // this.setState({
-        //   purchaseQty: 1
-        // })
         return (
           <div>
             <div className='cartOne'>

@@ -90,7 +90,7 @@ body {
 .productOverview {
   display: flex;
   margin: .5%;
-  width: 50%
+  width: 50%;
   justify-content: center;
   /* border: 1px solid black */
 }
