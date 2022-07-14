@@ -28,6 +28,7 @@ body {
   display: flex;
   margin: .5%;
   width: 58%;
+  /* max-width: 333px; */
   height: 500px;
   justify-content: center;
   /* border: 1px solid black */
@@ -91,6 +92,7 @@ body {
 .productOverview {
   display: flex;
   margin: .5%;
+  margin-top: 2%;
   width: 50%;
   justify-content: center;
   /* border: 1px solid black */

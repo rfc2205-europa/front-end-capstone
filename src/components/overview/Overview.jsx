@@ -96,7 +96,10 @@ class Overview extends React.Component {
       return (
         <div style={{display: 'block'}}>
           <div className='topRow'>
-            <Gallery photos={photos}/>
+            <Gallery
+              photos={photos}
+              style={this.state.selectedStyle.style_id}
+            />
             <ProductInfo
               product={product}
               styles={styles}
