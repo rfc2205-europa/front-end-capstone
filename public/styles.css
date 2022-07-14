@@ -527,8 +527,8 @@ body {
 
 
 .q_and_a {
-  padding-left: 250px;
-  padding-right: 250px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 .qSearch {
   width: 100%;
@@ -570,7 +570,7 @@ body {
 }
 
 .qList{
-  height: 552px;
+  height: 555px;
   width: auto;
   overflow: auto;
 }
@@ -595,6 +595,25 @@ body {
 
 .qUnderline {
   text-decoration: underline;
+}
+
+.qModalBackground {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qModalContainer {
+  width: 750px;
+  height: 500px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
 }
 /* ------------- QandA ------------- */
 
