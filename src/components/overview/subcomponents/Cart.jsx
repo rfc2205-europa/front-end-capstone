@@ -55,6 +55,7 @@ class Cart extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // if a new style is selected
     if (this.props.style !== prevProps.style) {
       this.setState({
         size: null,
@@ -62,12 +63,15 @@ class Cart extends React.Component {
         purchaseQty: null,
       })
     }
+    // if size has been chosen and purchase qty has not
     if (this.state.size !== null && this.state.purchaseQty === null) {
       this.setState({
         purchaseQty: 1
       })
     }
+    // if size does not equal prior size
     if (this.state.size !== prevState.size && this.state.size !== 'Select size') {
+      document.getElementsByClassName('cartSelect')[1].value = 1
       this.setState({
         purchaseQty: 1
       })
