@@ -37,7 +37,7 @@ class StyleThumb extends React.Component {
           <span className="topLayer">&#10003;</span>
           <img
             src={this.props.photo}
-            style={{height: '120px', width: '120px', margin:'5px', border: '3px solid black', borderRadius: '50%'}}
+            style={{height: '70px', width: '70px', margin:'5px', border: '3px solid black', borderRadius: '50%'}}
             id={this.props.id}
             onClick={this.onClick}
             className="bottomLayer"
@@ -48,7 +48,7 @@ class StyleThumb extends React.Component {
      else { return (
       <img
         src={this.props.photo}
-        style={{height: '120px', width: '120px', margin:'5px', borderRadius: '50%'}}
+        style={{height: '70px', width: '70px', margin:'5px', borderRadius: '50%'}}
         id={this.props.id}
         onClick={this.onClick}
       />

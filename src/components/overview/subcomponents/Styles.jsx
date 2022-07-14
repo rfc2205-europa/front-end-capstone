@@ -24,7 +24,7 @@ class Styles extends React.Component {
         row = [];
       }
     }
-    console.log('array of style arrays:', arrayOfRows)
+    // console.log('array of style arrays:', arrayOfRows)
     this.setState({
       arrayOfRows: arrayOfRows
     })

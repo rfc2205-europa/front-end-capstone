@@ -16,6 +16,7 @@ body {
 /* ------------- overview ------------- */
 .topRow {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -27,10 +28,50 @@ body {
 .gallery {
   display: flex;
   margin: .5%;
+  /* padding-left: -50%; */
   width: 58%;
+  /* max-width: 58%; */
   height: 500px;
   justify-content: center;
   /* border: 1px solid black */
+  z-index: 1;
+}
+
+.galleryArrow {
+  color: whitesmoke;
+  font-size: 50px;
+  opacity: 85%;
+  z-index: 2;
+}
+
+.left {
+  position: relative;
+  left: 38px;
+}
+
+.right {
+  position: relative;
+  left: -38px;
+}
+
+.galleryOverlay {
+  position: absolute;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5%;
+  display: flex;
+  justify-content: space-around;
+  top: 35.1%;
+  left: 22.825%;
+  width: 333px;
+  z-index: 1;
+}
+
+.overlayThumbnail {
+  opacity: 100%;
+}
+.overlayThumbnail:hover {
+  border: 1px solid black;
 }
 
 .productInfo {
@@ -47,10 +88,10 @@ body {
 
 .topLayer {
   position: absolute;
-  top: -75px;
-  left: 25px;
+  top: -50px;
+  left: 10px;
   z-index: 2;
-  font-size: 120px;
+  font-size: 80px;
   color: white;
 }
 
@@ -72,6 +113,7 @@ body {
   border-radius: 5px;
   height: 80px;
   width: 200px;
+  text-align: center;
 }
 
 .cartTwo {
@@ -90,7 +132,8 @@ body {
 .productOverview {
   display: flex;
   margin: .5%;
-  width: 50%
+  margin-top: 2%;
+  width: 50%;
   justify-content: center;
   /* border: 1px solid black */
 }
