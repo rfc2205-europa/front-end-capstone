@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
+import QModal from './Modals/QModal.jsx';
+import AModal from './Modals/AModal.jsx';
 // import style from './style.css';
 
 
@@ -17,7 +19,9 @@ class QandA extends React.Component {
       questions: [],
       searchQ: [],
       smallView: true,
-      searchView: false
+      searchView: false,
+      openQModalView: false,
+      openAModalView: false
     }
   }
 
@@ -66,13 +70,39 @@ class QandA extends React.Component {
   }
 
   addQs = () => {
-    if(this.state.smallView){
+    if (this.state.smallView) {
       this.setState({
         smallView: false
       })
-    }else{
+    } else {
       this.setState({
         smallView: true
+      })
+    }
+  }
+
+  //opens question modal
+  openQModal = () => {
+    if (this.state.openQModalView) {
+      this.setState({
+        openQModalView: false
+      })
+    }else{
+      this.setState({
+        openQModalView: true
+      })
+    }
+  }
+
+  //opens answer modal
+  openAModal = () => {
+    if (this.state.openAModalView) {
+      this.setState({
+        openAModalView: false
+      })
+    }else{
+      this.setState({
+        openAModalView: true
       })
     }
   }
@@ -103,11 +133,14 @@ class QandA extends React.Component {
     return (
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
+        {this.state.openQModalView && <QModal toggle={this.openQModal}/>}
+        {this.state.openAModalView && <AModal toggle={this.openAModal}/>}
         <Search search={this.search} questions={this.state.questions} />
         <div className="qList">
-          <QuestionsList questions={listView} smallV={this.state.smallView}fetch={this.fetch} />
+          <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
         </div>
-        {button}<button className="qButton" >Add a Question</button>
+        {button}<button className="qButton" onClick={this.openQModal}>Add a Question</button>
+
       </div>
     )
   }

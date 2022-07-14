@@ -71,9 +71,9 @@ class AnswerItem extends React.Component {
       <div className="qAnswers" key={Math.random()}>
         <h5>A: {answer.body}</h5>
         <div className="qBottom_line">
-          <h5>by:{answer.answerer_name}</h5>
-          <h5>date:{answer.date}</h5>
-          <h5 onClick={this.incrementor}>Helpful? Yes ({answer.helpfulness})</h5><h5 onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</h5>
+          <p>by:{answer.answerer_name}</p>
+          <p>date:{answer.date}</p>
+          <p onClick={this.incrementor}>Helpful? Yes ({answer.helpfulness})</p><p onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</p>
         </div>
       </div>
     )

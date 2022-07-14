@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import AverageStar from './AverageStar.jsx';
 import RatingStat from './RatingStat.jsx';
-import CharRating from './CharRating.jsx'
+import CharRating from './CharRating.jsx';
 
 var RatingComponent = function({ratings}) {
   const [maxCount, setMaxCount] = useState(0);

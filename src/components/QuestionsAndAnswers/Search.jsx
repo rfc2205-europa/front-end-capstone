@@ -19,7 +19,7 @@ class Search extends React.Component {
   }
 
   handleSearch = () => {
-    console.log(this.state.input)
+    console.log(this.state.input, this.state.input.length)
     this.props.search(this.state.input, this.state.input.length)
   }
 
