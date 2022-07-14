@@ -68,6 +68,8 @@ class Gallery extends React.Component {
         currentPhoto: nextProps.photos[prevState.currentIndex],
         id: nextProps.style
       }
+    } else {
+      return null;
     }
   }
 
@@ -77,13 +79,13 @@ class Gallery extends React.Component {
       return (
         <div className='gallery'>
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-            <span className="galleryArrow" onClick={this.goLeft}>&#10094;</span>
+            <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
             <img
               className="image"
               src={this.state.currentPhoto.url}
               style={{height: '100%', width: '100%'}}
             />
-            <span className="galleryArrow" onClick={this.goRight}>&#10095;</span>
+            <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
             {/* <div style={{display: 'flex', justifyContent: 'space-between'}}>
 
 

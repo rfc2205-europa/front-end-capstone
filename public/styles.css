@@ -32,6 +32,24 @@ body {
   height: 500px;
   justify-content: center;
   /* border: 1px solid black */
+  z-index: 1;
+}
+
+.galleryArrow {
+  color: whitesmoke;
+  font-size: 50px;
+  opacity: 85%;
+  z-index: 2;
+}
+
+.left {
+  position: relative;
+  left: 38px;
+}
+
+.right {
+  position: relative;
+  left: -38px;
 }
 
 .productInfo {
