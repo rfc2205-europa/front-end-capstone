@@ -8,7 +8,7 @@ class StyleRow extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="styleRow">
         {this.props.row.map(style => {
           return (
             <StyleThumb
