@@ -1,4 +1,5 @@
 import React from 'react';
+import GalleryThumbnail from './GalleryThumbnail.jsx';
 
 class GalleryOverlay extends React.Component {
   constructor(props) {
@@ -6,25 +7,23 @@ class GalleryOverlay extends React.Component {
 
   }
 
-  onClick = (e, x) => {
-    this.props.changeImage(e, x)
-  }
+
 
   render() {
     return (
-      <div className="galleryOverlay">
+      <span className="galleryOverlay">
         {this.props.thumbnails.map((image, x) => {
           return (
-            <img
-              style={{height: '40px', width: '40px'}}
+            <GalleryThumbnail
               key={image.url}
+              image={image}
               id={x}
-              src={image.thumbnail_url}
-              onClick={this.onClick}
+              selectedImage={this.props.selectedImage}
+              changeImage={this.props.changeImage}
             />
           )
         })}
-      </div>
+      </span>
     )
   }
 }

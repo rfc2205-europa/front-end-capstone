@@ -32,7 +32,7 @@ body {
   width: 58%;
   /* max-width: 58%; */
   height: 500px;
-  justify-content: flex-start;
+  justify-content: center;
   /* border: 1px solid black */
   z-index: 1;
 }
@@ -55,10 +55,23 @@ body {
 }
 
 .galleryOverlay {
-  position: relative;
+  position: absolute;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5%;
   display: flex;
-  top: 45%;
-  left: 55%;
+  justify-content: space-around;
+  top: 35.1%;
+  left: 22.825%;
+  width: 333px;
+  z-index: 1;
+}
+
+.overlayThumbnail {
+  opacity: 100%;
+}
+.overlayThumbnail:hover {
+  border: 1px solid black;
 }
 
 .productInfo {

@@ -86,23 +86,26 @@ class Gallery extends React.Component {
   }
 
   render() {
-    console.log('gallery state at render:', this.state);
+    // console.log('gallery state at render:', this.state);
     if (this.state.photos.length > 0) {
       // console.log('currentPhoto:', this.state.currentPhoto.url);
       // console.log('photo at index:', this.state.photos[this.state.currentIndex].url)
       return (
         <div className='gallery'>
-          <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-            <GalleryOverlay
-              thumbnails={this.props.photos}
-              changeImage={this.changeImage}
-            />
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
-            <img
-              className="image"
-              src={this.state.photos[this.state.currentIndex].url}
-              style={{height: '100%', width: '100%'}}
-            />
+            <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
+              <GalleryOverlay
+                thumbnails={this.props.photos}
+                changeImage={this.changeImage}
+                selectedImage={this.state.currentIndex}
+              />
+              <img
+                className="image"
+                src={this.state.photos[this.state.currentIndex].url}
+                style={{height: '100%', width: '100%'}}
+              />
+            </div>
             <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
           </div>
         </div>
