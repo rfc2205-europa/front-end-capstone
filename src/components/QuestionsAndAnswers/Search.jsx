@@ -12,14 +12,21 @@ class Search extends React.Component {
   handleChange = (e) => {
     this.setState({
       input: e.target.value
+    }, () => {
+      if (this.state.input.length > 1) {
+        this.handleSearch()
+      }
     })
-    if (this.state.input.length > 1) {
-      this.handleSearch()
-    }
+
+
+
+    // if (this.state.input.length > 1) {
+    //   this.handleSearch()
+    // }
   }
 
+  //calls search in parent component
   handleSearch = () => {
-    console.log(this.state.input, this.state.input.length)
     this.props.search(this.state.input, this.state.input.length)
   }
 
@@ -28,7 +35,7 @@ class Search extends React.Component {
     return (
       <div className="qSearchForm">
         <form>
-          <input className= "qSearch" type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange}>
+          <input className="qSearch" type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={this.handleChange}>
           </input>
         </form>
       </div>
