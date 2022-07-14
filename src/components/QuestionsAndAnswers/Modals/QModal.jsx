@@ -44,7 +44,7 @@ class QModal extends React.Component {
           {/* {this.state.qWarningModalView && <QWarningModal/>} */}
           <button onClick={() => { this.props.toggle() }}>X</button>
           <h5>Ask Your Question</h5>
-          <p>[Product Name]</p>
+          <p>{this.props.productName}</p>
           <div>
             <form>
               <div>

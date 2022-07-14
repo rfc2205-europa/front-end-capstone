@@ -23,7 +23,8 @@ class QandA extends React.Component {
       openQModalView: false,
       openAModalView: false,
       productId: '66680',//66642, 66680
-      questionId: ''
+      questionId: '',
+      productInfo: {}
     }
   }
 
@@ -31,25 +32,42 @@ class QandA extends React.Component {
   componentDidMount = () => {
     //switch this line when the props are drilled for a product id from parent component
     this.fetch(this.state.productId);
+    this.fetchProductName(this.state.productId);
     //this.fetch(this.props.product_id);
+    //this.fetchProductName(this.props.product_id);
   }
 
 
-  //pass in props of product id
-
-  //fetches questions from api
+  //pass in props of product id in componentDidMount function
+  //fetches questions for a product from api
   fetch = (product_id) => {
     //var product_id = product_id || this.state.productId;
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
-        console.log(res);
+        console.log('results from fetch: ', res);
         this.setState({
           questions: res.data.results
         })
       })
       .catch((err) => {
         console.log('There is an error in fetching data: ', err)
+      })
+  }
+
+  //fetches product info from api
+  fetchProductName = (product_id) => {
+    //GET /products/:product_id
+    var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}` }
+    service.post('/retrieve', body)
+      .then((res) => {
+        console.log('results from fetchProductName: ', res.data);
+        this.setState({
+          productInfo: res.data
+        })
+      })
+      .catch((err) => {
+        console.log('There is an error in fetching product name data: ', err)
       })
   }
 
@@ -76,6 +94,7 @@ class QandA extends React.Component {
     }
   }
 
+  //adds questions to list
   addQs = () => {
     if (this.state.smallView) {
       this.setState({
@@ -88,7 +107,7 @@ class QandA extends React.Component {
     }
   }
 
-  //opens question modal
+  //opens submit question modal
   openQModal = () => {
     if (this.state.openQModalView) {
       this.setState({
@@ -101,7 +120,7 @@ class QandA extends React.Component {
     }
   }
 
-  //opens answer modal
+  //opens submit answer modal
   openAModal = (question_id) => {
     if (this.state.openAModalView) {
       this.setState({
@@ -141,8 +160,8 @@ class QandA extends React.Component {
     return (
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
-        {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId}/>}
-        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId}/>}
+        {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name}/>}
+        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name}/>}
         <Search search={this.search} questions={this.state.questions} />
         <div className="qList">
           <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>

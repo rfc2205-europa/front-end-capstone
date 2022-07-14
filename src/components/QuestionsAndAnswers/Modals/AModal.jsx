@@ -50,7 +50,7 @@ class AModal extends React.Component {
         <div className="qModalContainer">
           <button onClick={() => { this.props.toggle() }}>X</button>
           <h5>Submit your Answer</h5>
-          <p>[Product Name]:[Question Body]</p>
+          <p>{this.props.productName}:[Question Body]</p>
           <form>
             <div>
               <label>Your Answer*</label>
