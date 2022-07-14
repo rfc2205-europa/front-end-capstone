@@ -8,7 +8,7 @@ var AverageStar = function({aveScore}) {
     for (var i=0; i<5; i++) {
       if (i <= aveScore - 1) {
         stars.push(<span key = {i} className='rating-star'>&#9733;</span>)
-      } else if (aveScore - i >= 0.3) {
+      } else if (aveScore - i >= 0.25) {
         stars.push(<span key = {i} className='half-rating-star'>&#9733;</span>)
       } else {
         stars.push(<span key = {i} className='rating-star'>&#9734;</span>)
