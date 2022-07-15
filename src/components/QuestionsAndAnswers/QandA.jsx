@@ -45,7 +45,7 @@ class QandA extends React.Component {
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
-        console.log('results from fetch: ', res);
+        //console.log('results from fetch: ', res);
         this.setState({
           questions: res.data.results
         })
@@ -61,7 +61,7 @@ class QandA extends React.Component {
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
-        console.log('results from fetchProductName: ', res.data);
+        //console.log('results from fetchProductName: ', res.data);
         this.setState({
           productInfo: res.data
         })

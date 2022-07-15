@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { format, parseISO } from 'date-fns';
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -66,13 +67,13 @@ class AnswerItem extends React.Component {
 
   render() {
     let { answer } = this.props
-
+    let formatDate = format(parseISO(answer.date), "LLLL, dd, yyyy")
     return (
       <div className="qAnswers" key={Math.random()}>
         <h5 className="qbold" className="qw13">A: {answer.body}</h5>
         <div className="qBottom_line">
           <p>by:{answer.answerer_name}</p>
-          <p>date:{answer.date}</p>
+          <p>date:{formatDate}</p>
           <p onClick={this.incrementor}>Helpful? Yes ({answer.helpfulness})</p><p onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</p>
         </div>
       </div>
