@@ -37,6 +37,14 @@ body {
   z-index: 1;
 }
 
+.carouselContainer {
+  position: relative;
+}
+
+.image {
+  display: block;
+}
+
 .galleryArrow {
   color: whitesmoke;
   font-size: 50px;
@@ -56,14 +64,14 @@ body {
 
 .galleryOverlay {
   position: absolute;
-  background-color: whitesmoke;
+  background-color: lightgray;
   border: 1px solid black;
-  border-radius: 5%;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
-  top: 35.1%;
-  left: 22.825%;
-  width: 333px;
+  bottom: 0;
+  /* left: 22.825%; */
+  width: 100%;
   z-index: 1;
 }
 
