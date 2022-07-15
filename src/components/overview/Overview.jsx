@@ -12,6 +12,7 @@ class Overview extends React.Component {
       product: null,
       styles: [],
       selectedStyle: null,
+      expanded: false
     }
     this.fetchData = this.fetchData.bind(this);
     this.selectStyle = this.selectStyle.bind(this);
@@ -32,7 +33,7 @@ class Overview extends React.Component {
     };
     axios(config)
     .then((response) => {
-      id = response.data[0].id
+      id = response.data[4].id
       console.log('selected id:', id);
     })
     // specific product
@@ -89,6 +90,13 @@ class Overview extends React.Component {
     }
   }
 
+  expand = (e) => {
+    console.log('expand');
+    this.setState({
+      expanded: !this.state.expanded
+    })
+  }
+
   render() {
     let { product, styles } = this.state;
     if (this.state.selectedStyle) {
@@ -99,6 +107,8 @@ class Overview extends React.Component {
             <Gallery
               photos={photos}
               style={this.state.selectedStyle.style_id}
+              expanded={this.state.expanded}
+              expandedView={this.expand}
             />
             <ProductInfo
               product={product}

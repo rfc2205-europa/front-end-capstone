@@ -9,11 +9,12 @@ class GalleryThumbnail extends React.Component {
   }
 
   onClick = (e) => {
+    console.log(this.props);
     this.props.changeImage(e)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.id === nextProps.selectedImage) {
+    if (nextProps.selectedImage === nextProps.image.index) {
       return {selected: true}
     } else {
       return {selected: false}
@@ -25,9 +26,9 @@ class GalleryThumbnail extends React.Component {
       return (
         <img
           className="overlayThumbnail"
-          style={{height: '40px', width: '40px', border: '3px solid black'}}
+          style={{height: '40px', width: '30px', border: '3px solid black'}}
           key={this.props.image.url}
-          id={this.props.id}
+          id={this.props.image.index}
           src={this.props.image.thumbnail_url}
           onClick={this.onClick}
         />
@@ -38,7 +39,7 @@ class GalleryThumbnail extends React.Component {
           className="overlayThumbnail"
           style={{height: '40px', width: '40px'}}
           key={this.props.image.url}
-          id={this.props.id}
+          id={this.props.image.index}
           src={this.props.image.thumbnail_url}
           onClick={this.onClick}
         />

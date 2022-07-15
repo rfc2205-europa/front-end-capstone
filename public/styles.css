@@ -37,6 +37,18 @@ body {
   z-index: 1;
 }
 
+.carouselContainer {
+  position: relative;
+}
+
+.image {
+  display: block;
+}
+
+.image:hover {
+  cursor: zoom-in
+}
+
 .galleryArrow {
   color: whitesmoke;
   font-size: 50px;
@@ -56,14 +68,14 @@ body {
 
 .galleryOverlay {
   position: absolute;
-  background-color: whitesmoke;
+  background-color: lightgray;
   border: 1px solid black;
-  border-radius: 5%;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
-  top: 35.1%;
-  left: 22.825%;
-  width: 333px;
+  bottom: 0;
+  /* left: 22.825%; */
+  width: 100%;
   z-index: 1;
 }
 
@@ -72,6 +84,31 @@ body {
 }
 .overlayThumbnail:hover {
   border: 1px solid black;
+}
+
+.expandedGallery {
+  display: flex;
+}
+
+.expandedCarouselContainer {
+  display: 'flex';
+  position: relative;
+}
+
+.expandedImage:hover {
+  cursor: zoom-out
+}
+
+.expandedLeft {
+  position: relative;
+  top: 40%;
+  left: 38px;
+}
+
+.expandedRight {
+  position: relative;
+  top: 40%;
+  left: -38px;
 }
 
 .productInfo {
