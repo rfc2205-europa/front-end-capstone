@@ -57,34 +57,34 @@ class AModal extends React.Component {
     return (
       <div className="qModalBackground">
         <div className="qModalContainer">
-          <button onClick={() => { this.props.toggle() }}>X</button>
+          <button className="qAModalButtonX" onClick={() => { this.props.toggle() }}>X</button>
           <h5>Submit your Answer</h5>
           <p>{this.props.productName}: {this.props.questionBody}</p>
           <form>
             <div>
               <label>Your Answer*</label>
-              <input type='text' onChange={(e) => { this.setState({ answer: e.target.value }) }}></input>
+              <textarea className="qAModalForm1" type='text' onChange={(e) => { this.setState({ answer: e.target.value }) }}></textarea>
             </div>
             <div>
               <label>What is your nickname*</label>
-              <input type='text' placeholder="Example: jack543!" onChange={(e) => { this.setState({ nickname: e.target.value }) }}></input>
+              <input className="qAModalForm2" type='text' placeholder="Example: jack543!" onChange={(e) => { this.setState({ nickname: e.target.value }) }}></input>
             </div>
             <div>
               <p>For privacy reasons, do not use your full name or email address</p>
             </div>
             <div>
               <label>Your email*</label>
-              <input type='text' placeholder="Why did you like the product or not?" onChange={(e) => { this.setState({ email: e.target.value }) }}></input>
+              <input className="qAModalForm3" type='text' placeholder="Why did you like the product or not?" onChange={(e) => { this.setState({ email: e.target.value }) }}></input>
             </div>
             <div>
-              <p>“For authentication reasons, you will not be emailed”</p>
+              <p>For authentication reasons, you will not be emailed</p>
             </div>
             <div>
               <label>Upload your photos</label>
               <button>upload photos here</button>
             </div>
             <div>
-              <input type='submit' onClick={this.submitA}></input>
+              <input className="qButton" type='submit' onClick={this.submitA}></input>
             </div>
           </form>
         </div>

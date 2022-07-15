@@ -130,14 +130,14 @@ class QuestionItem extends React.Component {
 
       if (sArray.length > 2) {
         list = sArray.slice(0, 2)
-        button = <h5 className="qw12B" onClick={this.togButton}>LOAD MORE ANSWERS</h5>
+        button = <h5 className="qw10B" onClick={this.togButton}>LOAD MORE ANSWERS</h5>
       } else {
         button = <div></div>
         list = sArray
       }
     } else {
       list = sArray
-      button = <h5 className="qw12B" onClick={this.togButton}>COLLAPSE ANSWERS</h5>
+      button = <h5 className="qw10B" onClick={this.togButton}>COLLAPSE ANSWERS</h5>
     }
     ans = list.map((answer) => (
       <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
