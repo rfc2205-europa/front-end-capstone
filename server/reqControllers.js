@@ -51,7 +51,8 @@ module.exports.handlePostRequests = (req, res) => {
     console.log('review post options:', options);
     axios(options)
         .then((response) => {
-          res.status(201).send(response);
+          res.sendStatus(201)
+          // res.status(201).send(response);
         })
         .catch((error) => {
           res.status(404).send('post review error:', error);
