@@ -45,6 +45,10 @@ body {
   display: block;
 }
 
+.image:hover {
+  cursor: zoom-in
+}
+
 .galleryArrow {
   color: whitesmoke;
   font-size: 50px;

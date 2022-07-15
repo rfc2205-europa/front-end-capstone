@@ -29,8 +29,7 @@ class GalleryOverlay extends React.Component {
           newActiveThumbnails.push(currentThumbnail)
         }
       }
-      console.log('current thumbs:', this.state.activeThumbnails);
-      console.log('new thumbs:', newActiveThumbnails)
+      console.log('start:', start, '; end:', end)
       this.setState({
         browse: true,
         activeThumbnails: newActiveThumbnails,
