@@ -64,11 +64,7 @@ class Gallery extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log('previous state:', prevState);
-    // console.log('next props:', nextProps)
-    // let reset = false;
     if (nextProps.photos && nextProps.style !== prevState.id) {
-      // reset = true;
       return {
         photos: nextProps.photos,
         currentPhoto: nextProps.photos[prevState.currentIndex],
@@ -77,19 +73,11 @@ class Gallery extends React.Component {
     } else {
       return null;
     }
-
-    // if (reset) {
-    //   this.setState({
-    //     currentIndex: 0
-    //   })
-    // }
   }
 
   render() {
     // console.log('gallery state at render:', this.state);
-    if (this.state.photos.length > 0) {
-      // console.log('currentPhoto:', this.state.currentPhoto.url);
-      // console.log('photo at index:', this.state.photos[this.state.currentIndex].url)
+    if (this.state.photos.length > 0 && this.state.photos.length <= 7) {
       return (
         <div className='gallery'>
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -99,6 +87,37 @@ class Gallery extends React.Component {
                 thumbnails={this.props.photos}
                 changeImage={this.changeImage}
                 selectedImage={this.state.currentIndex}
+                goLeft={this.goLeft}
+                goRight={this.goRight}
+              />
+              <img
+                className="image"
+                src={this.state.photos[this.state.currentIndex].url}
+                style={{height: '100%', width: '100%'}}
+              />
+            </div>
+            <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
+          </div>
+        </div>
+      )
+    } else if (this.state.photos.length > 7) {
+      console.log('more than 7 photos');
+      // let activeThumbnails = [];
+      // for (var x = this.state.currentIndex; x < this.state.currentIndex + 7; x++) {
+      //   activeThumbnails.push(this.state.photos[x])
+      // }
+      // console.log(this.state)
+      return (
+        <div className='gallery'>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
+            <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
+              <GalleryOverlay
+                thumbnails={this.state.photos}
+                changeImage={this.changeImage}
+                selectedImage={this.state.currentIndex}
+                goLeft={this.goLeft}
+                goRight={this.goRight}
               />
               <img
                 className="image"

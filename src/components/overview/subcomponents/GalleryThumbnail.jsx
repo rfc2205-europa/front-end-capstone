@@ -25,7 +25,7 @@ class GalleryThumbnail extends React.Component {
       return (
         <img
           className="overlayThumbnail"
-          style={{height: '40px', width: '40px', border: '3px solid black'}}
+          style={{height: '40px', width: '30px', border: '3px solid black'}}
           key={this.props.image.url}
           id={this.props.id}
           src={this.props.image.thumbnail_url}
