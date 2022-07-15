@@ -597,6 +597,15 @@ body {
   font-size: 13pt;
 }
 
+.qw10 {
+  font-size: 10pt;
+}
+
+.qw10Underline {
+  font-size: 10pt;
+  text-decoration: underline;
+}
+
 .qw12B{
   font-weight: bold;
   font-size: 12pt;
