@@ -582,7 +582,7 @@ body {
   width: 100%;
   padding: 18px 20px;
   margin: 8px 0;
-  border: 2px solid black;
+  border: 1px solid black;
   box-sizing: border-box;
   font-size: 12pt;
   font-weight: bold;
@@ -592,6 +592,10 @@ body {
   font-weight: bold;
 }
 
+.qbold13 {
+  font-size: 13pt;
+  font-weight: bold;
+}
 
 .qw13{
   font-size: 13pt;
@@ -625,13 +629,13 @@ body {
 
 
 .qItem {
-  padding: 5px;
+  padding: 2px;
 }
 .qAnswers{
   /* border-width: 2px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px black; */
-  padding: 2px;
+  padding: 0px;
 
 }
 
@@ -647,7 +651,7 @@ body {
 }
 
 .qList{
-  height: 470px;
+  height: 425px;
   width: auto;
   overflow: auto;
 }
@@ -662,7 +666,7 @@ body {
 
 .qButton {
   font-size: 20px;
-  border: 2px solid black;
+  border: 1px solid black;
   padding: 18px 18px;
   text-align: center;
   display: inline-block;
