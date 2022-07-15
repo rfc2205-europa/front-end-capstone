@@ -70,17 +70,10 @@ class QuestionItem extends React.Component {
   /*
 
   TODO:
-
-  questions:
-  format date
-  conditional rendering for questions collapsing of list when there is no questions for an item
-
   answers:
   any answers from the seller should appear at the top of the list
   The view for the full list of answers should be confined to half of the screen, and the list within should be scrollable.
 
-  search:
-  make sure it works proper;y
   */
 
   //toggle button and state value to render size of answers list
@@ -153,7 +146,7 @@ class QuestionItem extends React.Component {
     return (
       <div className="qTile">
         <div className="qFirst_line">
-          <h5 className="qbold13">Q: {body}</h5><p className="qw10"onClick={this.incrementor}>Helpful? Yes ({help})</p><p className="qw10" onClick={this.reportQ}>{this.state.reportQ}</p><p className="qw10Underline" onClick={()=>{this.props.toggleAModal(this.props.info.question_id)}}>Add Answer</p>
+          <h5 className="qbold13">Q: {body}</h5><p className="qw10"onClick={this.incrementor}>Helpful? Yes ({help})</p><p className="qw10" onClick={this.reportQ}>{this.state.reportQ}</p><p className="qw10Underline" onClick={()=>{this.props.toggleAModal(this.props.info.question_id, this.props.info.question_body)}}>Add Answer</p>
         </div>
         <div>{ans}</div>
         {button}

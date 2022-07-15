@@ -22,9 +22,10 @@ class QandA extends React.Component {
       searchView: false,
       openQModalView: false,
       openAModalView: false,
-      productId: '66680',//66642, 66680
+      productId: '66655',//66642, 66680
       questionId: '',
-      productInfo: {}
+      productInfo: {},
+      questionBody: ''
     }
   }
 
@@ -121,7 +122,7 @@ class QandA extends React.Component {
   }
 
   //opens submit answer modal
-  openAModal = (question_id) => {
+  openAModal = (question_id, question_body) => {
     if (this.state.openAModalView) {
       this.setState({
         openAModalView: false
@@ -129,7 +130,8 @@ class QandA extends React.Component {
     }else{
       this.setState({
         openAModalView: true,
-        questionId: question_id
+        questionId: question_id,
+        questionBody: question_body
       })
     }
   }
@@ -156,15 +158,25 @@ class QandA extends React.Component {
       button = <button className="qButton" onClick={this.addQs}>Remove Added Questions and Answers</button>
     }
 
+    //collapses list when the length is 0
+    let collapse;
+    if(this.state.questions.length===0){
+      collapse = <div></div>
+    }else{
+      collapse =  <div className="qList">
+      <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
+    </div>
+    }
+
 
     return (
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
         {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name}/>}
-        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name}/>}
+        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name}questionBody={this.state.questionBody}/>}
         <Search search={this.search} questions={this.state.questions} />
-        <div className="qList">
-          <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
+        <div>
+          {collapse}
         </div>
         {button}<button className="qButton" onClick={this.openQModal}>ADD A QUESTION +</button>
 

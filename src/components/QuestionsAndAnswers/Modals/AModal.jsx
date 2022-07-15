@@ -33,14 +33,23 @@ class AModal extends React.Component {
           this.props.toggle()
         })
         .catch((err) => {
-          // this.setState({
-          //   qWarningModalView: true
-          // })
-          //change to modal that lists empty fields
           console.log('There is an error in your post req in Answers Modal: ', err)
         })
     } else {
-      alert("You must enter the following:")
+      let string = "Warning! You must enter the following: "
+      if (answer === '') {
+        string += " answer"
+      }
+      if (nickname === '') {
+        string += " nickname"
+      }
+      if (email === '') {
+        string += " email"
+      }
+      // if (answer === undefined) {
+      //   string += photo
+      // }
+      alert(string)
     }
   }
 
@@ -50,7 +59,7 @@ class AModal extends React.Component {
         <div className="qModalContainer">
           <button onClick={() => { this.props.toggle() }}>X</button>
           <h5>Submit your Answer</h5>
-          <p>{this.props.productName}:[Question Body]</p>
+          <p>{this.props.productName}: {this.props.questionBody}</p>
           <form>
             <div>
               <label>Your Answer*</label>

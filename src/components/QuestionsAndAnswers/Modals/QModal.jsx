@@ -29,10 +29,20 @@ class QModal extends React.Component {
         this.props.toggle()
       })
       .catch((err) => {
-        // this.setState({
-        //   qWarningModalView: true
-        // })
-        alert("You must enter the following:")//change to modal that lists empty fields
+        let string = "Warning! You must enter the following: "
+        if (this.state.question === undefined) {
+          string += " answer"
+        }
+        if (this.state.nickname === undefined) {
+          string += " nickname"
+        }
+        if (this.state.email === undefined) {
+          string += " email"
+        }
+        // if (answer === undefined) {
+        //   string += photo
+        // }
+        alert(string)
         console.log('There is an error in your post req in Questions Modal: ', err)
       })
   }
