@@ -671,39 +671,49 @@ body {
   color:#aaa
 }
 /* ------------- review ------------- */
-/* ------------- QandA ------------- */
 
 
+
+
+
+/* ---------------vvvvvvvvvvvv QandA vvvvvvvvvvvv-------------------------------------------- */
+
+/* ---------------vvvvvvvvvvvv misc vvvvvvvvvvvvv-------------------------------------------- */
 .q_and_a {
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-top: 50px;
+  padding-left: 280px;
+  padding-right: 280px;
 }
 .qSearch {
   width: 100%;
-  padding: 20px 37px;
+  padding: 18px 20px;
   margin: 8px 0;
-  border: 2px solid black;
+  border: 1px solid black;
   box-sizing: border-box;
+  font-size: 12pt;
   font-weight: bold;
 }
 
 .qSearchForm {
-  padding: 10px;
+  padding: 0px;
 }
+
 
 .qFirst_line {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 }
+
+
 .qItem {
-  padding: 5px;
+  padding: 2px;
 }
 .qAnswers{
   /* border-width: 2px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px black; */
-  padding: 5px;
+  padding: 0px;
 
 }
 
@@ -712,30 +722,40 @@ body {
   border-radius: 10px;
   box-shadow: 2px 2px 2px black; */
   border-radius: 10px;
-  padding: 5px;
-  margin: 10px;
-  background-color: rgb(248, 248, 248);
+  padding-bottom: 5px;
+  padding-top: 7px;
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
 }
 
 .qList{
-  height: 555px;
+  height: 435px;
   width: auto;
   overflow: auto;
 }
 
+
+
 .qBottom_line {
-  display: flex;
-  justify-content: flex-start;
-  padding-top: 5px;
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding-left: 15px;
+}
+.qBottom_line li {
+  display: inline-block;
+  font-size: 10pt;
+  padding: 8px;
+  padding-bottom: 12px;
 }
 
 .qButton {
   font-size: 20px;
-  border: 2px solid black;
-  padding: 20px 37px;
+  border: 1px solid black;
+  padding: 18px 18px;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12pt;
   font-weight: bold;
   margin-right: 15px;
   background-color: white;
@@ -745,6 +765,52 @@ body {
   text-decoration: underline;
 }
 
+/* --------------------^^^^^^^^^^ misc ^^^^^^^^^^^^^^^^^-------------------------------------------- */
+
+/* --------------------vvvvvvvvvv Fonts Style vvvvvvvvvvvvv--------------------------------------------- */
+
+.qbold {
+  font-weight: bold;
+}
+
+.qw10 {
+  font-size: 10pt;
+}
+
+.qw10B {
+  font-size: 10pt;
+  font-weight: bold;
+  padding-left: 22px;
+}
+
+.qw10Underline {
+  font-size: 10pt;
+  text-decoration: underline;
+  color: black;
+}
+
+.qw12B{
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+
+.qw13{
+  font-size: 13pt;
+}
+
+.qbold13 {
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+
+
+/* --------------------^^^^^^^ Fonts Styles ^^^^^^^--------------------------------------------- */
+
+
+/* ---------------vvvvvvvvvvvv QModal vvvvvvvvvvv-------------------------------------------- */
+
 .qModalBackground {
   width: 100vw;
   height: 100vh;
@@ -752,12 +818,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 400px;
+  padding-right: 550px;
+  padding-bottom: 325px;
 }
 
 .qModalContainer {
   width: 750px;
-  height: 500px;
+  height: auto;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
@@ -765,23 +832,54 @@ body {
   padding: 25px;
 }
 
-/* .qWarningModalBackground {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.qAModalForm1 {
+  width: 100%;
+  padding: 18px 20px;
+  margin:8px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+  max-height: 100px;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
-.qWarningModalContainer {
-  width: 400px;
-  height: 300px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-} */
-/* ------------- QandA ------------- */
+.qAModalForm2 {
+  width: 100%;
+  padding: 18px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.qAModalForm3 {
+  width: 100%;
+  padding: 18px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.qAModalButtonX {
+  width: 10%;
+  padding: 5px 5px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 12pt;
+  font-weight: normal;
+}
+
+
+
+
+/* ---------------^^^^^^^^^^ Modals ^^^^^^^^^^^^-------------------------------------------- */
+
+
+/* ---------------^^^^^^^^^^^ QandA ^^^^^^^^^^^^-------------------------------------------- */
 

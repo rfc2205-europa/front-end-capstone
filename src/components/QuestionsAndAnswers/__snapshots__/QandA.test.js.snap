@@ -19,19 +19,15 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
       />
     </form>
   </div>
-  <div
-    className="qList"
-  >
-    <div>
-      <div />
-    </div>
+  <div>
+    <div />
   </div>
   <div />
   <button
     className="qButton"
     onClick={[Function]}
   >
-    Add a Question +
+    ADD A QUESTION +
   </button>
 </div>
 `;

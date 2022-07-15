@@ -22,9 +22,7 @@ class QuestionsList extends React.Component {
     }
   }
 
-
   /*
-
 
   TODO:
 
@@ -32,8 +30,8 @@ class QuestionsList extends React.Component {
 
   If no questions have been submitted for this product, then the list will collapse, and the button to submit a new question (section 1.3.5) will appear near the top of the module.
 
-
   */
+
   render() {
     let list, questions, button;
 
