@@ -52,7 +52,7 @@ class Review extends React.Component {
 
   fetchReviewData(sort = 'relevant') {
     var product_id = this.state.product_id
-    var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}&sort=${sort}`}
+    var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}&sort=${sort}&count=100`}
     console.log(body.api, this.state.sortMethod)
     service.post('/retrieve', body)
      .then((res) => {
