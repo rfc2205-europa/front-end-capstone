@@ -22,9 +22,10 @@ class QandA extends React.Component {
       searchView: false,
       openQModalView: false,
       openAModalView: false,
-      productId: '66680',//66642, 66680
+      productId: '66655',//66642, 66680
       questionId: '',
-      productInfo: {}
+      productInfo: {},
+      questionBody: ''
     }
   }
 
@@ -45,7 +46,7 @@ class QandA extends React.Component {
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
-        console.log('results from fetch: ', res);
+        //console.log('results from fetch: ', res);
         this.setState({
           questions: res.data.results
         })
@@ -61,7 +62,7 @@ class QandA extends React.Component {
     var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}` }
     service.post('/retrieve', body)
       .then((res) => {
-        console.log('results from fetchProductName: ', res.data);
+        //console.log('results from fetchProductName: ', res.data);
         this.setState({
           productInfo: res.data
         })
@@ -121,7 +122,7 @@ class QandA extends React.Component {
   }
 
   //opens submit answer modal
-  openAModal = (question_id) => {
+  openAModal = (question_id, question_body) => {
     if (this.state.openAModalView) {
       this.setState({
         openAModalView: false
@@ -129,7 +130,8 @@ class QandA extends React.Component {
     }else{
       this.setState({
         openAModalView: true,
-        questionId: question_id
+        questionId: question_id,
+        questionBody: question_body
       })
     }
   }
@@ -148,7 +150,7 @@ class QandA extends React.Component {
     let button;
     if (this.state.smallView) {
       if (this.state.questions.length > 2) {
-        button = <button className="qButton" onClick={this.addQs}>Add More Answered Questions</button>
+        button = <button className="qButton" onClick={this.addQs}>ADD MORE ANSWERED QUESTIONS</button>
       } else {
         button = <div></div>
       }
@@ -156,17 +158,27 @@ class QandA extends React.Component {
       button = <button className="qButton" onClick={this.addQs}>Remove Added Questions and Answers</button>
     }
 
+    //collapses list when the length is 0
+    let collapse;
+    if(this.state.questions.length===0){
+      collapse = <div></div>
+    }else{
+      collapse =  <div className="qList">
+      <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
+    </div>
+    }
+
 
     return (
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
         {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name}/>}
-        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name}/>}
+        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name}questionBody={this.state.questionBody}/>}
         <Search search={this.search} questions={this.state.questions} />
-        <div className="qList">
-          <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
+        <div>
+          {collapse}
         </div>
-        {button}<button className="qButton" onClick={this.openQModal}>Add a Question +</button>
+        {button}<button className="qButton" onClick={this.openQModal}>ADD A QUESTION +</button>
 
       </div>
     )

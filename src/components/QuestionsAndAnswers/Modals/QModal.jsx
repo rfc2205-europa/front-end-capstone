@@ -29,10 +29,20 @@ class QModal extends React.Component {
         this.props.toggle()
       })
       .catch((err) => {
-        // this.setState({
-        //   qWarningModalView: true
-        // })
-        alert("You must enter the following:")//change to modal that lists empty fields
+        let string = "Warning! You must enter the following: "
+        if (this.state.question === undefined) {
+          string += " answer"
+        }
+        if (this.state.nickname === undefined) {
+          string += " nickname"
+        }
+        if (this.state.email === undefined) {
+          string += " email"
+        }
+        // if (answer === undefined) {
+        //   string += photo
+        // }
+        alert(string)
         console.log('There is an error in your post req in Questions Modal: ', err)
       })
   }
@@ -42,31 +52,31 @@ class QModal extends React.Component {
       <div className="qModalBackground">
         <div className="qModalContainer">
           {/* {this.state.qWarningModalView && <QWarningModal/>} */}
-          <button onClick={() => { this.props.toggle() }}>X</button>
-          <h5>Ask Your Question</h5>
+          <button className="qAModalButtonX" onClick={() => { this.props.toggle() }}>X</button>
+          <h5 >Ask Your Question</h5>
           <p>{this.props.productName}</p>
           <div>
             <form>
               <div>
                 <label>Your Question*</label>
-                <input type='text' onChange={(e) => { this.setState({ question: e.target.value }) }}></input>
+                <input className="qAModalForm1" type='text' onChange={(e) => { this.setState({ question: e.target.value }) }}></input>
               </div>
               <div>
                 <label>What is your nickname*</label>
-                <input type='text' placeholder="Example: jackson11!" onChange={(e) => { this.setState({ nickname: e.target.value }) }}></input>
+                <input className="qAModalForm2" type='text' placeholder="Example: jackson11!" onChange={(e) => { this.setState({ nickname: e.target.value }) }}></input>
               </div>
               <div>
                 <p>For privacy reasons, do not use your full name or email address</p>
               </div>
               <div>
                 <label>Your email*</label>
-                <input type='text' placeholder="Why did you like the product or not?" onChange={(e) => { this.setState({ email: e.target.value }) }}></input>
+                <input className="qAModalForm3" type='text' placeholder="Why did you like the product or not?" onChange={(e) => { this.setState({ email: e.target.value }) }}></input>
               </div>
               <div>
                 <p>“For authentication reasons, you will not be emailed”</p>
               </div>
               <div>
-                <input type='submit' onClick={this.submitQ}></input>
+                <input className="qButton" type='submit' onClick={this.submitQ}></input>
               </div>
             </form>
           </div>

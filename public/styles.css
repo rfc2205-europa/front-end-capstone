@@ -267,39 +267,70 @@ body {
   background-color: #bfbfbf;
 }
 
+/* --------- add review feature --------- */
 .review-addReview {
   width: 600px;
   height: 800px;
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
-  /* gap: 10px; */
+  padding: 40px;
+  padding-top: 20px;
+  gap: 10px;
   justify-content: flex-start;
-  /* align-items: center; */
   font-family: "Times New Roman", Times, serif;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.review-addReview-popUpText {
+  color: rgb(80,80,80);
+  margin-left: 10px;
+}
+
+.review-addReview-title {
+  text-align: center;
+  font-weight: bold;
 }
 
 .review-addReview-star-container, .review-addReview-recommend-container, .review-addReview-characteristics-container, .review-addReview-summary-container, .review-addReview-body-container, .review-addReview-nickName-container, .review-addReview-photo-container, .review-addReview-email-container {
   display: flex;
   justify-content: flex-start;
-  gap: 10px;
+  column-gap: 10px;
+  /* row-gap: 15px; */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
 .review-addReview-star-container, .review-addReview-recommend-container,.review-addReview-summary-container {
   height: 30px;
   flex-direction: row;
   align-items: center;
+
 }
-.review-addReview-characteristics-container {
-  flex-direction: column;
-  justify-content: flex-start;
+
+/* .review-addReview-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 18px;
+  width: 300px;
+  border-radius: 4px;
+  border: 1px solid #c8cccf;
+  color: #6a5f77;
+  outline: 0;
+}
+
+.review-addReview-input:focus {
+  background-color: rgba(232, 232, 232, 0.9);
+} */
+
+/* -- add review: recommend  -- */
+.review-addReview-radio-text {
+  margin-left: 10px;
 }
 
 .review-addReview-radio {
   display: inline-flex;
-  /* justify-content: flex-start; */
   align-items: center;
   cursor: pointer;
-  margin-right: 10px;
 }
 
 .review-addReview-radio-radio {
@@ -307,7 +338,6 @@ body {
   height: 1.25em;
   border: 2px solid #d8e4e2;
   border-radius: 50%;
-  margin-right: 10px;
   box-sizing: border-box;
   padding: 2px;
 }
@@ -331,26 +361,36 @@ body {
   transform:scale(1);
 }
 
-.review-addReview-star-text {
-  /* width: 50%; */
+/* -- add review: recommend  -- */
+
+/* -- add review: characteristics  -- */
+
+.review-addReview-characteristics-container {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 25px;
 }
 
-.review-addReview-star {
-  /* width: 100%; */
-  /* height: 30%; */
+.review-addReview-characteristics-radio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.starRatingRadio {
-  display: none;
+.review-addReview-characteristics-text-radio, .review-addReview-characteristics-text-radio-container {
+  display: flex;
+  flex-direction: row;
+  height: 25px;
+
+}
+.review-addReview-characteristics-text-radio-container {
+  justify-content: flex-start;
+  width: 450px;
 }
 
 .review-addReview-characteristics-text-radio {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  /* align-items: center; */
-  height: 25px;
-
+  justify-content: space-between;
+  width: 240px;
 }
 
 .review-addReview-characteristics-radio {
@@ -381,6 +421,66 @@ body {
 
 .review-addReview-characteristics-radio-input:checked + .review-addReview-characteristics-radio-label {
   background: #557A95;
+}
+
+/* -- add review: characteristics  -- */
+
+/* -- add review: summary  -- */
+.review-addReview-summary-container {
+  width: 450px;
+  background: #fff;
+  padding:30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.review-addReview-summary .review-addReview-summary-container {
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+.review-addReview-summary .review-addReview-summary-container input{
+  height: 100%;
+  width: 100%;
+  border:none;
+  border-bottom: 2px solid silver;
+  /* -webkit-appearance: none;
+  -moz-appearance: none; */
+}
+
+.review-addReview-summary .review-addReview-summary-container input:focus ~ label {
+  transform: translateY(-20px)
+}
+
+.review-addReview-summary .review-addReview-summary-container label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: grey;
+  pointer-events: none;
+  transition: all 0.3s ease
+
+}
+
+/* -- add review: summary  -- */
+
+/* ----------- add review feature ----------- */
+
+
+
+
+
+
+
+.review-addReview-star-text {
+  /* width: 50%; */
+}
+
+.review-addReview-star {
+  /* width: 100%; */
+  /* height: 30%; */
+}
+
+.starRatingRadio {
+  display: none;
 }
 
 .review-rating {
@@ -552,6 +652,7 @@ body {
   padding: 50px;
   z-index: 1000;
   top: 0px;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .largeImage {
@@ -607,39 +708,49 @@ body {
   color:#aaa
 }
 /* ------------- review ------------- */
-/* ------------- QandA ------------- */
 
 
+
+
+
+/* ---------------vvvvvvvvvvvv QandA vvvvvvvvvvvv-------------------------------------------- */
+
+/* ---------------vvvvvvvvvvvv misc vvvvvvvvvvvvv-------------------------------------------- */
 .q_and_a {
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-top: 50px;
+  padding-left: 280px;
+  padding-right: 280px;
 }
 .qSearch {
   width: 100%;
-  padding: 20px 37px;
+  padding: 18px 20px;
   margin: 8px 0;
-  border: 2px solid black;
+  border: 1px solid black;
   box-sizing: border-box;
+  font-size: 12pt;
   font-weight: bold;
 }
 
 .qSearchForm {
-  padding: 10px;
+  padding: 0px;
 }
+
 
 .qFirst_line {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 }
+
+
 .qItem {
-  padding: 5px;
+  padding: 2px;
 }
 .qAnswers{
   /* border-width: 2px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px black; */
-  padding: 5px;
+  padding: 0px;
 
 }
 
@@ -648,30 +759,40 @@ body {
   border-radius: 10px;
   box-shadow: 2px 2px 2px black; */
   border-radius: 10px;
-  padding: 5px;
-  margin: 10px;
-  background-color: rgb(248, 248, 248);
+  padding-bottom: 5px;
+  padding-top: 7px;
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
 }
 
 .qList{
-  height: 555px;
+  height: 435px;
   width: auto;
   overflow: auto;
 }
 
+
+
 .qBottom_line {
-  display: flex;
-  justify-content: flex-start;
-  padding-top: 5px;
+  list-style-type: none;
+  text-align: left;
+  margin: 0;
+  padding-left: 15px;
+}
+.qBottom_line li {
+  display: inline-block;
+  font-size: 10pt;
+  padding: 8px;
+  padding-bottom: 12px;
 }
 
 .qButton {
   font-size: 20px;
-  border: 2px solid black;
-  padding: 20px 37px;
+  border: 1px solid black;
+  padding: 18px 18px;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12pt;
   font-weight: bold;
   margin-right: 15px;
   background-color: white;
@@ -681,6 +802,52 @@ body {
   text-decoration: underline;
 }
 
+/* --------------------^^^^^^^^^^ misc ^^^^^^^^^^^^^^^^^-------------------------------------------- */
+
+/* --------------------vvvvvvvvvv Fonts Style vvvvvvvvvvvvv--------------------------------------------- */
+
+.qbold {
+  font-weight: bold;
+}
+
+.qw10 {
+  font-size: 10pt;
+}
+
+.qw10B {
+  font-size: 10pt;
+  font-weight: bold;
+  padding-left: 22px;
+}
+
+.qw10Underline {
+  font-size: 10pt;
+  text-decoration: underline;
+  color: black;
+}
+
+.qw12B{
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+
+.qw13{
+  font-size: 13pt;
+}
+
+.qbold13 {
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+
+
+/* --------------------^^^^^^^ Fonts Styles ^^^^^^^--------------------------------------------- */
+
+
+/* ---------------vvvvvvvvvvvv QModal vvvvvvvvvvv-------------------------------------------- */
+
 .qModalBackground {
   width: 100vw;
   height: 100vh;
@@ -688,12 +855,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 400px;
+  padding-right: 550px;
+  padding-bottom: 325px;
 }
 
 .qModalContainer {
   width: 750px;
-  height: 500px;
+  height: auto;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
@@ -701,23 +869,54 @@ body {
   padding: 25px;
 }
 
-/* .qWarningModalBackground {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.qAModalForm1 {
+  width: 100%;
+  padding: 18px 20px;
+  margin:8px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+  max-height: 100px;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
-.qWarningModalContainer {
-  width: 400px;
-  height: 300px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-} */
-/* ------------- QandA ------------- */
+.qAModalForm2 {
+  width: 100%;
+  padding: 18px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.qAModalForm3 {
+  width: 100%;
+  padding: 18px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.qAModalButtonX {
+  width: 10%;
+  padding: 5px 5px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 12pt;
+  font-weight: normal;
+}
+
+
+
+
+/* ---------------^^^^^^^^^^ Modals ^^^^^^^^^^^^-------------------------------------------- */
+
+
+/* ---------------^^^^^^^^^^^ QandA ^^^^^^^^^^^^-------------------------------------------- */
 
