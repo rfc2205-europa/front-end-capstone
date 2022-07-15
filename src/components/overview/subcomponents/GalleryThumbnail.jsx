@@ -14,7 +14,7 @@ class GalleryThumbnail extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.id === nextProps.selectedImage) {
+    if (nextProps.selectedImage === nextProps.image.index) {
       return {selected: true}
     } else {
       return {selected: false}

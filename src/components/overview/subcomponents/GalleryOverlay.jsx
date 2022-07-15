@@ -40,7 +40,7 @@ class GalleryOverlay extends React.Component {
         thumbnails: nextProps.thumbnails,
         activeThumbnails: activeThumbnails,
         firstThumbnail: x - 7,
-        lastThumbnail: x,
+        lastThumbnail: x - 1,
         currentIndex: 0
       }
     } else {
@@ -51,7 +51,7 @@ class GalleryOverlay extends React.Component {
         activeThumbnails: activeThumbnails,
         currentIndex: nextProps.selectedImage - (nextProps.thumbnails.length - 7),
         firstThumbnail: nextProps.thumbnails.length - 7,
-        lastThumbnail: nextProps.thumbnails.length
+        lastThumbnail: nextProps.thumbnails.length - 1
       }
     }
   }
@@ -69,7 +69,7 @@ class GalleryOverlay extends React.Component {
               <GalleryThumbnail
                 key={image.url}
                 image={image}
-                id={x}
+                id={image.index}
                 selectedImage={this.props.selectedImage}
                 changeImage={this.props.changeImage}
               />
@@ -87,8 +87,8 @@ class GalleryOverlay extends React.Component {
                 <GalleryThumbnail
                   key={image.url}
                   image={image}
-                  id={x}
-                  selectedImage={this.state.currentIndex}
+                  id={image.index}
+                  selectedImage={this.props.selectedImage}
                   changeImage={this.props.changeImage}
                 />
               )
@@ -98,7 +98,7 @@ class GalleryOverlay extends React.Component {
         </span>
       )
     } else if (this.props.selectedImage > 0 && this.props.selectedImage <= this.props.thumbnails.length-7) {
-      console.log('middle thumbnail:', this.props.selectedImage)
+      // console.log('middle thumbnail:', this.props.selectedImage)
       return (
         <span className="galleryOverlay">
           <span className="thumbnailArrowLeft" onClick={this.goLeft}>&#10094;</span>
@@ -108,8 +108,8 @@ class GalleryOverlay extends React.Component {
                 <GalleryThumbnail
                   key={image.url}
                   image={image}
-                  id={x}
-                  selectedImage={this.state.currentIndex}
+                  id={image.index}
+                  selectedImage={this.props.selectedImage}
                   changeImage={this.props.changeImage}
                 />
               )
@@ -128,8 +128,8 @@ class GalleryOverlay extends React.Component {
                 <GalleryThumbnail
                   key={image.url}
                   image={image}
-                  id={x}
-                  selectedImage={this.state.currentIndex}
+                  id={image.index}
+                  selectedImage={this.props.selectedImage}
                   changeImage={this.props.changeImage}
                 />
               )
