@@ -9,7 +9,8 @@ class GalleryOverlay extends React.Component {
       activeThumbnails: [],
       firstThumbnail: null,
       lastThumbnail: null,
-      currentIndex: 0
+      currentIndex: 0,
+      browse: false
     }
 
     this.state.thumbnails.map((thumbnail, x) => {
@@ -18,11 +19,46 @@ class GalleryOverlay extends React.Component {
   }
 
   goLeft = e => {
-    console.log(this.state);
+    let newActiveThumbnails = [];
+    if (this.state.firstThumbnail > 0) {
+      let start = this.state.firstThumbnail - 1;
+      let end = this.state.lastThumbnail - 1;
+      for (var x = 0; x < this.state.thumbnails.length; x++) {
+        let currentThumbnail = this.state.thumbnails[x];
+        if (currentThumbnail.index >= start && currentThumbnail.index <= end) {
+          newActiveThumbnails.push(currentThumbnail)
+        }
+      }
+      console.log('current thumbs:', this.state.activeThumbnails);
+      console.log('new thumbs:', newActiveThumbnails)
+      this.setState({
+        browse: true,
+        activeThumbnails: newActiveThumbnails,
+        firstThumbnail: start,
+        lastThumbnail: end
+      })
+    }
   }
 
   goRight = e => {
-    console.log(this.state);
+    let newActiveThumbnails = [];
+    if (this.state.lastThumbnail + 1 < this.state.thumbnails.length) {
+      let start = this.state.firstThumbnail + 1;
+      let end = this.state.lastThumbnail + 1;
+      console.log('start:', start, '; end:', end)
+      for (var x = 0; x < this.state.thumbnails.length; x++) {
+        let currentThumbnail = this.state.thumbnails[x];
+        if (currentThumbnail.index >= start && currentThumbnail.index <= end) {
+          newActiveThumbnails.push(currentThumbnail)
+        }
+      }
+      this.setState({
+        browse: true,
+        activeThumbnails: newActiveThumbnails,
+        firstThumbnail: start,
+        lastThumbnail: end
+      })
+    }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -31,28 +67,33 @@ class GalleryOverlay extends React.Component {
     nextProps.thumbnails.map((thumbnail, x) => {
       thumbnail.index = x
     })
-    let activeThumbnails = [];
-    if (nextProps.selectedImage <= nextProps.thumbnails.length - 7) {
-      for (var x = nextProps.selectedImage; x < nextProps.selectedImage + 7; x++) {
-        activeThumbnails.push(nextProps.thumbnails[x])
-      }
-      return {
-        thumbnails: nextProps.thumbnails,
-        activeThumbnails: activeThumbnails,
-        firstThumbnail: x - 7,
-        lastThumbnail: x - 1,
-        currentIndex: 0
+    if (prevState.activeThumbnails.length === 0 || prevState.browse === false) {
+      let activeThumbnails = [];
+      if (nextProps.selectedImage <= nextProps.thumbnails.length - 7) {
+        for (var x = nextProps.selectedImage; x < nextProps.selectedImage + 7; x++) {
+          activeThumbnails.push(nextProps.thumbnails[x])
+        }
+        return {
+          thumbnails: nextProps.thumbnails,
+          activeThumbnails: activeThumbnails,
+          firstThumbnail: x - 7,
+          lastThumbnail: x - 1,
+          currentIndex: 0,
+          browse: false
+        }
+      } else {
+        for (var x = nextProps.thumbnails.length - 7; x < nextProps.thumbnails.length; x++) {
+          activeThumbnails.push(nextProps.thumbnails[x]);
+        }
+        return {
+          activeThumbnails: activeThumbnails,
+          currentIndex: nextProps.selectedImage - (nextProps.thumbnails.length - 7),
+          firstThumbnail: nextProps.thumbnails.length - 7,
+          lastThumbnail: nextProps.thumbnails.length - 1
+        }
       }
     } else {
-      for (var x = nextProps.thumbnails.length - 7; x < nextProps.thumbnails.length; x++) {
-        activeThumbnails.push(nextProps.thumbnails[x]);
-      }
-      return {
-        activeThumbnails: activeThumbnails,
-        currentIndex: nextProps.selectedImage - (nextProps.thumbnails.length - 7),
-        firstThumbnail: nextProps.thumbnails.length - 7,
-        lastThumbnail: nextProps.thumbnails.length - 1
-      }
+      return null;
     }
   }
 
@@ -77,9 +118,11 @@ class GalleryOverlay extends React.Component {
           })}
         </span>
       )
-    } else if (this.props.selectedImage === 0) {
+    } else if (this.props.selectedImage === 0 && this.state.firstThumbnail === 0 || this.state.firstThumbnail === 0) {
+      console.log('no left arrow');
       return (
         <span className="galleryOverlay">
+          <br />
           {/* <span className="thumbnailArrowLeft" onClick={this.goLeft}>&#10094;</span> */}
           {this.state.activeThumbnails.map((image, x) => {
             while (x < 7) {
@@ -97,8 +140,8 @@ class GalleryOverlay extends React.Component {
           <span className="thumbNailArrowRight" onClick={this.goRight}>&#10095;</span>
         </span>
       )
-    } else if (this.props.selectedImage > 0 && this.props.selectedImage <= this.props.thumbnails.length-7) {
-      // console.log('middle thumbnail:', this.props.selectedImage)
+    } else if (this.props.selectedImage > 0 && this.props.selectedImage <= this.props.thumbnails.length-7 || this.state.firstThumbnail > 0 && this.state.lastThumbnail < this.state.thumbnails.length - 1) {
+      console.log('both arrows');
       return (
         <span className="galleryOverlay">
           <span className="thumbnailArrowLeft" onClick={this.goLeft}>&#10094;</span>
@@ -118,7 +161,11 @@ class GalleryOverlay extends React.Component {
           <span className="thumbNailArrowRight" onClick={this.goRight}>&#10095;</span>
         </span>
       )
-    } else if (this.props.selectedImage > this.props.thumbnails.length-7) {
+    } else if (
+        this.props.selectedImage > this.props.thumbnails.length-7
+        || this.state.lastThumbnail > this.props.thumbnails.length - 7
+      ) {
+      console.log('no right arrow')
       return (
         <span className="galleryOverlay">
           <span className="thumbnailArrowLeft" onClick={this.goLeft}>&#10094;</span>
@@ -135,6 +182,7 @@ class GalleryOverlay extends React.Component {
               )
             }
           })}
+          <br />
           {/* <span className="thumbNailArrowRight" onClick={this.goRight}>&#10095;</span> */}
         </span>
       )
