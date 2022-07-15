@@ -18,13 +18,11 @@ class GalleryOverlay extends React.Component {
   }
 
   goLeft = e => {
-    // this.props.goLeft(e);
-    console.log(this.props);
+    console.log(this.state);
   }
 
   goRight = e => {
-    // this.props.goRight(e);
-    // console.log(this.props);
+    console.log(this.state);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -51,7 +49,9 @@ class GalleryOverlay extends React.Component {
       }
       return {
         activeThumbnails: activeThumbnails,
-        currentIndex: nextProps.selectedImage - (nextProps.thumbnails.length - 7)
+        currentIndex: nextProps.selectedImage - (nextProps.thumbnails.length - 7),
+        firstThumbnail: nextProps.thumbnails.length - 7,
+        lastThumbnail: nextProps.thumbnails.length
       }
     }
   }
@@ -97,7 +97,7 @@ class GalleryOverlay extends React.Component {
           <span className="thumbNailArrowRight" onClick={this.goRight}>&#10095;</span>
         </span>
       )
-    } else if (this.props.selectedImage > 0 && this.props.selectedImage < this.props.thumbnails.length-1) {
+    } else if (this.props.selectedImage > 0 && this.props.selectedImage <= this.props.thumbnails.length-7) {
       console.log('middle thumbnail:', this.props.selectedImage)
       return (
         <span className="galleryOverlay">
@@ -118,7 +118,7 @@ class GalleryOverlay extends React.Component {
           <span className="thumbNailArrowRight" onClick={this.goRight}>&#10095;</span>
         </span>
       )
-    } else if (this.props.selectedImage === this.props.thumbnails.length-1) {
+    } else if (this.props.selectedImage > this.props.thumbnails.length-7) {
       return (
         <span className="galleryOverlay">
           <span className="thumbnailArrowLeft" onClick={this.goLeft}>&#10094;</span>
