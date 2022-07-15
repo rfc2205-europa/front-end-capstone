@@ -5,14 +5,21 @@ class GalleryOverlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      thumbnails: [],
       activeThumbnails: [],
+      firstThumbnail: null,
+      lastThumbnail: null,
       currentIndex: 0
     }
+
+    this.state.thumbnails.map((thumbnail, x) => {
+      thumbnail.index = x
+    })
   }
 
   goLeft = e => {
     // this.props.goLeft(e);
-    console.log(this.props.selectedImage);
+    console.log(this.props);
   }
 
   goRight = e => {
@@ -21,15 +28,21 @@ class GalleryOverlay extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('next overlay props:', nextProps);
-    console.log('previous overlay state:', prevState);
+    // console.log('next overlay props:', nextProps);
+    // console.log('previous overlay state:', prevState);
+    nextProps.thumbnails.map((thumbnail, x) => {
+      thumbnail.index = x
+    })
     let activeThumbnails = [];
     if (nextProps.selectedImage <= nextProps.thumbnails.length - 7) {
       for (var x = nextProps.selectedImage; x < nextProps.selectedImage + 7; x++) {
         activeThumbnails.push(nextProps.thumbnails[x])
       }
       return {
+        thumbnails: nextProps.thumbnails,
         activeThumbnails: activeThumbnails,
+        firstThumbnail: x - 7,
+        lastThumbnail: x,
         currentIndex: 0
       }
     } else {

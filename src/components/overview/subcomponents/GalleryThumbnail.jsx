@@ -9,6 +9,7 @@ class GalleryThumbnail extends React.Component {
   }
 
   onClick = (e) => {
+    console.log(this.props);
     this.props.changeImage(e)
   }
 
@@ -27,7 +28,7 @@ class GalleryThumbnail extends React.Component {
           className="overlayThumbnail"
           style={{height: '40px', width: '30px', border: '3px solid black'}}
           key={this.props.image.url}
-          id={this.props.id}
+          id={this.props.image.index}
           src={this.props.image.thumbnail_url}
           onClick={this.onClick}
         />
@@ -38,7 +39,7 @@ class GalleryThumbnail extends React.Component {
           className="overlayThumbnail"
           style={{height: '40px', width: '40px'}}
           key={this.props.image.url}
-          id={this.props.id}
+          id={this.props.image.index}
           src={this.props.image.thumbnail_url}
           onClick={this.onClick}
         />
