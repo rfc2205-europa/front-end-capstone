@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GalleryOverlay from './GalleryOverlay.jsx'
+import ExpandedGallery from './ExpandedGallery.jsx'
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Gallery extends React.Component {
       photos: [],
       currentPhoto: null,
       id: null,
-      currentIndex: 0
+      currentIndex: 0,
     }
   }
 
@@ -63,6 +64,10 @@ class Gallery extends React.Component {
     })
   }
 
+  expandedView = e => {
+    this.props.expandedView(e)
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.photos && nextProps.style !== prevState.id) {
       return {
@@ -76,56 +81,66 @@ class Gallery extends React.Component {
   }
 
   render() {
-    // console.log('gallery state at render:', this.state);
-    if (this.state.photos.length > 0 && this.state.photos.length <= 7) {
-      return (
-        <div className='gallery'>
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
-            <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
-              <GalleryOverlay
-                thumbnails={this.props.photos}
-                changeImage={this.changeImage}
-                selectedImage={this.state.currentIndex}
-                galleryPhoto={this.state.currentPhoto}
-              />
-              <img
-                className="image"
-                src={this.state.photos[this.state.currentIndex].url}
-                style={{height: '100%', width: '100%'}}
-              />
+    if (!this.props.expanded) {
+      if (this.state.photos.length > 0 && this.state.photos.length <= 7) {
+        return (
+          <div className='gallery'>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
+              <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
+                <GalleryOverlay
+                  thumbnails={this.props.photos}
+                  changeImage={this.changeImage}
+                  selectedImage={this.state.currentIndex}
+                  galleryPhoto={this.state.currentPhoto}
+                />
+                <img
+                  className="image"
+                  src={this.state.photos[this.state.currentIndex].url}
+                  style={{height: '100%', width: '100%'}}
+                  onClick={this.expandedView}
+                />
+              </div>
+              <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
             </div>
-            <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
           </div>
-        </div>
-      )
-    } else if (this.state.photos.length > 7) {
-      console.log('more than 7 photos');
-      // let activeThumbnails = [];
-      // for (var x = this.state.currentIndex; x < this.state.currentIndex + 7; x++) {
-      //   activeThumbnails.push(this.state.photos[x])
-      // }
-      // console.log(this.state)
-      return (
-        <div className='gallery'>
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
-            <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
-              <GalleryOverlay
-                thumbnails={this.state.photos}
-                changeImage={this.changeImage}
-                selectedImage={this.state.currentIndex}
-                galleryPhoto={this.state.currentPhoto}
-              />
-              <img
-                className="image"
-                src={this.state.photos[this.state.currentIndex].url}
-                style={{height: '100%', width: '100%'}}
-              />
+        )
+      } else if (this.state.photos.length > 7) {
+        console.log('more than 7 photos');
+        return (
+          <div className='gallery'>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
+              <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
+                <GalleryOverlay
+                  thumbnails={this.state.photos}
+                  changeImage={this.changeImage}
+                  selectedImage={this.state.currentIndex}
+                  galleryPhoto={this.state.currentPhoto}
+                />
+                <img
+                  className="image"
+                  src={this.state.photos[this.state.currentIndex].url}
+                  style={{height: '100%', width: '100%'}}
+                  onClick={this.expandedView}
+                />
+              </div>
+              <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
             </div>
-            <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
           </div>
-        </div>
+        )
+      }
+    } else if (this.props.expanded) {
+      return (
+        <ExpandedGallery
+          photos={this.props.photos}
+          currentPhoto={this.state.currentPhoto}
+          currentIndex={this.state.currentIndex}
+          regularView={this.props.expandedView}
+          changeImage={this.changeImage}
+          goLeft={this.goLeft}
+          goRight={this.goRight}
+        />
       )
     }
     return (
