@@ -713,6 +713,8 @@ body {
 
 
 
+
+
 /* ---------------vvvvvvvvvvvv QandA vvvvvvvvvvvv-------------------------------------------- */
 
 /* ---------------vvvvvvvvvvvv misc vvvvvvvvvvvvv-------------------------------------------- */
@@ -720,7 +722,9 @@ body {
   padding-top: 50px;
   padding-left: 280px;
   padding-right: 280px;
+  padding-bottom: 50px;
 }
+
 .qSearch {
   width: 100%;
   padding: 18px 20px;
@@ -735,17 +739,15 @@ body {
   padding: 0px;
 }
 
-
 .qFirst_line {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 4px;
 }
-
 
 .qItem {
   padding: 2px;
 }
+
 .qAnswers{
   /* border-width: 2px;
   border-radius: 5px;
@@ -755,31 +757,54 @@ body {
 }
 
 .qTile{
-  /* border-width: 2px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px black; */
-  border-radius: 10px;
-  padding-bottom: 5px;
+  /* /* border-width: 2px;
+  border-radius: 10px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
+
+  padding-bottom: 7px;
   padding-top: 7px;
-  margin: 0px;
+  padding-right: 7px;
+  padding-left: 7px;
+  margin: 7px;
   background-color: rgb(255, 255, 255);
+  border-radius: 4px;
 }
 
 .qList{
-  height: 435px;
+  height: 530px;
   width: auto;
   overflow: auto;
+
 }
 
+.aList{
+  height: 150px;
+  width: auto;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
+  border-radius: 4px;
+  padding: 5px;
+}
 
+.qAnswerLine1 {
+  list-style-type: none;
+  text-align: left;
+}
 
-.qBottom_line {
+.qAnswerLine1 h5 {
+  display: inline-block;
+  font-size: 12pt;
+  padding-left: 5px;
+}
+
+.qABottom_line {
   list-style-type: none;
   text-align: left;
   margin: 0;
   padding-left: 15px;
 }
-.qBottom_line li {
+
+.qABottom_line li {
   display: inline-block;
   font-size: 10pt;
   padding: 8px;
@@ -789,7 +814,7 @@ body {
 .qButton {
   font-size: 20px;
   border: 1px solid black;
-  padding: 18px 18px;
+  padding: 18px;
   text-align: center;
   display: inline-block;
   font-size: 12pt;
@@ -817,7 +842,8 @@ body {
 .qw10B {
   font-size: 10pt;
   font-weight: bold;
-  padding-left: 22px;
+  padding-left: 18px;
+  padding-top: 15px;
 }
 
 .qw10Underline {
@@ -831,6 +857,9 @@ body {
   font-size: 12pt;
 }
 
+.qw12{
+  font-size: 12pt;
+}
 
 .qw13{
   font-size: 13pt;
@@ -841,8 +870,6 @@ body {
   font-weight: bold;
 }
 
-
-
 /* --------------------^^^^^^^ Fonts Styles ^^^^^^^--------------------------------------------- */
 
 
@@ -851,7 +878,6 @@ body {
 .qModalBackground {
   width: 100vw;
   height: 100vh;
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -867,6 +893,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 25px;
+  border-radius: 4px;
 }
 
 .qAModalForm1 {
@@ -875,7 +902,7 @@ body {
   margin:8px 0;
   border: 1px solid black;
   box-sizing: border-box;
-  max-height: 100px;
+  max-height: 150px;
   font-size: 12pt;
   font-weight: bold;
 }
@@ -903,17 +930,17 @@ body {
 }
 
 .qAModalButtonX {
-  width: 10%;
+  width: 3%;
   padding: 5px 5px;
   border: 1px solid black;
+  background-color: white;
   box-sizing: border-box;
+  position: absolute;
+  right: 385px;
   height: 40px;
   font-size: 12pt;
-  font-weight: normal;
+  font-weight: bold;
 }
-
-
-
 
 /* ---------------^^^^^^^^^^ Modals ^^^^^^^^^^^^-------------------------------------------- */
 
