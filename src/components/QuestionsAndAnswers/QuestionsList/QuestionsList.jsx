@@ -33,7 +33,8 @@ class QuestionsList extends React.Component {
   */
 
   render() {
-    let list, questions, button;
+    let list, button;
+    let questions = [];
 
     //determines the size of list and controls button label for change
     if (this.props.smallV) {
@@ -47,6 +48,7 @@ class QuestionsList extends React.Component {
     }
 
     //dynamic list render of questions if props is available
+    //console.log(questions)
     list = questions.map((q) => (
       <QuestionItem info={q} key={Math.random()} fetch={this.props.fetch} toggleAModal={this.props.toggleAModal}/>
     ))

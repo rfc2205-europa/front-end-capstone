@@ -731,6 +731,7 @@ body {
   margin: 8px 0;
   border: 1px solid black;
   box-sizing: border-box;
+  border-radius: 4px;
   font-size: 12pt;
   font-weight: bold;
 }
@@ -760,26 +761,46 @@ body {
   /* /* border-width: 2px;
   border-radius: 10px; */
   box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
-
   padding-bottom: 7px;
   padding-top: 7px;
   padding-right: 7px;
   padding-left: 7px;
   margin: 7px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(241, 241, 241);
   border-radius: 4px;
 }
 
+
 .qList{
   height: 530px;
+  border-radius: 4px;
   width: auto;
   overflow: auto;
-
 }
 
-.aList{
+.qButton {
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 18px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12pt;
+  font-weight: bold;
+  margin-right: 15px;
+  background-color: white;
+}
+
+.qUnderline {
+  text-decoration: underline;
+}
+
+/* --------------------^^^^^^^^^^ misc ^^^^^^^^^^^^^^^^^-------------------------------------------- */
+/*---------------------------------vvvvvvvvvv answer tile  vvvvvvvvvvvvv--------------------------------- */
+.qAList{
   height: 150px;
   width: auto;
+  background-color: white;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 5px;
   border-radius: 4px;
@@ -811,24 +832,7 @@ body {
   padding-bottom: 12px;
 }
 
-.qButton {
-  font-size: 20px;
-  border: 1px solid black;
-  padding: 18px;
-  text-align: center;
-  display: inline-block;
-  font-size: 12pt;
-  font-weight: bold;
-  margin-right: 15px;
-  background-color: white;
-}
-
-.qUnderline {
-  text-decoration: underline;
-}
-
-/* --------------------^^^^^^^^^^ misc ^^^^^^^^^^^^^^^^^-------------------------------------------- */
-
+/*---------------------------------^^^^^^^^^^ answer tile ^^^^^^^^^^^^^--------------------------------- */
 /* --------------------vvvvvvvvvv Fonts Style vvvvvvvvvvvvv--------------------------------------------- */
 
 .qbold {
@@ -882,7 +886,7 @@ body {
   justify-content: center;
   align-items: center;
   padding-right: 550px;
-  padding-bottom: 325px;
+  padding-bottom: 270px;
 }
 
 .qModalContainer {
@@ -899,6 +903,7 @@ body {
 .qAModalForm1 {
   width: 100%;
   padding: 18px 20px;
+  border-radius: 4px;
   margin:8px 0;
   border: 1px solid black;
   box-sizing: border-box;
@@ -910,6 +915,7 @@ body {
 .qAModalForm2 {
   width: 100%;
   padding: 18px 20px;
+  border-radius: 4px;;
   margin: 8px 0;
   border: 1px solid black;
   box-sizing: border-box;
@@ -921,6 +927,7 @@ body {
 .qAModalForm3 {
   width: 100%;
   padding: 18px 20px;
+  border-radius: 4px;;
   margin: 8px 0;
   border: 1px solid black;
   box-sizing: border-box;
@@ -931,16 +938,18 @@ body {
 
 .qAModalButtonX {
   width: 3%;
-  padding: 5px 5px;
+  padding: 5px;
   border: 1px solid black;
+  border-radius: 4px;;
   background-color: white;
   box-sizing: border-box;
   position: absolute;
-  right: 385px;
+  right: 398px;
   height: 40px;
   font-size: 12pt;
   font-weight: bold;
 }
+
 
 /* ---------------^^^^^^^^^^ Modals ^^^^^^^^^^^^-------------------------------------------- */
 

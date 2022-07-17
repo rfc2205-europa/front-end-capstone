@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question Modal Component Testing Renders the Questions Modal component correctly 1`] = `
+<div
+  className="qModalBackground"
+>
+  <div
+    className="qModalContainer"
+  >
+    <button
+      className="qAModalButtonX"
+      onClick={[Function]}
+    >
+      X
+    </button>
+    <h5>
+      Ask Your Question
+    </h5>
+    <p />
+    <div>
+      <form>
+        <div>
+          <label>
+            Your Question*
+          </label>
+          <textarea
+            className="qAModalForm1"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+        <div>
+          <label>
+            What is your nickname*
+          </label>
+          <input
+            className="qAModalForm2"
+            onChange={[Function]}
+            placeholder="Example: jackson11!"
+            type="text"
+          />
+        </div>
+        <div>
+          <p>
+            For privacy reasons, do not use your full name or email address
+          </p>
+        </div>
+        <div>
+          <label>
+            Your email*
+          </label>
+          <input
+            className="qAModalForm3"
+            onChange={[Function]}
+            placeholder="Why did you like the product or not?"
+            type="text"
+          />
+        </div>
+        <div>
+          <p>
+            “For authentication reasons, you will not be emailed”
+          </p>
+        </div>
+        <div>
+          <input
+            className="qButton"
+            onClick={[Function]}
+            type="submit"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

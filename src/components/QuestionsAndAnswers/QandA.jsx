@@ -4,13 +4,7 @@ import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
 import QModal from './Modals/QModal.jsx';
 import AModal from './Modals/AModal.jsx';
-// import style from './style.css';
 
-
-const service = axios.create({
-  baseURL: 'http://localhost:3005',
-  changeOrigin: true,
-});
 
 class QandA extends React.Component {
   constructor(props) {
@@ -43,8 +37,10 @@ class QandA extends React.Component {
   //fetches questions for a product from api
   fetch = (product_id) => {
     //var product_id = product_id || this.state.productId;
-    var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}` }
-    service.post('/retrieve', body)
+
+    axios.post('http://localhost:3005/retrieve', {
+      api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${product_id}`
+    })
       .then((res) => {
         //console.log('results from fetch: ', res);
         this.setState({
@@ -59,8 +55,10 @@ class QandA extends React.Component {
   //fetches product info from api
   fetchProductName = (product_id) => {
     //GET /products/:product_id
-    var body = { api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}` }
-    service.post('/retrieve', body)
+
+    axios.post('http://localhost:3005/retrieve', {
+      api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}`
+    })
       .then((res) => {
         //console.log('results from fetchProductName: ', res.data);
         this.setState({
@@ -114,7 +112,7 @@ class QandA extends React.Component {
       this.setState({
         openQModalView: false
       })
-    }else{
+    } else {
       this.setState({
         openQModalView: true
       })
@@ -127,7 +125,7 @@ class QandA extends React.Component {
       this.setState({
         openAModalView: false
       })
-    }else{
+    } else {
       this.setState({
         openAModalView: true,
         questionId: question_id,
@@ -160,20 +158,20 @@ class QandA extends React.Component {
 
     //collapses list when the length is 0
     let collapse;
-    if(this.state.questions.length===0){
+    if (this.state.questions.length === 0) {
       collapse = <div></div>
-    }else{
-      collapse =  <div className="qList">
-      <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal}/>
-    </div>
+    } else {
+      collapse = <div className="qList">
+        <QuestionsList questions={listView} smallV={this.state.smallView} fetch={this.fetch} toggleAModal={this.openAModal} />
+      </div>
     }
 
 
     return (
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
-        {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name}/>}
-        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name}questionBody={this.state.questionBody}/>}
+        {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name} />}
+        {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name} questionBody={this.state.questionBody} />}
         <Search search={this.search} questions={this.state.questions} />
         <div>
           {collapse}

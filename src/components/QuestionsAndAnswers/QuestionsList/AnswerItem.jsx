@@ -4,7 +4,7 @@ import { format, parseISO } from 'date-fns';
 
 class AnswerItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       helpfulA: true,
       reportA: 'Report',
@@ -74,7 +74,7 @@ class AnswerItem extends React.Component {
           <h5 className="qw12B">A:</h5>
           <h5 className="qw12"> {answer.body}</h5>
         </div>
-        <ul class="qABottom_line">
+        <ul className="qABottom_line">
           <li><a>by {answer.answerer_name}, {formatDate}</a></li>
           <li><a>|</a></li>
           <li><a>Helpful?</a></li>
