@@ -51,6 +51,7 @@ class StyleThumb extends React.Component {
         style={{height: '70px', width: '70px', margin:'5px', borderRadius: '50%'}}
         id={this.props.id}
         onClick={this.onClick}
+        className="bottomLayer"
       />
     )}
   }

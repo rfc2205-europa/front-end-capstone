@@ -135,7 +135,7 @@ class Overview extends React.Component {
       }
     } else {
       return (
-        <div>
+        <div className="overview">
           <div className='topRow'>
             <Gallery />
             <ProductInfo product={product} styles={styles} selectedStyle={this.state.selectedStyle}/>

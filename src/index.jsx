@@ -26,7 +26,7 @@ class App extends React.Component {
   getInitialProduct = () => {
     var id;
     var data = JSON.stringify({
-      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=1000"
+      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=1"
     });
     var config = {
       method: 'post',
@@ -42,6 +42,32 @@ class App extends React.Component {
           console.log('selected id:', id);
           this.setState({
             product_id: id,
+            search_products: response.data,
+          })
+        })
+        .catch(err => {
+          console.log('err:', err)
+        })
+  }
+
+  getSearchResults = () => {
+    var id;
+    var data = JSON.stringify({
+      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=1000"
+    });
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3005/retrieve',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    axios(config)
+        .then((response) => {
+          id = response.data[0].id
+          console.log('selected id:', id);
+          this.setState({
             search_products: response.data,
           })
         })
@@ -151,10 +177,11 @@ class App extends React.Component {
             toggle={this.toggleSearch}
             products={this.state.search_products}
             searching={this.state.searching}
+            getSearchResults={this.getSearchResults}
           />
           <Overview product_id={this.state.product_id}/>
-          {/* <QandA />
-          <Review/> */}
+          <QandA />
+          <Review/>
         </div>
       )
     } else {

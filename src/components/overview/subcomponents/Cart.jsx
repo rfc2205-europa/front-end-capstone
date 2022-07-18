@@ -144,7 +144,7 @@ class Cart extends React.Component {
               </select>
             </div>
             <div className='cartTwo'>
-              <button className="cartButton" onClick={this.addToCart}>Add to Cart</button>
+              <button className="qButton" onClick={this.addToCart}>Add to Cart</button>
             </div>
           </div>
         )

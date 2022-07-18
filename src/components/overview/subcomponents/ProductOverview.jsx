@@ -11,8 +11,8 @@ class ProductOverview extends React.Component {
         let features = this.props.product.features
         return (
           <div className='productOverview'>
-            <div>
-              <strong className='description'>{this.props.product.slogan}</strong>
+            <div className='descriptionBox'>
+              <strong className='description' style={{display: 'flex', justifyContent: 'center'}}>{this.props.product.slogan}</strong>
               <p className='description'>{this.props.product.description}</p>
             </div>
             <ul className="featureList">
@@ -25,7 +25,7 @@ class ProductOverview extends React.Component {
       } else {
         return (
           <div className='productOverview'>
-            <div>
+            <div className='descriptionBox'>
               <strong className='description'>{this.props.product.slogan}</strong>
               <p className='description'>{this.props.product.description}</p>
             </div>
