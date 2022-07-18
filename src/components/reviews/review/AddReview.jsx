@@ -45,16 +45,31 @@ var ModalView = function({clickFunc, product_id, needChar}) {
       <div className='review-addReview'>
         {invalid && <div style={{ color: 'red' }}>Please enter valid input</div>}
         <div className='review-addReview-title'>Write Your Review</div>
-        <Star setFunc = {setAllChars} chars={chars}/>
-        <Recommend setFunc = {setAllChars} chars={chars}/>
-        <Characteristics needChar={needChar} setFunc = {setAllChars} chars={chars}/>
-        <Summary setFunc = {setAllChars} chars={chars}/>
-        <ReviewBody setFunc = {setAllChars} chars={chars}/>
-        <Photo setFunc = {setAllChars} chars={chars}/>
-        <NickName setFunc = {setAllChars} chars={chars}/>
-        <Email setFunc = {setAllChars} chars={chars}/>
+        <div className='review-addReview-rating-container'>
+          <div className='review-addReview-line'></div>
+          <div className='review-addReview-rating'>
+            <Star setFunc = {setAllChars} chars={chars}/>
+            <Recommend setFunc = {setAllChars} chars={chars}/>
+            <Characteristics needChar={needChar} setFunc = {setAllChars} chars={chars}/>
+          </div>
+        </div>
+        <div className='review-addReview-review-container'>
+          <div className='review-addReview-line'></div>
+          <div className='review-addReview-review'>
+            <Summary setFunc = {setAllChars} chars={chars}/>
+            <ReviewBody setFunc = {setAllChars} chars={chars}/>
+            <Photo setFunc = {setAllChars} chars={chars}/>
+          </div>
+        </div>
+        <div className='review-addReview-personal-container'>
+          <div className='review-addReview-line'></div>
+          <div className='review-addReview-review'>
+            <NickName setFunc = {setAllChars} chars={chars}/>
+            <Email setFunc = {setAllChars} chars={chars}/>
+          </div>
+        </div>
       </div>
-      <button onClick={submitChars}>submit</button>
+      <button className='review-addReview-submit-btn' onClick={submitChars}>submit</button>
     </div>
   </>,
   document.getElementById('portal')

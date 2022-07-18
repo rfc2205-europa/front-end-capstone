@@ -292,12 +292,35 @@ body {
   font-weight: bold;
 }
 
+
+.review-addReview-rating-container .review-addReview-review-container .review-addReview-personal-container {
+  display: flex;
+  flex-direction: row;
+
+}
+
+/* .review-addReview-line {
+  border-left: 6px solid green;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+
+} */
+
+.review-addReview-rating .review-addReview-review .review-addReview-personal {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .review-addReview-star-container, .review-addReview-recommend-container, .review-addReview-characteristics-container, .review-addReview-summary-container, .review-addReview-body-container, .review-addReview-nickName-container, .review-addReview-photo-container, .review-addReview-email-container {
   display: flex;
   justify-content: flex-start;
   column-gap: 10px;
   /* row-gap: 15px; */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .review-addReview-star-container, .review-addReview-recommend-container,.review-addReview-summary-container {
@@ -307,20 +330,9 @@ body {
 
 }
 
-/* .review-addReview-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  font-size: 18px;
-  width: 300px;
-  border-radius: 4px;
-  border: 1px solid #c8cccf;
-  color: #6a5f77;
-  outline: 0;
+.review-addReview-submit-btn {
+  width: 600px;
 }
-
-.review-addReview-input:focus {
-  background-color: rgba(232, 232, 232, 0.9);
-} */
 
 /* -- add review: recommend  -- */
 .review-addReview-radio-text {
@@ -427,37 +439,61 @@ body {
 
 /* -- add review: summary  -- */
 .review-addReview-summary-container {
-  width: 450px;
+  width: 100%;
   background: #fff;
   padding:30px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.review-addReview-summary .review-addReview-summary-container {
+
+.review-addReview-summary-container .review-addReview-summary {
   height: 40px;
   width: 100%;
   position: relative;
 }
-.review-addReview-summary .review-addReview-summary-container input{
+
+.review-addReview-input {
   height: 100%;
   width: 100%;
-  border:none;
+  border: none;
   border-bottom: 2px solid silver;
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none
 }
 
-.review-addReview-summary .review-addReview-summary-container input:focus ~ label {
-  transform: translateY(-20px)
+.review-addReview-summary input:focus ~ label, .review-addReview-summary input:valid ~ label {
+  transform: translateY(-20px);
+  font-size: 15px;
+  color: rgb(80,80,80)
 }
 
-.review-addReview-summary .review-addReview-summary-container label {
+.review-addReview-label {
   position: absolute;
   bottom: 10px;
   left: 0;
   color: grey;
   pointer-events: none;
   transition: all 0.3s ease
+}
 
+.review-addReview-underline {
+  position: absolute;
+  bottom: 0px;
+  height:2px;
+  width:100%;
+}
+.review-addReview-summary .review-addReview-underline::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #ff9800;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.review-addReview-summary input:focus ~ .review-addReview-underline::before, .review-addReview-summary input:valid ~ .review-addReview-underline::before {
+  transform: scaleX(1);
 }
 
 /* -- add review: summary  -- */
@@ -647,7 +683,7 @@ body {
   height: 800px;
   position: fixed;
   left: 80%;
-  top: 500%;
+  top: 1px;
   transform: translate(-50%, -50%);
   padding: 50px;
   z-index: 1000;
