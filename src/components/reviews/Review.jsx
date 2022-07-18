@@ -70,7 +70,7 @@ class Review extends React.Component {
   render() {
     return (
       <div className = {this.state.modelView? 'review modelView':'review'}>
-        <h3>Product Review</h3>
+        {/* <h3>Product Review</h3> */}
         <RatingComponent ratings={this.state.ratings}/>
         <ReviewComponent reviews={this.state.reviews} sortFunc = {this.changeSortMethod} product_id={this.state.product_id} needChar = {this.state.ratings.characteristics}/>
       </div>
