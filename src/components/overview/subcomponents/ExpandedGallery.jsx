@@ -31,6 +31,7 @@ class ExpandedGallery extends React.Component {
             changeImage={this.props.changeImage}
             selectedImage={this.state.currentIndex}
             galleryPhoto={this.state.currentPhoto}
+            expanded={this.props.expanded}
           />
           <img
             className="expandedImage"

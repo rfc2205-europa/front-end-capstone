@@ -22,7 +22,7 @@ class GalleryThumbnail extends React.Component {
   }
 
   render() {
-    if (this.state.selected) {
+    if (this.state.selected && !this.props.expanded) {
       return (
         <img
           className="overlayThumbnail"
