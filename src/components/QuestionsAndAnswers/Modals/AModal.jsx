@@ -31,6 +31,7 @@ class AModal extends React.Component {
         .then((res) => {
           console.log(res)
           this.props.toggle()
+          this.props.fetch('66655')
         })
         .catch((err) => {
           console.log('There is an error in your post req in Answers Modal: ', err)

@@ -27,6 +27,7 @@ class QModal extends React.Component {
       .then((res) => {
         console.log(res)
         this.props.toggle()
+        this.props.fetch('66655')
       })
       .catch((err) => {
         let string = "Warning! You must enter the following: "
