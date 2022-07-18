@@ -148,7 +148,7 @@ class QuestionItem extends React.Component {
         <div className="qFirst_line">
           <h5 className="qbold13">Q: {body}</h5><p className="qw10"onClick={this.incrementor}>Helpful? Yes ({help})</p><p className="qw10" onClick={this.reportQ}>{this.state.reportQ}</p><p className="qw10Underline" onClick={()=>{this.props.toggleAModal(this.props.info.question_id, this.props.info.question_body)}}>Add Answer</p>
         </div>
-        <div>{ans}</div>
+        <div className="qAList" >{ans}</div>
         {button}
       </div>
     )

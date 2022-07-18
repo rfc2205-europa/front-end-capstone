@@ -59,7 +59,7 @@ class QModal extends React.Component {
             <form>
               <div>
                 <label>Your Question*</label>
-                <input className="qAModalForm1" type='text' onChange={(e) => { this.setState({ question: e.target.value }) }}></input>
+                <textarea className="qAModalForm1" type='text' onChange={(e) => { this.setState({ question: e.target.value }) }}></textarea>
               </div>
               <div>
                 <label>What is your nickname*</label>

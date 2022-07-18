@@ -4,7 +4,7 @@ import { format, parseISO } from 'date-fns';
 
 class AnswerItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       helpfulA: true,
       reportA: 'Report',
@@ -70,15 +70,18 @@ class AnswerItem extends React.Component {
     let formatDate = format(parseISO(answer.date), "LLLL, dd, yyyy")
     return (
       <div className="qAnswers" key={Math.random()}>
-        <h5 className="qbold" className="qw13">A: {answer.body}</h5>
-          <ul class="qBottom_line">
-            <li><a>by {answer.answerer_name}, {formatDate}</a></li>
-            <li><a>|</a></li>
-            <li><a>Helpful?</a></li>
-            <li><a className="qw10Underline" onClick={this.incrementor}>Yes ({answer.helpfulness})</a></li>
-            <li><a>|</a></li>
-            <li><a className="qw10Underline"onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</a></li>
-          </ul>
+        <div className="qAnswerLine1">
+          <h5 className="qw12B">A:</h5>
+          <h5 className="qw12"> {answer.body}</h5>
+        </div>
+        <ul className="qABottom_line">
+          <li><a>by {answer.answerer_name}, {formatDate}</a></li>
+          <li><a>|</a></li>
+          <li><a>Helpful?</a></li>
+          <li><a className="qw10Underline" onClick={this.incrementor}>Yes ({answer.helpfulness})</a></li>
+          <li><a>|</a></li>
+          <li><a className="qw10Underline" onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</a></li>
+        </ul>
       </div>
     )
   }

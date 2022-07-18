@@ -79,10 +79,10 @@ class AModal extends React.Component {
             <div>
               <p>For authentication reasons, you will not be emailed</p>
             </div>
-            <div>
+            {/* <div>
               <label>Upload your photos</label>
               <button>upload photos here</button>
-            </div>
+            </div> */}
             <div>
               <input className="qButton" type='submit' onClick={this.submitA}></input>
             </div>
