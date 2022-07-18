@@ -93,6 +93,7 @@ class Gallery extends React.Component {
                   changeImage={this.changeImage}
                   selectedImage={this.state.currentIndex}
                   galleryPhoto={this.state.currentPhoto}
+                  expanded={this.props.expanded}
                 />
                 <img
                   className="image"
@@ -117,6 +118,7 @@ class Gallery extends React.Component {
                   changeImage={this.changeImage}
                   selectedImage={this.state.currentIndex}
                   galleryPhoto={this.state.currentPhoto}
+                  expanded={this.props.expanded}
                 />
                 <img
                   className="image"
@@ -140,6 +142,7 @@ class Gallery extends React.Component {
           changeImage={this.changeImage}
           goLeft={this.goLeft}
           goRight={this.goRight}
+          expanded={this.props.expanded}
         />
       )
     }

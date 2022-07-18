@@ -112,6 +112,7 @@ class GalleryOverlay extends React.Component {
                 id={image.index}
                 selectedImage={this.props.selectedImage}
                 changeImage={this.props.changeImage}
+                expanded={this.props.expanded}
               />
             )
           })}
@@ -132,6 +133,7 @@ class GalleryOverlay extends React.Component {
                   id={image.index}
                   selectedImage={this.props.selectedImage}
                   changeImage={this.props.changeImage}
+                  expanded={this.props.expanded}
                 />
               )
             }
@@ -153,6 +155,7 @@ class GalleryOverlay extends React.Component {
                   id={image.index}
                   selectedImage={this.props.selectedImage}
                   changeImage={this.props.changeImage}
+                  expanded={this.props.expanded}
                 />
               )
             }
@@ -177,6 +180,7 @@ class GalleryOverlay extends React.Component {
                   id={image.index}
                   selectedImage={this.props.selectedImage}
                   changeImage={this.props.changeImage}
+                  expanded={this.props.expanded}
                 />
               )
             }
