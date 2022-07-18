@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { format, parseISO } from 'date-fns';
+import {format, parseISO} from 'date-fns';
+import PropTypes from 'prop-types';
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -8,66 +9,74 @@ class AnswerItem extends React.Component {
     this.state = {
       helpfulA: true,
       reportA: 'Report',
-      reportABool: true
-    }
+      reportABool: true,
+    };
   }
 
+  // validates props
+  // static propTypes = {
+  //   productName: PropTypes.string.isRequired,
+  //   productId: PropTypes.string.isRequired,
+  //   // toggle: PropTypes.function.isRequired,
+  //   // fetch: PropTypes.function.isRequired,
+  //   answer: PropTypes.array.isRequired,
+  // };
 
-  //handles helpful answer click
+  // handles helpful answer click
   helpfulA = (id) => {
-    console.log('helpful answer')
+    console.log('helpful answer');
 
     // /qa/answers/:answer_id/helpful
     axios.put(`http://localhost:3005/qa/answers`, {
-      "type": "answer",
-      "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`
+      'type': 'answer',
+      'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`,
     })
-      .then((res) => {
-        console.log('response in client from server after report answer: ', res)
-        this.setState({
-          helpfulA: false
-        })
-      })
-      .catch((err) => {
-        console.log('ERROR IN PUT Helpful Answer: ', err)
-      })
-
-
-    //this.setState({ helpfulA: false })
-  }
-
-  //handles report answer click
-  reportA = (id) => {
-    console.log('report answer')
-    if (this.state.reportABool) {
-      axios.put(`http://localhost:3005/qa/answers`, {
-        "type": "answer",
-        "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`
-      })
         .then((res) => {
-          console.log('response in client from server after report answer: ', res)
+          console.log('response in client from server: report answer: ', res)
           this.setState({
-            reportA: 'Reported',
-            reportABool: false
-          })
+            helpfulA: false,
+          });
         })
         .catch((err) => {
-          console.log('ERROR IN PUT Helpful Question: ', err)
-        })
-    }
-  }
+          console.log('ERROR IN PUT Helpful Answer: ', err);
+        });
 
-  //limiter single attempt at helpful answers
+
+    // this.setState({ helpfulA: false })
+  };
+
+  // handles report answer click
+  reportA = (id) => {
+    console.log('report answer');
+    if (this.state.reportABool) {
+      axios.put(`http://localhost:3005/qa/answers`, {
+        'type': 'answer',
+        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`,
+      })
+          .then((res) => {
+            console.log('response in client from server: report answer: ', res),
+            this.setState({
+              reportA: 'Reported',
+              reportABool: false,
+            });
+          })
+          .catch((err) => {
+            console.log('ERROR IN PUT Helpful Question: ', err);
+          });
+    }
+  };
+
+  // limiter single attempt at helpful answers
   incrementor = () => {
     if (this.state.helpfulA) {
-      this.helpfulA(this.props.answer.id)
+      this.helpfulA(this.props.answer.id);
       this.props.answer.helpfulness++;
     }
-  }
+  };
 
   render() {
-    let { answer } = this.props
-    let formatDate = format(parseISO(answer.date), "LLLL, dd, yyyy")
+    const {answer} = this.props;
+    const formatDate = format(parseISO(answer.date), 'LLLL, dd, yyyy');
     return (
       <div className="qAnswers" key={Math.random()}>
         <div className="qAnswerLine1">
@@ -83,7 +92,7 @@ class AnswerItem extends React.Component {
           <li><a className="qw10Underline" onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</a></li>
         </ul>
       </div>
-    )
+    );
   }
 }
 

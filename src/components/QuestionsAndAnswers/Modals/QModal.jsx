@@ -1,59 +1,69 @@
 import React from 'react';
 import axios from 'axios';
-//import QWarningModal from './QWarningModal.jsx'
+import PropTypes from 'prop-types';
 
 class QModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      qWarningModalView: false
-    }
+      qWarningModalView: false,
+    };
   }
 
-  //sends post req to server for adding a question
+  // validates props
+  // static propTypes = {
+  //   productName: PropTypes.string.isRequired,
+  //   productId: PropTypes.string.isRequired,
+  //   toggle: PropTypes.function.isRequired,
+  //   fetch: PropTypes.function.isRequired,
+  // };
+
+  // sends post req to server for adding a question
   submitQ = (e) => {
-    e.preventDefault()
-    console.log('submit')
-    //API call
+    e.preventDefault();
+    console.log('submit');
+    // API call
     // POST /qa/questions
     axios.post(`http://localhost:3005/qa/questions`, {
-        "type": "questions.question",
-        "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`,
-        "body": this.state.question,//string 1000 char
-        "name": this.state.nickname,//string 60 char
-        "email": this.state.email,//email format string 60 char
-        "product_id": parseInt(this.props.productId)//66680//must be number
+      'type': 'questions.question',
+      'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`,
+      'body': this.state.question, // string 1000 char
+      'name': this.state.nickname, // string 60 char
+      'email': this.state.email, // email format string 60 char
+      'product_id': parseInt(this.props.productId), // 66680//must be number
     })
-      .then((res) => {
-        console.log(res)
-        this.props.toggle()
-        this.props.fetch('66655')
-      })
-      .catch((err) => {
-        let string = "Warning! You must enter the following: "
-        if (this.state.question === undefined) {
-          string += " answer"
-        }
-        if (this.state.nickname === undefined) {
-          string += " nickname"
-        }
-        if (this.state.email === undefined) {
-          string += " email"
-        }
-        // if (answer === undefined) {
-        //   string += photo
-        // }
-        alert(string)
-        console.log('There is an error in your post req in Questions Modal: ', err)
-      })
-  }
+        .then((res) => {
+          console.log(res);
+          this.props.toggle();
+          this.props.fetch('66655');
+        })
+        .catch((err) => {
+          let string = 'Warning! You must enter the following: ';
+          if (this.state.question === undefined) {
+            string += ' answer';
+          }
+          if (this.state.nickname === undefined) {
+            string += ' nickname';
+          }
+          if (this.state.email === undefined) {
+            string += ' email';
+          }
+          // if (answer === undefined) {
+          //   string += photo
+          // }
+          alert(string);
+          console.log('There is an error in your post req in Questions Modal: ', err)
+        });
+  };
 
   render() {
     return (
       <div className="qModalBackground">
         <div className="qModalContainer">
           {/* {this.state.qWarningModalView && <QWarningModal/>} */}
-          <button className="qAModalButtonX" onClick={() => { this.props.toggle() }}>X</button>
+          <div className="qModalButtonPos">
+            <button className="qQAButton" onClick={() => { this.props.toggle() }}>X</button>
+          </div>
           <h5 >Ask Your Question</h5>
           <p>{this.props.productName}</p>
           <div>
@@ -83,7 +93,7 @@ class QModal extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

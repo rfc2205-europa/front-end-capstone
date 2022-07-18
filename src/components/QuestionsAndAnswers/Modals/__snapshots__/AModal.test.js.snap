@@ -7,12 +7,16 @@ exports[`AModal Component Testing renders the AModal component correctly 1`] = `
   <div
     className="qModalContainer"
   >
-    <button
-      className="qAModalButtonX"
-      onClick={[Function]}
+    <div
+      className="qModalButtonPos"
     >
-      X
-    </button>
+      <button
+        className="qQAButton"
+        onClick={[Function]}
+      >
+        X
+      </button>
+    </div>
     <h5>
       Submit your Answer
     </h5>

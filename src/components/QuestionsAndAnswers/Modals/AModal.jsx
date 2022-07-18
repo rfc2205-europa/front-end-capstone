@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class AModal extends React.Component {
   constructor(props) {
@@ -8,57 +9,62 @@ class AModal extends React.Component {
       answer: '',
       nickname: '',
       email: '',
-      photos: []
-    }
+      photos: [],
+    };
   }
 
-  //submits a Post for new answer
+  // validates props
+  // static propTypes = {
+  //   productName: PropTypes.string.isRequired,
+  //   questionBody: PropTypes.string.isRequired,
+  // };
+
+  // submits a Post for new answer
   submitA = (e) => {
-    e.preventDefault()
-    let { answer, nickname, email, photos } = this.state
-    console.log('submit answer')
-    //API call
-    /// qa/questions/:question_id/answers
+    e.preventDefault();
+    const {answer, nickname, email, photos} = this.state;
+    console.log('submit answer');
+    // API call
+    // qa/questions/:question_id/answers
     if (answer && nickname && email) {
       axios.post(`http://localhost:3005/qa/questions`, {
-        "type": "questions.answer",
-        "api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${this.props.questionId}/answers`,
-        "body": answer,//string 1000 char
-        "name": nickname,//string 60 char
-        "email": email,//email format string 60 char
-        "photos": photos//array of image urls
+        'type': 'questions.answer',
+        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${this.props.questionId}/answers`,
+        'body': answer, // string 1000 char
+        'name': nickname, // string 60 char
+        'email': email, // email format string 60 char
+        'photos': photos, // array of image urls
       })
-        .then((res) => {
-          console.log(res)
-          this.props.toggle()
-          this.props.fetch('66655')
-        })
-        .catch((err) => {
-          console.log('There is an error in your post req in Answers Modal: ', err)
-        })
+          .then((res) => {
+            console.log(res);
+            this.props.toggle();
+            this.props.fetch('66655');
+          })
+          .catch((err) => {
+            console.log('There is an error in your post Answers Modal: ', err);
+          });
     } else {
-      let string = "Warning! You must enter the following: "
+      let string = 'Warning! You must enter the following: ';
       if (answer === '') {
-        string += " answer"
+        string += ' answer';
       }
       if (nickname === '') {
-        string += " nickname"
+        string += ' nickname';
       }
       if (email === '') {
-        string += " email"
+        string += ' email';
       }
-      // if (answer === undefined) {
-      //   string += photo
-      // }
-      alert(string)
+      alert(string);
     }
-  }
+  };
 
   render() {
     return (
       <div className="qModalBackground">
         <div className="qModalContainer">
-          <button className="qAModalButtonX" onClick={() => { this.props.toggle() }}>X</button>
+          <div className="qModalButtonPos">
+            <button className="qQAButton" onClick={() => { this.props.toggle() }}>X</button>
+          </div>
           <h5>Submit your Answer</h5>
           <p>{this.props.productName}: {this.props.questionBody}</p>
           <form>
@@ -90,7 +96,7 @@ class AModal extends React.Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 

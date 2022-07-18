@@ -1,34 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
-    }
+      input: '',
+    };
   }
 
-  //sets input in state to values typed into form
+  // sets input in state to values typed into form
   handleChange = (e) => {
     this.setState({
-      input: e.target.value
+      input: e.target.value,
     }, () => {
       if (this.state.input.length > 1) {
-        this.handleSearch()
+        this.handleSearch();
       }
-    })
+    });
+  };
 
-
-
-    // if (this.state.input.length > 1) {
-    //   this.handleSearch()
-    // }
-  }
-
-  //calls search in parent component
+  // calls search in parent component
   handleSearch = () => {
-    this.props.search(this.state.input, this.state.input.length)
-  }
+    this.props.search(this.state.input, this.state.input.length);
+  };
 
 
   render() {

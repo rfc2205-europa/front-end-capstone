@@ -5,7 +5,7 @@ import React from 'react';
 
 describe("QandA Component Testing", function () {
   it('renders the QandA component correctly', () => {
-    const component = renderer.create(<AnswerItem  answer={props.info.answer} key={Math.random()} fetch={this.props.fetch}/>);
+    const component = renderer.create(<AnswerItem />);
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot();
   });
