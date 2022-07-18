@@ -15,14 +15,33 @@ body {
 
 /* ------------- search ------------- */
 
-.result {
+.resultsPage {
   display: flex;
   justify-content: center;
-  width: 100%;
+  flex-wrap: wrap;
+}
+
+.result {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
   border: 1px solid black;
   padding: 5px;
   margin: 10px;
+}
 
+.resultLeft {
+  text-align: center;
+  width: 30%
+}
+
+.resultRight {
+  text-align: center;
+  width: 70%
+}
+
+.slogan {
+  font-style: italic;
 }
 
 .result:hover {
@@ -187,14 +206,24 @@ body {
 .productOverview {
   display: flex;
   margin: .5%;
-  margin-top: 2%;
-  width: 50%;
-  justify-content: center;
+  margin-top: 5%;
+  width: 100%;
+  justify-content: space-around;
   /* border: 1px solid black */
 }
 
 .description {
-  font-style: italic
+  width: 50%;
+  font-style: italic;
+  text-align: center;
+}
+
+.featureList {
+  width: 30%;
+  border: 1px solid black;
+  /* border-radius: 3%; */
+  list-style-type: square;
+  background-color: antiquewhite;
 }
 /* ------------- overview ------------- */
 

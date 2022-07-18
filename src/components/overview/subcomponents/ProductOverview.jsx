@@ -7,14 +7,31 @@ class ProductOverview extends React.Component {
 
   render() {
     if (this.props.product) {
-      return (
-        <div className='productOverview'>
-          <div>
-            <strong className='description'>{this.props.product.slogan}</strong>
-            <p className='description'>{this.props.product.description}</p>
+      if (this.props.product.features) {
+        let features = this.props.product.features
+        return (
+          <div className='productOverview'>
+            <div>
+              <strong className='description'>{this.props.product.slogan}</strong>
+              <p className='description'>{this.props.product.description}</p>
+            </div>
+            <ul className="featureList">
+              {features.map((key) => {
+                return <li>{key.feature} - {key.value}</li>
+              })}
+            </ul>
           </div>
-        </div>
-      )
+        )
+      } else {
+        return (
+          <div className='productOverview'>
+            <div>
+              <strong className='description'>{this.props.product.slogan}</strong>
+              <p className='description'>{this.props.product.description}</p>
+            </div>
+          </div>
+        )
+      }
     }
     return (
       <div className='productOverview'>

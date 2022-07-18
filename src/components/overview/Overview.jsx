@@ -52,11 +52,16 @@ class Overview extends React.Component {
                       })
                     }
                   })
+                  if (this.state.selectedStyle === null) {
+                    this.setState({
+                      selectedStyle: response.data.results[0]
+                    })
+                  }
                 })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
     } else {
       console.log('no default product id');
     }

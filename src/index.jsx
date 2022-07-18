@@ -96,13 +96,16 @@ class App extends React.Component {
   }
 
   populateSearch = () => {
-    console.log(this.state.search_products);
     var products = this.state.search_products;
     var prod_objs = []
     products.map((product, x) => {
       var obj = {
         "name": product.name,
-        "id": product.id
+        "id": product.id,
+        "category": product.category,
+        "slogan": product.slogan,
+        "description": product.description,
+        "default_price": product.default_price
       };
       prod_objs.push(obj);
     })
@@ -150,8 +153,8 @@ class App extends React.Component {
             searching={this.state.searching}
           />
           <Overview product_id={this.state.product_id}/>
-          {/* <QandA /> */}
-          {/* <Review/> */}
+          {/* <QandA />
+          <Review/> */}
         </div>
       )
     } else {

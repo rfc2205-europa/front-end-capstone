@@ -10,9 +10,9 @@ class SearchResults extends React.Component {
   render() {
     if (this.props.results.length > 0) {
       return (
-        <div>
+        <div className="resultsPage">
           {this.props.results.map(result => {
-            return <div className="result" id={result.id} onClick={this.props.select}>{result.name}</div>
+            return <Result select={this.props.select} result={result} key={result.id}/>
           })}
         </div>
       )

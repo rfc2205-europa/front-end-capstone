@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
   }
 
   onClick = (e) => {
-    console.log(this.props.products)
+    // console.log(this.props.products)
     var results = [];
     this.props.products.map((product) => {
       if (product.name.includes(this.state.entry)) {
@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
       }
     })
     this.setState({
-      searchedProducts: results
+      searchedProducts: results,
     })
     this.props.toggle();
   }
