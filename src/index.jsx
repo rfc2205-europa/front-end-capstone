@@ -14,7 +14,36 @@ import QandA from './components/QuestionsAndAnswers/QandA.jsx'
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      product_id : null,
+    }
     this.trackClicks = this.trackClicks.bind(this);
+  }
+
+  getInitialProduct = () => {
+    var id;
+    var data = JSON.stringify({
+      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=25"
+    });
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3005/retrieve',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    axios(config)
+        .then((response) => {
+          id = response.data[0].id
+          console.log('selected id:', id);
+          this.setState({
+            product_id: id,
+          })
+        })
+        .catch(err => {
+          console.log('err:', err)
+        })
   }
 
   trackClicks = (e) => {
@@ -61,14 +90,17 @@ class App extends React.Component {
           console.log('click handling error:', err)
         })
   }
+  componentDidMount() {
+    this.getInitialProduct();
+  }
 
   render() {
     return (
       <div onClick={this.trackClicks}>
         {/* <h1>Hello World</h1> */}
-        <Overview />
-        <QandA />
-        <Review/>
+        <Overview product_id={this.state.product_id}/>
+        {/* <QandA /> */}
+        {/* <Review/> */}
       </div>
     )
   }

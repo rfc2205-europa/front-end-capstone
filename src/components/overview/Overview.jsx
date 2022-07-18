@@ -9,6 +9,7 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      product_id: null,
       product: null,
       styles: [],
       selectedStyle: null,
@@ -19,61 +20,64 @@ class Overview extends React.Component {
   }
 
   fetchData() {
-    var id = null || 66646;
-    var data = JSON.stringify({
-      "api": "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=25"
-    });
-    var config = {
-      method: 'post',
-      url: 'http://localhost:3005/retrieve',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data : data
-    };
-    axios(config)
-    .then((response) => {
-      id = response.data[4].id
-      console.log('selected id:', id);
-    })
-    // specific product
-        .then(() => {
-          data = JSON.stringify({"api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${id}`})
-          config.data = data;
-          axios(config)
-              .then(response => {
-                this.setState({
-                  product: response.data
-                })
-                data = JSON.stringify({"api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${id}/styles`})
-                config.data = data;
-                axios(config)
-                    .then(response => {
-                      // console.log(response.data)
+    if (this.state.product_id) {
+      var id = this.state.product_id
+      var data = JSON.stringify({"api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${id}`})
+      var config = {
+        method: 'post',
+        url: 'http://localhost:3005/retrieve',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      axios(config)
+          .then(response => {
+            this.setState({
+              product: response.data
+            })
+            data = JSON.stringify({"api": `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${id}/styles`})
+            config.data = data;
+            axios(config)
+                .then(response => {
+                  // console.log(response.data)
+                  this.setState({
+                    styles: response.data,
+                  })
+                  // selects default style out of results
+                  response.data.results.forEach((result) => {
+                    if (result['default?'] === true) {
                       this.setState({
-                        styles: response.data,
+                        selectedStyle: result,
                       })
-                      // selects default style out of results
-                      response.data.results.forEach((result) => {
-                        if (result['default?'] === true) {
-                          this.setState({
-                            selectedStyle: result,
-                          })
-                        }
-                      })
-                    })
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        })
-    .catch(function (error) {
-      console.log(error);
-    });
+                    }
+                  })
+                })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    } else {
+      console.log('no default product id');
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.product_id !== prevState.product_id) {
+      return { product_id: nextProps.product_id}
+    } else {
+      return null
+    }
   }
 
   componentDidMount() {
     this.fetchData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.product_id !== this.props.product_id) {
+      this.fetchData()
+    }
   }
 
   selectStyle = (e) => {
@@ -99,29 +103,31 @@ class Overview extends React.Component {
 
   render() {
     let { product, styles } = this.state;
-    if (this.state.selectedStyle) {
-      let { photos } = this.state.selectedStyle;
-      return (
-        <div >
-          <div className='topRow'>
-            <Gallery
-              photos={photos}
-              style={this.state.selectedStyle.style_id}
-              expanded={this.state.expanded}
-              expandedView={this.expand}
-            />
-            <ProductInfo
-              product={product}
-              styles={styles}
-              selectedStyle={this.state.selectedStyle}
-              handleStyles={this.selectStyle}
-            />
+    if (this.state.product_id) {
+      if (this.state.selectedStyle) {
+        let { photos } = this.state.selectedStyle;
+        return (
+          <div >
+            <div className='topRow'>
+              <Gallery
+                photos={photos}
+                style={this.state.selectedStyle.style_id}
+                expanded={this.state.expanded}
+                expandedView={this.expand}
+              />
+              <ProductInfo
+                product={product}
+                styles={styles}
+                selectedStyle={this.state.selectedStyle}
+                handleStyles={this.selectStyle}
+              />
+            </div>
+            <div className='bottomRow'>
+              <ProductOverview product={product}/>
+            </div>
           </div>
-          <div className='bottomRow'>
-            <ProductOverview product={product}/>
-          </div>
-        </div>
-      )
+        )
+      }
     } else {
       return (
         <div>
