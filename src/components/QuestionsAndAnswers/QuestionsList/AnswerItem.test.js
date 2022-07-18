@@ -1,11 +1,13 @@
-// import renderer from 'react-test-renderer';
-// import React from 'react';
-// import AnswerItem from './AnswerItem';
+import renderer from 'react-test-renderer';
+import AnswerItem from './AnswerItem.jsx';
+import React from 'react';
 
-// // describe("Question Modal Component Testing", function () {
-// //   it('Renders the Questions Modal component correctly', () => {
-// //     const component = renderer.create(<AnswerItem/>);
-// //     let tree = component.toJSON()
-// //     expect(tree).toMatchSnapshot();
-// //   });
-// // });
+
+describe("QandA Component Testing", function () {
+  it('renders the QandA component correctly', () => {
+    const component = renderer.create(<AnswerItem  answer={props.info.answer} key={Math.random()} fetch={this.props.fetch}/>);
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot();
+  });
+
+});

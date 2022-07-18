@@ -7,5 +7,6 @@ describe("AModal Component Testing", function () {
     const component = renderer.create(<AModal/>);
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot();
+
   });
 });
