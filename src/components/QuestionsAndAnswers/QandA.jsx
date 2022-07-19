@@ -16,7 +16,7 @@ class QandA extends React.Component {
       searchView: false,
       openQModalView: false,
       openAModalView: false,
-      productId: '66655', // 66642, 66680
+      productId: '66646', // 66642, 66680
       questionId: '',
       productInfo: {},
       questionBody: '',
@@ -26,17 +26,17 @@ class QandA extends React.Component {
   // fetches data from api on mounting of component
   componentDidMount = () => {
     // switch this line when the props are drilled for a product id from parent component
-    this.fetch(this.state.productId);
-    this.fetchProductName(this.state.productId);
-    // this.fetch(this.props.product_id);
-    // this.fetchProductName(this.props.product_id);
+    // this.fetch(this.state.productId);
+    // this.fetchProductName(this.state.productId);
+    this.fetch(this.props.product_id);
+    this.fetchProductName(this.props.product_id);
   };
 
 
   // pass in props of product id in componentDidMount function
   // fetches questions for a product from api
   fetch = (productId) => {
-    // var product_id = product_id || this.state.productId;
+    var productId = productId || this.state.productId;
 
     axios.post('http://localhost:3005/retrieve', {
       api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${productId}`,
@@ -55,7 +55,7 @@ class QandA extends React.Component {
   // fetches product info from api
   fetchProductName = (productId) => {
     // GET /products/:product_id
-
+    var productId = productId || this.state.productId;
     axios.post('http://localhost:3005/retrieve', {
       api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${productId}`,
     })

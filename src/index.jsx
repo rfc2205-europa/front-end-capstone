@@ -180,7 +180,7 @@ class App extends React.Component {
             getSearchResults={this.getSearchResults}
           />
           <Overview product_id={this.state.product_id}/>
-          <QandA />
+          <QandA product_id={this.state.product_id}/>
           {/* <Review/> */}
         </div>
       )
