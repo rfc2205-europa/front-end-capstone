@@ -26,6 +26,7 @@ var ModalView = function({clickFunc, product_id, needChar}) {
     } else {
       setInvalid(false)
       var postChars = {...chars, type: 'review', api: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews'}
+      console.log('this is postchar: ', postChars)
       service.post('/', postChars)
        .then((res) => {
          console.log('success!', res)
@@ -45,31 +46,29 @@ var ModalView = function({clickFunc, product_id, needChar}) {
       <div className='review-addReview'>
         {invalid && <div style={{ color: 'red' }}>Please enter valid input</div>}
         <div className='review-addReview-title'>Write Your Review</div>
-        <div className='review-addReview-rating-container'>
-          <div className='review-addReview-line'></div>
-          <div className='review-addReview-rating'>
-            <Star setFunc = {setAllChars} chars={chars}/>
-            <Recommend setFunc = {setAllChars} chars={chars}/>
-            <Characteristics needChar={needChar} setFunc = {setAllChars} chars={chars}/>
-          </div>
+        <Star setFunc = {setAllChars} chars={chars}/>
+        <Recommend setFunc = {setAllChars} chars={chars}/>
+        <div className='review-singleReview-divider-container'>
+          <span className = 'review-singleReview-divider'></span>
         </div>
-        <div className='review-addReview-review-container'>
-          <div className='review-addReview-line'></div>
-          <div className='review-addReview-review'>
-            <Summary setFunc = {setAllChars} chars={chars}/>
-            <ReviewBody setFunc = {setAllChars} chars={chars}/>
-            <Photo setFunc = {setAllChars} chars={chars}/>
-          </div>
+        <Characteristics needChar={needChar} setFunc = {setAllChars} chars={chars}/>
+        <div className='review-singleReview-divider-container'>
+          <span className = 'review-singleReview-divider'></span>
         </div>
+        <div className='review-addReview-subtitle'>Review<span style={{ color: 'red' }}>*</span>:</div>
+        <Summary setFunc = {setAllChars} chars={chars}/>
+        <ReviewBody setFunc = {setAllChars} chars={chars}/>
+        <Photo setFunc = {setAllChars} chars={chars}/>
+        <div className='review-singleReview-divider-container'>
+          <span className = 'review-singleReview-divider'></span>
+        </div>
+        <div className='review-addReview-subtitle'>Personal Information<span style={{ color: 'red' }}>*</span>:</div>
         <div className='review-addReview-personal-container'>
-          <div className='review-addReview-line'></div>
-          <div className='review-addReview-review'>
-            <NickName setFunc = {setAllChars} chars={chars}/>
-            <Email setFunc = {setAllChars} chars={chars}/>
-          </div>
+          <NickName setFunc = {setAllChars} chars={chars}/>
+          <Email setFunc = {setAllChars} chars={chars}/>
         </div>
       </div>
-      <button className='review-addReview-submit-btn' onClick={submitChars}>submit</button>
+      <button className='review-addReview-submit-btn' onClick={submitChars}>SUBMIT</button>
     </div>
   </>,
   document.getElementById('portal')

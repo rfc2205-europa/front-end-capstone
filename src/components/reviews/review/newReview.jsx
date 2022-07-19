@@ -13,28 +13,31 @@ export function Star({setFunc, chars}) {
 
   var starStyle = function(ratingValue) {
     if (ratingValue <= chars.rating || ratingValue <= hover) {
-      return <div onMouseOver={()=>{setHover(ratingValue)}} onMouseOut={()=>{setHover(null)}}>&#9733;</div>
+      return <div onMouseOver={()=>{setHover(ratingValue)}} onMouseOut={()=>{setHover(null)}} className='review-addReview-star-full'>&#9733;</div>
     } else {
-      return <div onMouseOver={()=>{setHover(ratingValue)}} onMouseOut={()=>{setHover(null)}}>&#9734;</div>
+      console.log('reach here')
+      return <div onMouseOver={()=>{setHover(ratingValue)}} onMouseOut={()=>{setHover(null)}} className='review-addReview-star-empty'>&#9733;</div>
     }
   }
 
   return (
     <div className='review-addReview-star-container'>
-      <div className='review-addReview-star'>Overal Rating<span style={{ color: 'red' }}>*</span>: </div>
-      <div className='review-addReview-star'>
-        {[...Array(5)].map((star,i) => {
-          const ratingValue = i+1;
-          return (
-            <label key={i}>
-              <input className='starRatingRadio' type='radio' name='rating' value={ratingValue} onClick={() => {clickStar(ratingValue);}}
-              />
-              {starStyle(ratingValue)}
-            </label>
-          )
-        })}
+      <div className='review-addReview-subtitle'>Overal Rating<span style={{ color: 'red' }}>*</span>: </div>
+      <div className='review-addReview-star-popup-container'>
+        <div className='review-addReview-star'>
+          {[...Array(5)].map((star,i) => {
+            const ratingValue = i+1;
+            return (
+              <label key={i}>
+                <input className='starRatingRadio' type='radio' name='rating' value={ratingValue} onClick={() => {clickStar(ratingValue);}}
+                />
+                {starStyle(ratingValue)}
+              </label>
+            )
+          })}
+        </div>
+        <div className='review-addReview-popUpText'>{chars.rating && ratingText[chars.rating]}</div>
       </div>
-      <div className='review-addReview-popUpText'>{chars.rating && ratingText[chars.rating]}</div>
     </div>
   )
 }
@@ -85,6 +88,7 @@ var SingleCharacteristics = function({ charName, charId, setFunc, chars }) {
         <div className='review-addReview-characteristics-radio'>
           <input type='radio' name={charName} id={charName + '1'} className='review-addReview-characteristics-radio-input' onClick={clickChar}/>
           <label htmlFor={charName + '1'} className='review-addReview-characteristics-radio-label'>1</label>
+          {/* <div className='review-addReview-popUpText'>{rating && ratingText}</div> */}
           <input type='radio' name={charName} id={charName + '2'} className='review-addReview-characteristics-radio-input' onClick={clickChar}/>
           <label htmlFor={charName + '2'} className='review-addReview-characteristics-radio-label'>2</label>
           <input type='radio' name={charName} id={charName + '3'} className='review-addReview-characteristics-radio-input' onClick={clickChar}/>
@@ -95,7 +99,13 @@ var SingleCharacteristics = function({ charName, charId, setFunc, chars }) {
           <label htmlFor={charName + '5'} className='review-addReview-characteristics-radio-label'>5</label>
         </div>
       </div>
-      <div className='review-addReview-popUpText'>{ratingText && ratingText}</div>
+      {console.log(rating, ratingText)}
+      {rating === '1' && <div className='review-addReview-popUpText' style={{marginLeft: '19%'}}>{ratingText}</div>}
+      {rating === '2' && <div className='review-addReview-popUpText' style={{marginLeft: '36%'}}>{ratingText}</div>}
+      {rating === '3' && <div className='review-addReview-popUpText' style={{marginLeft: '53%'}}>{ratingText}</div>}
+      {rating === '4' && <div className='review-addReview-popUpText' style={{marginLeft: '70%'}}>{ratingText}</div>}
+      {rating === '5' && <div className='review-addReview-popUpText' style={{marginLeft: '87%'}}>{ratingText}</div>}
+
     </div>
   )
 
@@ -105,7 +115,7 @@ export function Characteristics({ needChar,setFunc, chars }) {
 
   return (
     <div className='review-addReview-characteristics-container'>
-      <div>Characteristics Breakdown<span style={{ color: 'red' }}>*</span>: </div>
+      <div className='review-addReview-subtitle'>Characteristics Breakdown<span style={{ color: 'red' }}>*</span>: </div>
       <div className='review-addReview-characteristics-radio-container'>
         {Object.keys(needChar).map((charName) => {return <SingleCharacteristics key={charName} charName={charName} charId={needChar[charName].id} setFunc = {setFunc} chars={chars}/>})}
       </div>
@@ -123,7 +133,7 @@ export function Summary({setFunc, chars}) {
         <input className='review-addReview-input' type='text' required onChange={(e) => setFunc({...chars, summary: e.target.value})}/>
         <label className='review-addReview-label'>Review Summary: [Example: Best purchase ever!]</label>
         <div className='review-addReview-underline'></div>
-        {chars.summary.length >= 60 ? <div style={{ color: 'red' }}>Maximum word limit meets</div>:null}
+        {chars.summary.length >= 60 && <div className='review-addReview-redText'>Maximum word limit meets</div>}
       </div>
     </div>
   )
@@ -132,14 +142,15 @@ export function Summary({setFunc, chars}) {
 export function ReviewBody({setFunc, chars}) {
 
   return (
-    <div className='review-addReview-body-container'>
-      <div>Review Body<span style={{ color: 'red' }}>*</span>:</div>
-      <div className='review-addReview-body-minimumText'>
-        <input type='textarea' value={chars.body} placeholder='Why did you like the product or not?' onChange={(e)=> {setFunc({...chars, body: e.target.value})}} />
-        <div>{chars.body.length >= 50? 'Minimum reached': 'Minimum required characters left: ' + (50-chars.body.length).toString()}</div>
-      </div>
-
+    <div className='review-addReview-summary-container'>
+    <div className='review-addReview-summary'>
+      <input className='review-addReview-input' type='text' required onChange={(e)=> {setFunc({...chars, body: e.target.value})}}/>
+      <label className='review-addReview-label'>Review Body: [Why did you like the product or not]</label>
+      <div className='review-addReview-underline'></div>
+      {chars.body.length >= 50 && <div className='review-addReview-blackText'>Minimum reached</div>}
+      {chars.body.length >= 1 && chars.body.length < 50 && <div className='review-addReview-redText'>Minimum required characters left: {(50-chars.body.length).toString()}</div>}
     </div>
+  </div>
   )
 
 }
@@ -169,10 +180,12 @@ export function Photo({setFunc, chars}) {
 
   return (
     <div className='review-addReview-photo-container'>
-      <div>Upload photo:</div>
-      <div>
-        <input type='file' onChange={setPhotoFunc}></input>
-        {chars.photos.length < 5 && <button onClick={upload}>upload</button>}
+      <div className='review-addReview-subtitle'>Upload Photo:</div>
+      <label htmlFor="formFile" className="review-addReview-photo-button">
+        <input type='file' onChange={setPhotoFunc} className="form-control" id="formFile"></input>
+        {chars.photos.length < 5 && <button onClick={upload} className='review-addReview-button'>upload</button>}
+      </label>
+      <div className='thumbnail-container'>
         {chars.photos.length > 0 && chars.photos.map((photoURL) => {
           return <img key={photoURL} className = 'thumbnail' src={photoURL}/>
           })}
@@ -185,14 +198,14 @@ export function Photo({setFunc, chars}) {
 export function NickName({setFunc, chars}) {
 
   return (
-    <div className='review-addReview-nickName-container'>
-      <div>Nickname<span style={{ color: 'red' }}>*</span>:</div>
-      <div>
-        <input type='text' placeholer='Example: jackson11!' onChange={(e)=>{setFunc({...chars, name: e.target.value})}}></input>
-        {chars.name.length >= 60 ? <div>Maximum word limit meets</div>:null}
-        <p>For privacy reasons, do not use your full name or email address</p>
-      </div>
+    <div className='review-addReview-summary-container'>
+    <div className='review-addReview-summary'>
+      <input className='review-addReview-input' type='text' required onChange={(e)=>{setFunc({...chars, name: e.target.value})}}/>
+      <label className='review-addReview-label'>NickName: [jackson11!]</label>
+      <div className='review-addReview-underline'></div>
+      {chars.summary.length >= 60 ? <div className='review-addReview-redText'>Maximum word limit meets</div>:null}
     </div>
+  </div>
   )
 }
 
@@ -200,12 +213,13 @@ export function Email({setFunc, chars}) {
 
 
   return (
-    <div className='review-addReview-email-container'>
-      <div>Email<span style={{ color: 'red' }}>*</span>: </div>
-      <div>
-        <input type='email' placeholer='Example: jackson11@email.com' onChange={(e)=>{setFunc({...chars, email: e.target.value})}}></input>
-        <p>For authentication reasons, you will not be emailed</p>
-      </div>
+    <div className='review-addReview-summary-container'>
+    <div className='review-addReview-summary'>
+      <input className='review-addReview-input' type='text' required onChange={(e)=>{setFunc({...chars, email: e.target.value})}}/>
+      <label className='review-addReview-label'>Email: [jac11@email.com]</label>
+      <div className='review-addReview-underline'></div>
+      {chars.summary.length >= 60 ? <div className='review-addReview-redText'>Maximum word limit meets</div>:null}
     </div>
+  </div>
   )
 }
