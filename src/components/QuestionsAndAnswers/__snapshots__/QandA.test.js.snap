@@ -7,6 +7,7 @@ exports[`QandA Component Testing renders the QandA component correctly 1`] = `
   <h6>
     QUESTIONS & ANSWERS
   </h6>
+  <div />
   <div
     className="qSearchForm"
   >

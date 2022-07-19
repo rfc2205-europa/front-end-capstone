@@ -7,12 +7,16 @@ exports[`Question Modal Component Testing Renders the Questions Modal component 
   <div
     className="qModalContainer"
   >
-    <button
-      className="qAModalButtonX"
-      onClick={[Function]}
+    <div
+      className="qModalButtonPos"
     >
-      X
-    </button>
+      <button
+        className="qQAButton"
+        onClick={[Function]}
+      >
+        X
+      </button>
+    </div>
     <h5>
       Ask Your Question
     </h5>

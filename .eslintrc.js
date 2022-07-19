@@ -19,9 +19,8 @@ module.exports = {
     'react',
   ],
   'rules': {
+    'require-jsdoc': 0,
+    'react/prop-types': 'off',
+    'max-len': 'off',
   },
-  'ignore': [
-    'constructor', 'render', 'componentDidUpdate',
-    'getDerivedStateFromProps', 'componentDidMount',
-  ],
 };
