@@ -181,7 +181,7 @@ class App extends React.Component {
           />
           <Overview product_id={this.state.product_id}/>
           <QandA />
-          <Review/>
+          {/* <Review/> */}
         </div>
       )
     } else {
