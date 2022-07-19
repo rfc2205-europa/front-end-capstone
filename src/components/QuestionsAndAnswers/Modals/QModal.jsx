@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 
 class QModal extends React.Component {
   constructor(props) {
@@ -9,14 +8,6 @@ class QModal extends React.Component {
       qWarningModalView: false,
     };
   }
-
-  // validates props
-  // static propTypes = {
-  //   productName: PropTypes.string.isRequired,
-  //   productId: PropTypes.string.isRequired,
-  //   toggle: PropTypes.function.isRequired,
-  //   fetch: PropTypes.function.isRequired,
-  // };
 
   // sends post req to server for adding a question
   submitQ = (e) => {
@@ -52,7 +43,7 @@ class QModal extends React.Component {
           //   string += photo
           // }
           alert(string);
-          console.log('There is an error in your post req in Questions Modal: ', err)
+          console.log('There is an error in your post req in Questions Modal: ', err);
         });
   };
 
@@ -62,7 +53,9 @@ class QModal extends React.Component {
         <div className="qModalContainer">
           {/* {this.state.qWarningModalView && <QWarningModal/>} */}
           <div className="qModalButtonPos">
-            <button className="qQAButton" onClick={() => { this.props.toggle() }}>X</button>
+            <button className="qQAButton" onClick={() => {
+              this.props.toggle();
+            }}>X</button>
           </div>
           <h5 >Ask Your Question</h5>
           <p>{this.props.productName}</p>
@@ -70,18 +63,24 @@ class QModal extends React.Component {
             <form>
               <div>
                 <label>Your Question*</label>
-                <textarea className="qAModalForm1" type='text' onChange={(e) => { this.setState({ question: e.target.value }) }}></textarea>
+                <textarea className="qAModalForm1" type='text' onChange={(e) => {
+                  this.setState({question: e.target.value});
+                }}></textarea>
               </div>
               <div>
                 <label>What is your nickname*</label>
-                <input className="qAModalForm2" type='text' placeholder="Example: jackson11!" onChange={(e) => { this.setState({ nickname: e.target.value }) }}></input>
+                <input className="qAModalForm2" type='text' placeholder="Example: jackson11!" onChange={(e) => {
+                  this.setState({nickname: e.target.value});
+                }}></input>
               </div>
               <div>
                 <p>For privacy reasons, do not use your full name or email address</p>
               </div>
               <div>
                 <label>Your email*</label>
-                <input className="qAModalForm3" type='text' placeholder="Why did you like the product or not?" onChange={(e) => { this.setState({ email: e.target.value }) }}></input>
+                <input className="qAModalForm3" type='text' placeholder="Why did you like the product or not?" onChange={(e) => {
+                  this.setState({email: e.target.value});
+                }}></input>
               </div>
               <div>
                 <p>“For authentication reasons, you will not be emailed”</p>

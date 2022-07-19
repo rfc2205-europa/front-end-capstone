@@ -4,7 +4,6 @@ import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
 import QModal from './Modals/QModal.jsx';
 import AModal from './Modals/AModal.jsx';
-import PropTypes from 'prop-types';
 
 
 class QandA extends React.Component {
@@ -26,11 +25,11 @@ class QandA extends React.Component {
 
   // fetches data from api on mounting of component
   componentDidMount = () => {
-    //switch this line when the props are drilled for a product id from parent component
+    // switch this line when the props are drilled for a product id from parent component
     this.fetch(this.state.productId);
     this.fetchProductName(this.state.productId);
-    //this.fetch(this.props.product_id);
-    //this.fetchProductName(this.props.product_id);
+    // this.fetch(this.props.product_id);
+    // this.fetchProductName(this.props.product_id);
   };
 
 
@@ -172,18 +171,14 @@ class QandA extends React.Component {
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
         <div>
-          {/* eslint-disable-next-line max-len */}
           {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name} fetch={this.fetch} />}
-          {/* eslint-disable-next-line max-len */}
           {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name} questionBody={this.state.questionBody} fetch={this.fetch} />}
         </div>
         <Search search={this.search} questions={this.state.questions} />
         <div>
           {collapse}
         </div>
-        {/* eslint-disable-next-line max-len */}
         {button}<button className="qButton" onClick={this.openQModal}>ADD A QUESTION +</button>
-
       </div>
     );
   }

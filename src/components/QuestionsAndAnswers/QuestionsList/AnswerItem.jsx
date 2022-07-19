@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import {format, parseISO} from 'date-fns';
-import PropTypes from 'prop-types';
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -13,15 +12,6 @@ class AnswerItem extends React.Component {
     };
   }
 
-  // validates props
-  // static propTypes = {
-  //   productName: PropTypes.string.isRequired,
-  //   productId: PropTypes.string.isRequired,
-  //   // toggle: PropTypes.function.isRequired,
-  //   // fetch: PropTypes.function.isRequired,
-  //   answer: PropTypes.array.isRequired,
-  // };
-
   // handles helpful answer click
   helpfulA = (id) => {
     console.log('helpful answer');
@@ -32,7 +22,7 @@ class AnswerItem extends React.Component {
       'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`,
     })
         .then((res) => {
-          console.log('response in client from server: report answer: ', res)
+          console.log('response in client from server: report answer: ', res);
           this.setState({
             helpfulA: false,
           });
@@ -89,7 +79,9 @@ class AnswerItem extends React.Component {
           <li><a>Helpful?</a></li>
           <li><a className="qw10Underline" onClick={this.incrementor}>Yes ({answer.helpfulness})</a></li>
           <li><a>|</a></li>
-          <li><a className="qw10Underline" onClick={() => { this.reportA(answer.id) }}>{this.state.reportA}</a></li>
+          <li><a className="qw10Underline" onClick={() => {
+            this.reportA(answer.id);
+          }}>{this.state.reportA}</a></li>
         </ul>
       </div>
     );

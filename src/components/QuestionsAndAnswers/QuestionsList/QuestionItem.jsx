@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import AnswerItem from './AnswerItem.jsx';
-import PropTypes from 'prop-types';
-// import style from '../style.css';
 
 
 class QuestionItem extends React.Component {
@@ -53,29 +51,20 @@ class QuestionItem extends React.Component {
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`,
       })
           .then((res) => {
-            console.log('response in client from server after report question: ', res)
+            console.log('response in client from server after report question: ', res);
             this.setState({
               reportQ: <u className="qUnderline">Reported</u>,
               reportQBool: false,
             });
           })
           .catch((err) => {
-            console.log('ERROR IN PUT Helpful Question: ', err)
+            console.log('ERROR IN PUT Helpful Question: ', err);
           });
     }
 
     // this.setState({report: false})
   };
 
-  /*
-
-  TODO:
-  answers:
-  any answers from the seller should appear at the top of the list
-  The view for the full list of answers should be confined to half
-   of the screen, and the list within should be scrollable.
-
-  */
 
   // toggle button and state value to render size of answers list
   togButton = () => {
@@ -93,20 +82,23 @@ class QuestionItem extends React.Component {
   // increments helpful questions value
   incrementor = () => {
     if (this.state.helpfulQ) {
-      this.helpfulQ(this.props.info.question_id)
+      this.helpfulQ(this.props.info.question_id);
       this.props.info.question_helpfulness++;
     }
   };
 
   render() {
-    let body, ans, help, button;
+    // let body;
+    // let ans;
+    // let help;
+    let button;
     const ansArray = [];
     let sArray = [];
     // let sortedArrSellerFirst = [];
 
     let { question_body, answers, question_helpfulness } = this.props.info;
-    body = question_body;
-    help = question_helpfulness;
+    const body = question_body;
+    const help = question_helpfulness;
 
     // sorts data obj of answers into array
     for (const key in answers) {
@@ -134,7 +126,7 @@ class QuestionItem extends React.Component {
       list = sArray;
       button = <h5 className="qw10B" onClick={this.togButton}>COLLAPSE ANSWERS</h5>
     }
-    ans = list.map((answer) => (
+    const ans = list.map((answer) => (
       <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
     ));
 

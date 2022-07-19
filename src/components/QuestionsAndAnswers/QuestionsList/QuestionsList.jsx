@@ -1,6 +1,5 @@
 import React from 'react';
-import QuestionItem from "./QuestionItem.jsx";
-import PropTypes from 'prop-types';
+import QuestionItem from './QuestionItem.jsx';
 
 class QuestionsList extends React.Component {
   constructor(props) {
@@ -36,8 +35,8 @@ class QuestionsList extends React.Component {
   */
 
   render() {
-    let list;
-    let button;
+    // let list;
+    // let button;
     let questions = [];
 
     // determines the size of list and controls button label for change
@@ -45,15 +44,15 @@ class QuestionsList extends React.Component {
       if (this.props.questions.length > 2) {
         questions = this.props.questions.slice(0, 2);
       } else {
-        questions = this.props.questions
+        questions = this.props.questions;
       }
     } else {
-      questions = this.props.questions
+      questions = this.props.questions;
     }
 
     // dynamic list render of questions if props is available
     // console.log(questions)
-    list = questions.map((q) => (
+    const list = questions.map((q) => (
       <QuestionItem info={q} key={Math.random()} fetch={this.props.fetch} toggleAModal={this.props.toggleAModal}/>
     ));
 
