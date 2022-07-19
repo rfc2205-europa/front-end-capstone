@@ -19,10 +19,10 @@ class QuestionItem extends React.Component {
     console.log('helpful question');
     // send put req to server once per load
     if (this.state.helpfulQ) {
-      const {questionId} = this.props.info;
+      const {question_id} = this.props.info;
       axios.put(`http://localhost:3005/qa/questions`, {
         'type': 'question',
-        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${questionId}/helpful`,
+        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/helpful`,
       })
           .then((res) => {
             console.log('res in client from server: helpful question: ', res);
@@ -45,7 +45,7 @@ class QuestionItem extends React.Component {
     // send put req to server once per load
     // render button label onclick
     if (this.state.reportQBool) {
-      let { question_id } = this.props.info;
+      const {question_id} = this.props.info;
       axios.put(`http://localhost:3005/qa/questions`, {
         'type': 'question',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`,
@@ -124,7 +124,7 @@ class QuestionItem extends React.Component {
       }
     } else {
       list = sArray;
-      button = <h5 className="qw10B" onClick={this.togButton}>COLLAPSE ANSWERS</h5>
+      button = <h5 className="qw10B" onClick={this.togButton}>COLLAPSE ANSWERS</h5>;
     }
     const ans = list.map((answer) => (
       <AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} />
@@ -133,7 +133,9 @@ class QuestionItem extends React.Component {
     return (
       <div className="qTile">
         <div className="qFirst_line">
-          <h5 className="qbold13">Q: {body}</h5><p className="qw10"onClick={this.incrementor}>Helpful? Yes ({help})</p><p className="qw10" onClick={this.reportQ}>{this.state.reportQ}</p><p className="qw10Underline" onClick={()=>{this.props.toggleAModal(this.props.info.question_id, this.props.info.question_body)}}>Add Answer</p>
+          <h5 className="qbold13">Q: {body}</h5><a className="qw10"onClick={this.incrementor}>Helpful? Yes ({help})</a><a className="qw10" onClick={this.reportQ}>{this.state.reportQ}</a><a className="qw10Underline" onClick={()=>{
+            this.props.toggleAModal(this.props.info.question_id, this.props.info.question_body);
+          }}>Add Answer</a>
         </div>
         <div className="qAList" >{ans}</div>
         {button}

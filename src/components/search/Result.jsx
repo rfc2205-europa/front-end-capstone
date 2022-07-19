@@ -6,7 +6,7 @@ class Result extends React.Component {
   }
 
   render() {
-    let { result } = this.props
+    const {result} = this.props;
     return (
       <div
         className="result"
@@ -22,7 +22,7 @@ class Result extends React.Component {
           <p id={result.id}>{result.description}</p>
         </div>
       </div>
-    )
+    );
   }
 }
 

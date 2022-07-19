@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       product_id: 66642,
       searching: false,
       search_products: [],
@@ -113,6 +114,10 @@ class App extends React.Component {
       data: data,
     };
     axios(config)
+        // .then(res => {
+        //   console.log(res.data)
+        // })
+
         .catch((err) => {
           console.log('click handling error:', err);
         });
@@ -177,7 +182,9 @@ class App extends React.Component {
             getSearchResults={this.getSearchResults}
           />
           <Overview product_id={this.state.product_id}/>
-          <QandA />
+
+          <QandA product_id={this.state.product_id}/>
+
           <Review/>
         </div>
       );
