@@ -352,8 +352,9 @@ body {
 /* --------- add review feature --------- */
 .review-addReview {
   width: 600px;
-  height: 800px;
-  background-color: aliceblue;
+  height: fit-content;
+  /* height: 1000px; */
+  background-color: white;
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -361,7 +362,6 @@ body {
   gap: 10px;
   justify-content: flex-start;
   font-family: "Times New Roman", Times, serif;
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .review-addReview-popUpText {
@@ -372,48 +372,58 @@ body {
 .review-addReview-title {
   text-align: center;
   font-weight: bold;
+  font-size: 20px;
 }
 
-
-.review-addReview-rating-container .review-addReview-review-container .review-addReview-personal-container {
-  display: flex;
-  flex-direction: row;
-
-}
-
-/* .review-addReview-line {
-  border-left: 6px solid green;
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  margin-left: -3px;
-  top: 0;
-
-} */
-
-.review-addReview-rating .review-addReview-review .review-addReview-personal {
-  display: flex;
-  flex-direction: column;
-
-}
-
-.review-addReview-star-container, .review-addReview-recommend-container, .review-addReview-characteristics-container, .review-addReview-summary-container, .review-addReview-body-container, .review-addReview-nickName-container, .review-addReview-photo-container, .review-addReview-email-container {
+.review-addReview-star-container, .review-addReview-recommend-container, .review-addReview-characteristics-container, .review-addReview-summary-container, .review-addReview-body-container, .review-addReview-photo-container, .review-addReview-personal-container {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   column-gap: 10px;
   /* row-gap: 15px; */
   /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
 }
 
-.review-addReview-star-container, .review-addReview-recommend-container,.review-addReview-summary-container {
+.review-addReview-star-popup-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.review-addReview-recommend-container,.review-addReview-summary-container {
   height: 30px;
   flex-direction: row;
   align-items: center;
-
+  justify-content: space-between;
 }
 
 .review-addReview-submit-btn {
   width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  background: rgb(80,80,80);
+  color: #FFFFFF;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+
+}
+
+
+.review-addReview-star-full {
+  font-size: 40px;
+}
+
+.review-addReview-star-empty {
+  color: rgba(232, 232, 232, 0.9);
+  font-size: 40px;
+}
+
+.review-addReview-subtitle {
+  font-weight: bold;
+  font-size: 15px;
 }
 
 /* -- add review: recommend  -- */
@@ -460,38 +470,41 @@ body {
 /* -- add review: characteristics  -- */
 
 .review-addReview-characteristics-container {
-  flex-direction: row;
   justify-content: flex-start;
-  gap: 25px;
+  gap: 5px;
 }
 
 .review-addReview-characteristics-radio-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 7px;
+  /* gap: 5px; */
 }
 
 .review-addReview-characteristics-text-radio, .review-addReview-characteristics-text-radio-container {
   display: flex;
-  flex-direction: row;
-  height: 25px;
+  /* flex-direction: row; */
+  /* height: 25px; */
 
 }
 .review-addReview-characteristics-text-radio-container {
   justify-content: flex-start;
-  width: 450px;
+  flex-direction: column;
+  width: 100%;
 }
 
 .review-addReview-characteristics-text-radio {
   justify-content: space-between;
-  width: 240px;
+  width: 100%;
+  align-items: center;
 }
 
 .review-addReview-characteristics-radio {
   display: inline-flex;
   overflow: hidden;
-  border-radius: 13px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  width: 420px;
+  justify-content: space-between;
   margin-left: 10px;
 }
 
@@ -501,20 +514,23 @@ body {
 }
 
 .review-addReview-characteristics-radio-label {
-  padding: 5px 13px;
+  padding: 7px 30px;
   font-size: 13px;
-  color: #ffffff;
-  background-color: #7395AE;
+  color: #333333;
+  background-color: rgb(230,230,230);
   cursor: pointer;
   transition: background 0.1s;
+  /* gap: 10px; */
 
 }
 .review-addReview-characteristics-radio-label:not(:last-of-type) {
-  border-right: 1px solid #557A95;
+  border-right: 1px solid #FFFFFF;
+  /* color: #FFFFFF; */
 }
 
 .review-addReview-characteristics-radio-input:checked + .review-addReview-characteristics-radio-label {
-  background: #557A95;
+  background: rgb(80,80,80);
+  color: #FFFFFF;
 }
 
 /* -- add review: characteristics  -- */
@@ -525,6 +541,7 @@ body {
   background: #fff;
   padding:30px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
 
 .review-addReview-summary-container .review-addReview-summary {
@@ -578,24 +595,79 @@ body {
   transform: scaleX(1);
 }
 
+.review-addReview-redText {
+  color: red;
+  position: absolute;
+  top: 50px;
+
+}
+
+.review-addReview-blackText {
+  position: absolute;
+  top: 50px;
+  color: grey;
+}
+
 /* -- add review: summary  -- */
 
+/* -- add review: photo  -- */
+.review-addReview-photo-button {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+
+}
+
+.review-addReview-button {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.review-addReview-button:hover,
+.review-addReview-button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.review-addReview-button:hover {
+  transform: translateY(-1px);
+}
+
+.review-addReview-button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+/* -- add review: photo  -- */
+
+/* -- add review: personal  -- */
+.review-addReview-personal-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* -- add review: personal  -- */
 /* ----------- add review feature ----------- */
-
-
-
-
-
-
-
-.review-addReview-star-text {
-  /* width: 50%; */
-}
-
-.review-addReview-star {
-  /* width: 100%; */
-  /* height: 30%; */
-}
 
 .starRatingRadio {
   display: none;
@@ -620,7 +692,6 @@ body {
   margin-left: 40px;
 }
 
-
 .rating-score-star-container, .rating-star-container{
   position: relative;
   display: flex;
@@ -641,17 +712,15 @@ body {
   margin-left: 40px;
   font-weight: bold;
   font-size: 70px;
-  color: 	rgb(80,80,80);
+  color:  rgb(80,80,80);
 }
 
 .rating-star {
-  /* position: absolute; */
   color: #ff9800;
   font-size: 30px;
 }
 
 .half-rating-star {
-  /* position: absolute; */
   --v:50;
   background: linear-gradient(
     90deg,
@@ -693,7 +762,7 @@ body {
 }
 
 .rating-stats-colorBar {
-  background-color:	rgb(80,80,80);
+  background-color: rgb(80,80,80);
   width: 70%;
   height: 100%;
 }
@@ -762,15 +831,16 @@ body {
 
 .modal-content {
   width: 800px;
-  height: 800px;
-  position: fixed;
+  height: fit-content;
+  /* height: 1000px; */
+  position: absolute;
   left: 80%;
   top: 1px;
   transform: translate(-50%, -50%);
   padding: 50px;
   z-index: 1000;
   top: 0px;
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+
 }
 
 .largeImage {
@@ -826,7 +896,6 @@ body {
   color:#aaa
 }
 /* ------------- review ------------- */
-
 
 
 
@@ -889,7 +958,6 @@ body {
   background-color: rgb(201, 214, 223);
   border-radius: 4px;
 }
-
 
 .qList{
   height: 530px;
@@ -997,7 +1065,6 @@ body {
 
 /* --------------------^^^^^^^ Fonts Styles ^^^^^^^--------------------------------------------- */
 
-
 /* ---------------vvvvvvvvvvvv QModal vvvvvvvvvvv-------------------------------------------- */
 
 .qModalBackground {
@@ -1091,9 +1158,8 @@ body {
   font-weight: bold;
 }
 
-
 /* ---------------^^^^^^^^^^ Modals ^^^^^^^^^^^^-------------------------------------------- */
 
-
 /* ---------------^^^^^^^^^^^ QandA ^^^^^^^^^^^^-------------------------------------------- */
+
 
