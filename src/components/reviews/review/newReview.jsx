@@ -7,11 +7,11 @@ export function Star({setFunc, chars}) {
   const [hover, setHover] = useState(null);
   const ratingText = {1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great'};
 
-  var clickStar = function(ratingValue) {
-    setFunc({...chars, ['rating']: ratingValue})
-  }
+  const clickStar = function(ratingValue) {
+    setFunc({...chars, ['rating']: ratingValue});
+  };
 
-  var starStyle = function(ratingValue) {
+  const starStyle = function(ratingValue) {
     if (ratingValue <= chars.rating || ratingValue <= hover) {
       return <div onMouseOver={()=>{setHover(ratingValue)}} onMouseOut={()=>{setHover(null)}} className='review-addReview-star-full'>&#9733;</div>
     } else {
@@ -33,17 +33,16 @@ export function Star({setFunc, chars}) {
                 />
                 {starStyle(ratingValue)}
               </label>
-            )
+            );
           })}
         </div>
         <div className='review-addReview-popUpText'>{chars.rating && ratingText[chars.rating]}</div>
       </div>
     </div>
-  )
+  );
 }
 
 export function Recommend({setFunc, chars}) {
-
   return (
     <div className='review-addReview-recommend-container'>
       <label className='review-addReview-radio'>
@@ -57,10 +56,10 @@ export function Recommend({setFunc, chars}) {
         <div className='review-addReview-radio-text'>I don't recommend this product</div>
       </label>
     </div>
-    )
+  );
 }
 
-var SingleCharacteristics = function({ charName, charId, setFunc, chars }) {
+const SingleCharacteristics = function({ charName, charId, setFunc, chars }) {
   const [rating, setRating] = useState(null)
   const [ratingText, setRatingText] = useState(null)
   const text = {Size: {1: 'A size too small', 2: '½ a size too small', 3: 'Perfect', 4: '½ a size too big', 5: 'A size too wide'},
@@ -70,7 +69,7 @@ var SingleCharacteristics = function({ charName, charId, setFunc, chars }) {
   Length: {1: 'Runs short', 2: 'Runs slightly short', 3: 'Perfect', 4: 'Runs slightly long', 5: 'Runs long'},
   Fit: {1: 'Runs tight', 2: 'Runs slightly tight', 3: 'Perfect', 4: 'Runs slightly long', 5: 'Runs long'}};
 
-  var clickChar = function(e) {
+  const clickChar = function(e) {
     setRating(e.target.id[e.target.id.length-1])
     setRatingText(text[charName][e.target.id[e.target.id.length-1]])
     if (chars['characteristics'][charId]) {
@@ -122,11 +121,10 @@ export function Characteristics({ needChar,setFunc, chars }) {
 
     </div>
 
-    )
+    );
 }
 
 export function Summary({setFunc, chars}) {
-
   return (
     <div className='review-addReview-summary-container'>
       <div className='review-addReview-summary'>
@@ -140,43 +138,40 @@ export function Summary({setFunc, chars}) {
 }
 
 export function ReviewBody({setFunc, chars}) {
-
   return (
     <div className='review-addReview-summary-container'>
-    <div className='review-addReview-summary'>
-      <input className='review-addReview-input' type='text' required onChange={(e)=> {setFunc({...chars, body: e.target.value})}}/>
-      <label className='review-addReview-label'>Review Body: [Why did you like the product or not]</label>
-      <div className='review-addReview-underline'></div>
-      {chars.body.length >= 50 && <div className='review-addReview-blackText'>Minimum reached</div>}
-      {chars.body.length >= 1 && chars.body.length < 50 && <div className='review-addReview-redText'>Minimum required characters left: {(50-chars.body.length).toString()}</div>}
+      <div className='review-addReview-summary'>
+        <input className='review-addReview-input' type='text' required onChange={(e)=> {setFunc({...chars, body: e.target.value})}}/>
+        <label className='review-addReview-label'>Review Body: [Why did you like the product or not]</label>
+        <div className='review-addReview-underline'></div>
+        {chars.body.length >= 50 && <div className='review-addReview-blackText'>Minimum reached</div>}
+        {chars.body.length >= 1 && chars.body.length < 50 && <div className='review-addReview-redText'>Minimum required characters left: {(50-chars.body.length).toString()}</div>}
+      </div>
     </div>
-  </div>
-  )
-
+  );
 }
 
 export function Photo({setFunc, chars}) {
   const [photo, setPhoto] = useState(null);
   // const [photo, setPhoto] = useState(null);
 
-  var setPhotoFunc = function(e) {
-    console.log(e.target.files[0])
-    setPhoto(e.target.files[0])
-  }
+  const setPhotoFunc = function(e) {
+    console.log(e.target.files[0]);
+    setPhoto(e.target.files[0]);
+  };
 
-  var upload = function(e) {
+  const upload = function(e) {
     e.preventDefault();
-    var photoData = new FormData();
-    photoData.append('file', photo)
-    photoData.append('upload_preset', config.uploadToken)
+    const photoData = new FormData();
+    photoData.append('file', photo);
+    photoData.append('upload_preset', config.uploadToken);
     console.log(photoData);
     axios.post('https://api.cloudinary.com/v1_1/dhst87v9a/image/upload', photoData)
-      .then((res) => {
-        console.log(res)
-        setFunc({...chars, photos:[...chars['photos'], `https://res.cloudinary.com/dhst87v9a/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1657832797/${res.data.public_id}.jpg`]})
-
-      })
-  }
+        .then((res) => {
+          console.log(res);
+          setFunc({...chars, photos:[...chars['photos'], `https://res.cloudinary.com/dhst87v9a/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1657832797/${res.data.public_id}.jpg`]});
+        });
+  };
 
   return (
     <div className='review-addReview-photo-container'>
@@ -188,38 +183,35 @@ export function Photo({setFunc, chars}) {
       <div className='thumbnail-container'>
         {chars.photos.length > 0 && chars.photos.map((photoURL) => {
           return <img key={photoURL} className = 'thumbnail' src={photoURL}/>
-          })}
+        })}
       </div>
     </div>
-  )
+  );
 }
 
 
 export function NickName({setFunc, chars}) {
-
   return (
     <div className='review-addReview-summary-container'>
-    <div className='review-addReview-summary'>
-      <input className='review-addReview-input' type='text' required onChange={(e)=>{setFunc({...chars, name: e.target.value})}}/>
-      <label className='review-addReview-label'>NickName: [jackson11!]</label>
-      <div className='review-addReview-underline'></div>
-      {chars.summary.length >= 60 ? <div className='review-addReview-redText'>Maximum word limit meets</div>:null}
+      <div className='review-addReview-summary'>
+        <input className='review-addReview-input' type='text' required onChange={(e)=>{setFunc({...chars, name: e.target.value})}}/>
+        <label className='review-addReview-label'>NickName: [jackson11!]</label>
+        <div className='review-addReview-underline'></div>
+        {chars.summary.length >= 60 ? <div className='review-addReview-redText'>Maximum word limit meets</div>:null}
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
 export function Email({setFunc, chars}) {
-
-
   return (
     <div className='review-addReview-summary-container'>
-    <div className='review-addReview-summary'>
-      <input className='review-addReview-input' type='text' required onChange={(e)=>{setFunc({...chars, email: e.target.value})}}/>
-      <label className='review-addReview-label'>Email: [jac11@email.com]</label>
-      <div className='review-addReview-underline'></div>
-      {chars.summary.length >= 60 ? <div className='review-addReview-redText'>Maximum word limit meets</div>:null}
+      <div className='review-addReview-summary'>
+        <input className='review-addReview-input' type='text' required onChange={(e)=>{setFunc({...chars, email: e.target.value})}}/>
+        <label className='review-addReview-label'>Email: [jac11@email.com]</label>
+        <div className='review-addReview-underline'></div>
+        {chars.summary.length >= 60 ? <div className='review-addReview-redText'>Maximum word limit meets</div>:null}
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};

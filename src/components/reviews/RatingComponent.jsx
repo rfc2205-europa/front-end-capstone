@@ -3,28 +3,27 @@ import AverageStar from './rating/AverageStar.jsx';
 import RatingStat from './rating/RatingStat.jsx';
 import CharRating from './rating/CharRating.jsx';
 
-var RatingComponent = function({ratings}) {
+const RatingComponent = function({ratings}) {
   const [maxCount, setMaxCount] = useState(0);
   const [aveScore, setAveScore] = useState(0);
   const [starCount, setStarCount] = useState([]);
 
   useEffect(() => {
-    var sum = 0;
-    var count = 0;
-    var star = [];
-    var currentMax = 0;
-    for (var key in ratings.ratings) {
-      var ratingCount = Number(ratings.ratings[key])
-      currentMax = Math.max(ratingCount, currentMax)
-      sum += ratingCount * Number(key)
-      count += ratingCount
-      star.push(ratingCount)
+    let sum = 0;
+    let count = 0;
+    const star = [];
+    let currentMax = 0;
+    for (let key in ratings.ratings) {
+      var ratingCount = Number(ratings.ratings[key]);
+      currentMax = Math.max(ratingCount, currentMax);
+      sum += ratingCount * Number(key);
+      count += ratingCount;
+      star.push(ratingCount);
     }
     setAveScore(sum/count);
     setMaxCount(currentMax);
     setStarCount(star);
-
-  }, [ratings])
+  }, [ratings]);
 
   return (
     <div className = 'review review-rating'>
@@ -33,7 +32,7 @@ var RatingComponent = function({ratings}) {
       <RatingStat starCount={starCount} maxCount = {maxCount} recommended={ratings.recommended}/>
       <CharRating char = {ratings.characteristics}/>
     </div>
-  )
-}
+  );
+};
 
 export default RatingComponent;
