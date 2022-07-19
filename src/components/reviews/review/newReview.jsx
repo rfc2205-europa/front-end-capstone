@@ -120,12 +120,10 @@ export function Summary({setFunc, chars}) {
   return (
     <div className='review-addReview-summary-container'>
       <div className='review-addReview-summary'>
-
-        {/* <div className='review-addReview-body-minimumText'> */}
         <input className='review-addReview-input' type='text' required onChange={(e) => setFunc({...chars, summary: e.target.value})}/>
-        <label>Review Summary: [Example: Best purchase ever!]</label>
-        {chars.summary.length >= 60 ? <div>Maximum word limit meets</div>:null}
-        {/* </div> */}
+        <label className='review-addReview-label'>Review Summary: [Example: Best purchase ever!]</label>
+        <div className='review-addReview-underline'></div>
+        {chars.summary.length >= 60 ? <div style={{ color: 'red' }}>Maximum word limit meets</div>:null}
       </div>
     </div>
   )
