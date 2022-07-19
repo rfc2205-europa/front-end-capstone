@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GalleryOverlay from './GalleryOverlay.jsx'
+import GalleryOverlay from './GalleryOverlay.jsx';
 
 class ExpandedGallery extends React.Component {
   constructor(props) {
@@ -8,8 +8,8 @@ class ExpandedGallery extends React.Component {
     this.state = {
       photos: null,
       currentPhoto: null,
-      currentIndex: null
-    }
+      currentIndex: null,
+    };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -17,8 +17,8 @@ class ExpandedGallery extends React.Component {
     return {
       photos: nextProps.photos,
       currentPhoto: nextProps.currentPhoto,
-      currentIndex: nextProps.currentIndex
-    }
+      currentIndex: nextProps.currentIndex,
+    };
   }
 
   render() {
@@ -36,13 +36,12 @@ class ExpandedGallery extends React.Component {
           <img
             className="expandedImage"
             src={this.state.photos[this.state.currentIndex].url}
-            style={{height: '100%', width: '100%'}}
             onClick={this.props.regularView}
           />
         </div>
         <span className="galleryArrow expandedRight" onClick={this.props.goRight}>&#10095;</span>
       </div>
-    )
+    );
   }
 }
 

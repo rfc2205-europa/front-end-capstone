@@ -1,5 +1,7 @@
 import React from 'react';
 import Gallery from './subcomponents/Gallery.jsx';
+import ExpandedGallery from './subcomponents/ExpandedGallery.jsx';
+import GalleryOverlay from './subcomponents/GalleryOverlay.jsx';
 import ProductInfo from './subcomponents/ProductInfo.jsx';
 import ProductOverview from './subcomponents/ProductOverview.jsx';
 
