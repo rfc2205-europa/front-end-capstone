@@ -66,9 +66,9 @@ class SearchBar extends React.Component {
           style={{display: 'flex', width: '100%', justifyContent: 'space-between', border: '1px solid black'}}
         >
           <h3>The Future of Online Retail</h3>
-          <div>
-            <button className="qButton" onClick={this.onClick}>Search</button>
+          <div style={{display: 'flex', width: '40%'}}>
             <input className="qMSearch" type="text" placeholder="europa" onChange={this.enterSearch} onClick={this.populateResults}/>
+            <button className="qButton" onClick={this.onClick}>Search</button>
           </div>
         </div>
       );
