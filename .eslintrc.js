@@ -22,5 +22,6 @@ module.exports = {
     'require-jsdoc': 0,
     'react/prop-types': 'off',
     'max-len': 'off',
+    'camelcase': 'off',
   },
 };
