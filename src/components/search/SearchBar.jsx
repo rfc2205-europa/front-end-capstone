@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
   };
 
   sentenceCase = (name) => {
-    const casedName = '';
+    let casedName = '';
     name = name.split('');
     for (let x = 0; x < name.length; x++) {
       if (name[x-1] === undefined || name[x-1] === ' ') {
@@ -67,8 +67,8 @@ class SearchBar extends React.Component {
         >
           <h3>The Future of Online Retail</h3>
           <div>
-            <button onClick={this.onClick}>Search</button>
-            <input type="text" placeholder="europa" onChange={this.enterSearch} onClick={this.populateResults}/>
+            <button className="qButton" onClick={this.onClick}>Search</button>
+            <input className="qMSearch" type="text" placeholder="europa" onChange={this.enterSearch} onClick={this.populateResults}/>
           </div>
         </div>
       );

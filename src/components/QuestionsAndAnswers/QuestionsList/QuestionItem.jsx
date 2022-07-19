@@ -19,10 +19,10 @@ class QuestionItem extends React.Component {
     console.log('helpful question');
     // send put req to server once per load
     if (this.state.helpfulQ) {
-      const {questionId} = this.props.info;
+      const {question_id} = this.props.info;
       axios.put(`http://localhost:3005/qa/questions`, {
         'type': 'question',
-        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${questionId}/helpful`,
+        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/helpful`,
       })
           .then((res) => {
             console.log('res in client from server: helpful question: ', res);
@@ -45,7 +45,7 @@ class QuestionItem extends React.Component {
     // send put req to server once per load
     // render button label onclick
     if (this.state.reportQBool) {
-      let { question_id } = this.props.info;
+      const {question_id} = this.props.info;
       axios.put(`http://localhost:3005/qa/questions`, {
         'type': 'question',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`,
