@@ -6,7 +6,7 @@ import ReactDom from 'react-dom';
 const service = axios.create({
   baseURL: 'http://127.0.0.1:3005',
   changeOrigin: true,
-})
+});
 
 class Review extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Review extends React.Component {
       sortMethod: 'relevant',
       ratings: [],
       reviews: [],
-    }
+    };
     this.fetchRatingData = this.fetchRatingData.bind(this);
     this.fetchReviewData = this.fetchReviewData.bind(this);
     this.changeSortMethod = this.changeSortMethod.bind(this);
@@ -26,8 +26,8 @@ class Review extends React.Component {
   changeSortMethod(method) {
     this.setState({
       sortMethod: method
-    })
-    this.fetchReviewData(method)
+    });
+    this.fetchReviewData(method);
   }
 
   componentDidMount() {
@@ -36,18 +36,18 @@ class Review extends React.Component {
   }
 
   fetchRatingData() {
-    var product_id = this.state.product_id
-    var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`}
+    let product_id = this.state.product_id;
+    let body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`};
     service.post('/retrieve', body)
-     .then((res) => {
-       console.log('review data from the first scratch', res.data);
-       this.setState({
-         ratings: res.data
-       })
-     })
-     .catch((err) => {
-      console.log('there is err in fetching review data!', err)
-    })
+        .then((res) => {
+          console.log('review data from the first scratch', res.data);
+          this.setState({
+            ratings: res.data
+          });
+        })
+        .catch((err) => {
+          console.log('there is err in fetching review data!', err)
+        });
   }
 
   fetchReviewData(sort = 'relevant') {
