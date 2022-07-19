@@ -1,58 +1,58 @@
 import React from 'react';
 
-import SearchResults from './SearchResults.jsx'
+import SearchResults from './SearchResults.jsx';
 
 class SearchBar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state={
       entry: '',
       searchedProducts: [],
-    }
+    };
   }
 
   enterSearch = (e) => {
     this.setState({
       entry: e.target.value,
-    })
-  }
+    });
+  };
 
-  sentenceCase = name => {
-    var casedName = ''
-    var name = name.split('');
-    for (var x = 0; x < name.length; x++) {
+  sentenceCase = (name) => {
+    const casedName = '';
+    name = name.split('');
+    for (let x = 0; x < name.length; x++) {
       if (name[x-1] === undefined || name[x-1] === ' ') {
-        casedName += name[x].toUpperCase()
+        casedName += name[x].toUpperCase();
       } else {
         casedName += name[x];
       }
     }
-    console.log(casedName)
-    return casedName
-  }
+    console.log(casedName);
+    return casedName;
+  };
 
-  populateResults = e => {
-    this.props.getSearchResults()
-  }
+  populateResults = (e) => {
+    this.props.getSearchResults();
+  };
 
   onClick = (e) => {
     // console.log(this.props.products)
-    var results = [];
-    var entry = this.sentenceCase(this.state.entry);
+    const results = [];
+    const entry = this.sentenceCase(this.state.entry);
     this.props.products.map((product) => {
       if (product.name.includes(entry)) {
         results.push(product);
       }
-    })
+    });
     this.setState({
       searchedProducts: results,
-    })
+    });
     this.props.toggle();
-  }
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.searching === true) {
-      return {entry: ''}
+      return {entry: ''};
     } else {
       return null;
     }
@@ -62,8 +62,8 @@ class SearchBar extends React.Component {
     if (!this.props.searching) {
       return (
         <div
-        className="searchBar"
-        style={{display: 'flex', width: '100%', justifyContent: 'space-between', border: '1px solid black'}}
+          className="searchBar"
+          style={{display: 'flex', width: '100%', justifyContent: 'space-between', border: '1px solid black'}}
         >
           <h3>The Future of Online Retail</h3>
           <div>
@@ -71,13 +71,13 @@ class SearchBar extends React.Component {
             <input type="text" placeholder="europa" onChange={this.enterSearch} onClick={this.populateResults}/>
           </div>
         </div>
-      )
+      );
     } else {
       return (
         <div>
           <div
-          className="searchBar"
-          style={{display: 'flex', width: '100%', justifyContent: 'space-between', border: '1px solid black'}}
+            className="searchBar"
+            style={{display: 'flex', width: '100%', justifyContent: 'space-between', border: '1px solid black'}}
           >
             <h3>The Future of Online Retail</h3>
             <div>
@@ -87,9 +87,9 @@ class SearchBar extends React.Component {
           </div>
           <SearchResults results={this.state.searchedProducts} select={this.props.select}/>
         </div>
-      )
+      );
     }
   }
 }
 
-export default SearchBar
+export default SearchBar;

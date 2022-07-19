@@ -36,7 +36,7 @@ class QandA extends React.Component {
   // pass in props of product id in componentDidMount function
   // fetches questions for a product from api
   fetch = (productId) => {
-    var productId = productId || this.state.productId;
+    productId = productId || this.state.productId;
 
     axios.post('http://localhost:3005/retrieve', {
       api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${productId}`,
@@ -55,7 +55,7 @@ class QandA extends React.Component {
   // fetches product info from api
   fetchProductName = (productId) => {
     // GET /products/:product_id
-    var productId = productId || this.state.productId;
+    productId = productId || this.state.productId;
     axios.post('http://localhost:3005/retrieve', {
       api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${productId}`,
     })
