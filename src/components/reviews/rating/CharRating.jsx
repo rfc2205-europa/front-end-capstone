@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
-var SingleCharRating = function({charName, charScore}) {
-  const [score, setScore] = useState('46%')
+const SingleCharRating = function({charName, charScore}) {
+  const [score, setScore] = useState('46%');
   useEffect(()=>{
-    setScore((Number(charScore.value)/5 * 0.96 * 100).toFixed(2) + '%')
-  },[charScore])
+    setScore((Number(charScore.value)/5 * 0.96 * 100).toFixed(2) + '%');
+  }, [charScore]);
   return (
     <div>
       <div>{charName}</div>
@@ -23,20 +23,19 @@ var SingleCharRating = function({charName, charScore}) {
     </div>
 
 
-  )
-}
+  );
+};
 
-var CharRating = function({char}) {
-
+const CharRating = function({char}) {
   return (
     <div className = 'rating-char-container'>
       {char && Object.keys(char).map((charName) => {
-        return <SingleCharRating key={char[charName].id} charName = {charName} charScore={char[charName]}/>
+        return <SingleCharRating key={char[charName].id} charName = {charName} charScore={char[charName]}/>;
       })}
 
     </div>
-  )
-}
+  );
+};
 
 export default CharRating;
 

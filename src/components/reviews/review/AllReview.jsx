@@ -1,18 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import SingleReview from './SingleReview.jsx';
-import AddReview from './AddReview.jsx';
+// import AddReview from './AddReview.jsx';
 
-var AllReview = function({displayReview}) {
-
+const AllReview = function({displayReview}) {
   return (
     <div className = 'review-allReview'>
       {displayReview.map((review) => {
-        return <SingleReview key = {review.review_id} review = {review}/>
+        return <SingleReview key = {review.review_id} review = {review}/>;
       })}
 
     </div>
-  )
-}
+  );
+};
 
 export default AllReview;
 
