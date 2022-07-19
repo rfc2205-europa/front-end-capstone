@@ -26,7 +26,7 @@ const AverageStar = function({aveScore}) {
     </div>
 
 
-  )
-}
+  );
+};
 
 export default AverageStar;

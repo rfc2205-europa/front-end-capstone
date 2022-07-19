@@ -8,7 +8,7 @@ class ProductOverview extends React.Component {
   render() {
     if (this.props.product) {
       if (this.props.product.features) {
-        let features = this.props.product.features
+        const features = this.props.product.features;
         return (
           <div className='productOverview'>
             <div className='descriptionBox'>
@@ -17,11 +17,11 @@ class ProductOverview extends React.Component {
             </div>
             <ul className="featureList">
               {features.map((key) => {
-                return <li>{key.feature} - {key.value}</li>
+                return <li key={key.feature}>{key.feature} - {key.value}</li>;
               })}
             </ul>
           </div>
-        )
+        );
       } else {
         return (
           <div className='productOverview'>
@@ -30,7 +30,7 @@ class ProductOverview extends React.Component {
               <p className='description'>{this.props.product.description}</p>
             </div>
           </div>
-        )
+        );
       }
     }
     return (
@@ -39,7 +39,7 @@ class ProductOverview extends React.Component {
           <p className='description'>loading description</p>
         </div>
       </div>
-    )
+    );
   }
 }
 

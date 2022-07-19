@@ -8,27 +8,27 @@ class Styles extends React.Component {
     this.state = {
       arrayOfRows: [],
       arrayToSplice: [],
-    }
+    };
   }
 
   createStyleRows = (styles) => {
-    var productId = this.props.styles.product_id;
-    var arrayOfRows = [];
-    var row = [];
-    for (var x = 0; x < styles.length; x++) {
-      var spliced = styles.splice(0, 1);
+    const productId = this.props.styles.product_id;
+    const arrayOfRows = [];
+    let row = [];
+    for (let x = 0; x < styles.length; x++) {
+      const spliced = styles.splice(0, 1);
       row.push(spliced[0]);
       x--;
       if (row.length === 4 || styles.length === 0) {
-        arrayOfRows.push(row)
+        arrayOfRows.push(row);
         row = [];
       }
     }
     // console.log('array of style arrays:', arrayOfRows)
     this.setState({
-      arrayOfRows: arrayOfRows
-    })
-  }
+      arrayOfRows: arrayOfRows,
+    });
+  };
 
   renderCheckmark = (thumbnail) => {
     if (thumbnail === this.props.selectedStyle.style_id) {
@@ -36,16 +36,16 @@ class Styles extends React.Component {
     } else {
       return false;
     }
-  }
+  };
 
   componentDidMount(prevProps) {
     if (this.props.styles.results) {
-      var spliceCopy = JSON.parse(JSON.stringify(this.props.styles.results));
+      const spliceCopy = JSON.parse(JSON.stringify(this.props.styles.results));
       this.setState({
-        arrayToSplice: spliceCopy
+        arrayToSplice: spliceCopy,
       }, () => {
         this.createStyleRows(this.state.arrayToSplice);
-      })
+      });
     }
   }
 
@@ -53,24 +53,24 @@ class Styles extends React.Component {
     if (this.props.styles.results) {
       return (
         <div>
-        <div>
-          <strong>Style</strong> > {this.props.selectedStyle.name}
+          <div style={{'fontSize': 'x-large', 'marginTop': '10%'}}>
+            <strong>Style</strong> {this.props.selectedStyle.name}
+          </div>
+          <div style={{'display': 'grid', 'justifyContent': 'space-around', 'flexWrap': 'wrap', 'marginTop': '10%'}}>
+            {this.state.arrayOfRows.map((row) => {
+              return (
+                <StyleRow
+                  key={row[0].style_id}
+                  row={row}
+                  selectedStyle={this.props.selectedStyle.style_id}
+                  handleStyles={this.props.handleStyles}
+                  handleSelection={this.renderCheckmark}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div style={{display: 'grid', justifyContent:'space-around', flexWrap: 'wrap'}}>
-          {this.state.arrayOfRows.map(row => {
-            return (
-              <StyleRow
-                key={row[0].style_id}
-                row={row}
-                selectedStyle={this.props.selectedStyle.style_id}
-                handleStyles={this.props.handleStyles}
-                handleSelection={this.renderCheckmark}
-              />
-            )
-          })}
-        </div>
-      </div>
-      )
+      );
     } else {
       return (
         <div>
@@ -81,7 +81,7 @@ class Styles extends React.Component {
 
           </div>
         </div>
-      )
+      );
     }
   }
 }

@@ -4,25 +4,24 @@ import AllReview from './review/AllReview.jsx';
 import AddReview from './review/AddReview.jsx';
 import SearchBar from './review/SearchBar.jsx';
 
-var ReviewComponent = function({reviews, sortFunc, product_id, needChar}) {
-
+const ReviewComponent = function({reviews, sortFunc, product_id, needChar}) {
   const [moreReview, setMoreReview] = useState(2);
-  const [displayReview, setDisplayReview] = useState(reviews.slice(0,2));
+  const [displayReview, setDisplayReview] = useState(reviews.slice(0, 2));
 
-  var clickMoreReview = function(e) {
+  const clickMoreReview = function(e) {
     e.preventDefault();
-    setMoreReview(moreReview + 2)
-    setDisplayReview(reviews.slice(0,moreReview + 2))
-  }
+    setMoreReview(moreReview + 2);
+    setDisplayReview(reviews.slice(0, moreReview + 2));
+  };
 
   useEffect(() => {
     if (displayReview) {
-      setDisplayReview(reviews.slice(0,2))
+      setDisplayReview(reviews.slice(0, 2));
     }
-  },[reviews])
+  }, [reviews]);
 
   return (
-    <div className = 'review review-review'>
+    <div className = 'review review-review' id='review'>
       <div className='review-summary-container'>
         <Sorting num = {reviews.length} sortFunc = {sortFunc}/>
         <SearchBar/>
@@ -34,7 +33,7 @@ var ReviewComponent = function({reviews, sortFunc, product_id, needChar}) {
         <AddReview product_id={product_id} needChar={needChar}/>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ReviewComponent;

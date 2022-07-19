@@ -1,7 +1,7 @@
 import React from 'react';
 
-import GalleryOverlay from './GalleryOverlay.jsx'
-import ExpandedGallery from './ExpandedGallery.jsx'
+import GalleryOverlay from './GalleryOverlay.jsx';
+import ExpandedGallery from './ExpandedGallery.jsx';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -11,62 +11,62 @@ class Gallery extends React.Component {
       currentPhoto: null,
       id: null,
       currentIndex: 0,
-    }
+    };
   }
 
-  goLeft = e => {
-    let photoCount = this.state.photos.length - 1;
-    let currentIndex = this.state.currentIndex;
+  goLeft = (e) => {
+    const photoCount = this.state.photos.length - 1;
+    const currentIndex = this.state.currentIndex;
     if (this.state.currentIndex === 0) {
       this.setState({
-        currentIndex: photoCount
+        currentIndex: photoCount,
       }, () => {
         this.setState({
           currentPhoto: this.state.photos[this.state.currentIndex],
-        })
-      })
+        });
+      });
     } else {
       this.setState({
         currentIndex: currentIndex - 1,
       }, () => {
         this.setState({
           currentPhoto: this.state.photos[this.state.currentIndex],
-        })
-      })
+        });
+      });
     }
-  }
+  };
 
-  goRight = e => {
-    let photoCount = this.state.photos.length - 1;
-    let currentIndex = this.state.currentIndex;
+  goRight = (e) => {
+    const photoCount = this.state.photos.length - 1;
+    const currentIndex = this.state.currentIndex;
     if (this.state.currentIndex === photoCount) {
       this.setState({
         currentIndex: 0,
       }, () => {
         this.setState({
           currentPhoto: this.state.photos[this.state.currentIndex],
-        })
-      })
+        });
+      });
     } else {
       this.setState({
         currentIndex: currentIndex + 1,
       }, () => {
         this.setState({
           currentPhoto: this.state.photos[this.state.currentIndex],
-        })
-      })
+        });
+      });
     }
-  }
+  };
 
   changeImage = (e) => {
     this.setState({
-      currentIndex: Number(e.target.id)
-    })
-  }
+      currentIndex: Number(e.target.id),
+    });
+  };
 
-  expandedView = e => {
-    this.props.expandedView(e)
-  }
+  expandedView = (e) => {
+    this.props.expandedView(e);
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.photos && nextProps.style !== prevState.id) {
@@ -74,7 +74,7 @@ class Gallery extends React.Component {
         photos: nextProps.photos,
         currentPhoto: nextProps.photos[prevState.currentIndex],
         id: nextProps.style,
-      }
+      };
     } else {
       return null;
     }
@@ -87,7 +87,7 @@ class Gallery extends React.Component {
           <div className='gallery'>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
-              <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
+              <div className="carouselContainer">
                 <GalleryOverlay
                   thumbnails={this.props.photos}
                   changeImage={this.changeImage}
@@ -97,22 +97,21 @@ class Gallery extends React.Component {
                 />
                 <img
                   className="image"
-                  src={this.state.photos[this.state.currentIndex].thumbnail_url}
-                  style={{height: '100%', width: '100%'}}
+                  src={this.state.photos[this.state.currentIndex].url}
                   onClick={this.expandedView}
                 />
               </div>
               <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
             </div>
           </div>
-        )
+        );
       } else if (this.state.photos.length > 7) {
         console.log('more than 7 photos');
         return (
           <div className='gallery'>
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
-              <div className="carouselContainer" style={{display: 'flex', height: '500px'}}>
+              <div className="carouselContainer">
                 <GalleryOverlay
                   thumbnails={this.state.photos}
                   changeImage={this.changeImage}
@@ -122,15 +121,14 @@ class Gallery extends React.Component {
                 />
                 <img
                   className="image"
-                  src={this.state.photos[this.state.currentIndex].thumbnail_url}
-                  style={{height: '100%', width: '100%'}}
+                  src={this.state.photos[this.state.currentIndex].url}
                   onClick={this.expandedView}
                 />
               </div>
               <span className="galleryArrow right" onClick={this.goRight}>&#10095;</span>
             </div>
           </div>
-        )
+        );
       }
     } else if (this.props.expanded) {
       return (
@@ -144,7 +142,7 @@ class Gallery extends React.Component {
           goRight={this.goRight}
           expanded={this.props.expanded}
         />
-      )
+      );
     }
     return (
       <div className='gallery'>
@@ -152,8 +150,8 @@ class Gallery extends React.Component {
           <p>loading images</p>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Gallery
+export default Gallery;
