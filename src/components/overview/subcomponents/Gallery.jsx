@@ -97,7 +97,7 @@ class Gallery extends React.Component {
                 />
                 <img
                   className="image"
-                  src={this.state.photos[this.state.currentIndex].url}
+                  src={this.state.photos[this.state.currentIndex].thumbnail_url}
                   style={{height: '100%', width: '100%'}}
                   onClick={this.expandedView}
                 />
@@ -122,7 +122,7 @@ class Gallery extends React.Component {
                 />
                 <img
                   className="image"
-                  src={this.state.photos[this.state.currentIndex].url}
+                  src={this.state.photos[this.state.currentIndex].thumbnail_url}
                   style={{height: '100%', width: '100%'}}
                   onClick={this.expandedView}
                 />
