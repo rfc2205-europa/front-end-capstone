@@ -7,9 +7,9 @@ const SearchBar = function({reviews, sortFunc, modelFunc}) {
     e.preventDefault();
   };
   return (
-    <div>
+    <div className='review-search-container'>
       <form>
-        <input className='review-search-input' type='text' placeholder='search'></input>
+        <input className='review-search-input' type='text' placeholder='  search'></input>
         <button className='review-search-button' onClick={handleSearch}>search</button>
       </form>
     </div>
