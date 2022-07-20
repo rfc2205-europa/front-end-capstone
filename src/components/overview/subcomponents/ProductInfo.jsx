@@ -64,7 +64,7 @@ class ProductInfo extends React.Component {
             <div className='info'>
               <div className='infoRating'>
                 <AverageStar aveScore={this.state.avgScore}/>
-                <a href='#review'>Read all Reviews</a>
+                <a href='#review' style={{'marginTop': '4%'}}>Read all Reviews</a>
               </div>
               <p className="infoCategory">{this.props.product.category}</p>
               <p className="infoName">{this.props.product.name}</p>
@@ -76,6 +76,7 @@ class ProductInfo extends React.Component {
                 <strong className='descriptionTitle' style={{display: 'flex', justifyContent: 'center'}}>{this.props.product.slogan}</strong>
                 <p className='description'>{this.props.product.description}</p>
               </div>
+              <p className="featureHeading">Features</p>
               <ul className="featureList">
                 {features.map((key) => {
                   return <li key={key.feature}>{key.feature} - {key.value}</li>;
@@ -110,6 +111,7 @@ class ProductInfo extends React.Component {
                 <strong className='descriptionTitle' style={{display: 'flex', justifyContent: 'center'}}>{this.props.product.slogan}</strong>
                 <p className='description'>{this.props.product.description}</p>
               </div>
+              <p className="featureHeading">Features</p>
               <ul className="featureList">
                 {features.map((key) => {
                   return <li key={key.feature}>{key.feature} - {key.value}</li>;
