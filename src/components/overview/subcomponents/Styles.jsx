@@ -53,10 +53,10 @@ class Styles extends React.Component {
     if (this.props.styles.results) {
       return (
         <div>
-          <div style={{'fontSize': 'x-large', 'marginTop': '10%'}}>
-            <strong>Style</strong> {this.props.selectedStyle.name}
+          <div className="styleHeader">
+            <strong>Style ></strong> {this.props.selectedStyle.name}
           </div>
-          <div style={{'display': 'grid', 'justifyContent': 'space-around', 'flexWrap': 'wrap', 'marginTop': '10%'}}>
+          <div className="styleGrid">
             {this.state.arrayOfRows.map((row) => {
               return (
                 <StyleRow

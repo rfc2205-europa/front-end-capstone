@@ -71,9 +71,14 @@ class Cart extends React.Component {
     }
     // if size does not equal prior size
     if (this.state.size !== prevState.size && this.state.size !== 'Select size') {
-      document.getElementsByClassName('cartSelect')[1].value = 1;
+      document.getElementsByClassName('cartSelectRight').selectedIndex = 1;
+      console.log('resetting value', this.state);
+      console.log(document.getElementsByClassName('cartSelectRight').value);
       this.setState({
         purchaseQty: 1,
+      }, () => {
+        document.getElementsByClassName('cartSelectRight').selectedIndex = this.state.purchaseQty;
+        console.log(this.state);
       });
     }
   }
@@ -87,7 +92,7 @@ class Cart extends React.Component {
         skuObj.id = key;
         skuObj.chars = skus[key];
         skuArray.push(skuObj);
-      }
+      };
       if (this.state.qty <= 15) {
         var sizeRange = Array.from(Array(this.state.qty+1).keys());
       } else {
@@ -99,7 +104,7 @@ class Cart extends React.Component {
         return (
           <div className="cart">
             <div className='cartOne'>
-              <select className="cartSelect" onChange={this.onSize}>
+              <select className="cartSelectLeft" onChange={this.onSize}>
                 <option
                   value="Out of stock :("
                   disabled
@@ -112,18 +117,18 @@ class Cart extends React.Component {
         return (
           <div className="cart">
             <div className='cartOne'>
-              <select className="cartSelect" onChange={this.onSize}>
+              <select className="cartSelectLeft" onChange={this.onSize}>
                 <option value={null}>Select size</option>
                 {skuArray.map((sku) => {
                   return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>;
                 })}
               </select>
-              <select className="cartSelect" onChange={this.onQty}>
+              <select className="cartSelectRight" onChange={this.onQty}>
                 <option value='-'>-</option>
               </select>
             </div>
             <div className='cartTwo'>
-              <button className="qButton" onClick={this.addToCart}>Add to Cart</button>
+              <button className="cartButton" onClick={this.addToCart}>Add to Cart</button>
             </div>
           </div>
         );
@@ -131,20 +136,20 @@ class Cart extends React.Component {
         return (
           <div className="cart">
             <div className='cartOne'>
-              <select className="cartSelect" onChange={this.onSize}>
+              <select className="cartSelectLeft" onChange={this.onSize}>
                 <option value={null}>Select size</option>
                 {skuArray.map((sku) => {
                   return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>;
                 })}
               </select>
-              <select className="cartSelect" onChange={this.onQty}>
+              <select className="cartSelectRight" onChange={this.onQty}>
                 {sizeRange.map((choice) => {
                   return <option key={choice} value={choice}>{choice}</option>;
                 })}
               </select>
             </div>
             <div className='cartTwo'>
-              <button className="qButton" onClick={this.addToCart}>Add to Cart</button>
+              <button className="cartButton" onClick={this.addToCart}>Add to Cart</button>
             </div>
           </div>
         );
