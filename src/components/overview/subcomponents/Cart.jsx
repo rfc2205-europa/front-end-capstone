@@ -71,14 +71,12 @@ class Cart extends React.Component {
     }
     // if size does not equal prior size
     if (this.state.size !== prevState.size && this.state.size !== 'Select size') {
-      document.getElementsByClassName('cartSelectRight').selectedIndex = 1;
-      console.log('resetting value', this.state);
-      console.log(document.getElementsByClassName('cartSelectRight').value);
+      console.log('resetting value',
+          document.getElementsByClassName('cartSelectRight').value, 'to', this.state.purchaseQty,
+      );
+      document.getElementsByClassName('cartSelectRight').value = 1;
       this.setState({
         purchaseQty: 1,
-      }, () => {
-        document.getElementsByClassName('cartSelectRight').selectedIndex = this.state.purchaseQty;
-        console.log(this.state);
       });
     }
   }
@@ -123,7 +121,7 @@ class Cart extends React.Component {
                   return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>;
                 })}
               </select>
-              <select className="cartSelectRight" onChange={this.onQty}>
+              <select className="cartSelectRight" value={this.state.purchaseQty} onChange={this.onQty}>
                 <option value='-'>-</option>
               </select>
             </div>
@@ -142,9 +140,16 @@ class Cart extends React.Component {
                   return <option key={sku.id+'-'+sku.size} value={sku.chars.size}>{sku.chars.size}</option>;
                 })}
               </select>
-              <select className="cartSelectRight" onChange={this.onQty}>
+              <select className="cartSelectRight" value={this.state.purchaseQty} onChange={this.onQty}>
                 {sizeRange.map((choice) => {
-                  return <option key={choice} value={choice}>{choice}</option>;
+                  if (choice === 1) {
+                    console.log('choice is 1');
+                  }
+                  if (choice === 1) {
+                    return <option key={choice} value='"{choice}"'>{choice}</option>;
+                  } else {
+                    return <option key={choice} value={choice}>{choice}</option>;
+                  }
                 })}
               </select>
             </div>

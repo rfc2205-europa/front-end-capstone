@@ -17,7 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {
 
-      product_id: 66642,
+      product_id: 66646,
       searching: false,
       search_products: [],
     };
@@ -25,9 +25,9 @@ class App extends React.Component {
   }
 
   getInitialProduct = () => {
-    let id;
+    let id = this.state.product_id;
     const data = JSON.stringify({
-      'api': 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=1',
+      'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${id}`,
     });
     const config = {
       method: 'post',
@@ -114,10 +114,6 @@ class App extends React.Component {
       data: data,
     };
     axios(config)
-        // .then(res => {
-        //   console.log(res.data)
-        // })
-
         .catch((err) => {
           console.log('click handling error:', err);
         });

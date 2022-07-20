@@ -24,7 +24,7 @@ class GalleryOverlay extends React.Component {
       const start = this.state.firstThumbnail - 1;
       const end = this.state.lastThumbnail - 1;
       for (let x = 0; x < this.props.thumbnails.length; x++) {
-        const currentThumbnail = this.state.thumbnails[x];
+        const currentThumbnail = this.props.thumbnails[x];
         if (currentThumbnail.index >= start && currentThumbnail.index <= end) {
           newActiveThumbnails.push(currentThumbnail);
         }
