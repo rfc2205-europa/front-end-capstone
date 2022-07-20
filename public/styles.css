@@ -1116,11 +1116,12 @@ option {
   background-color: rgb(255, 254, 248);
 }
 
+/*---------------------------------Main Search------------------------------- */
 .qMSearch {
-  width: 100%;
-  padding: 18px 20px;
+  width: 30%;
+  padding: 8px 8px;
   padding-right: 50px;
-  margin: 8px 0;
+  margin: 17px 0;
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 12pt;
@@ -1128,6 +1129,33 @@ option {
   background-color: rgb(255, 254, 248);
 }
 
+.qSearchBarButton {
+  font-size: 20px;
+  height: 56%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
+  border-radius: 4px;
+  margin-top: 17px;
+  padding-top: 5px;;
+  margin-bottom: 0px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12pt;
+  font-weight: bold;
+  margin-right: 30px;
+  background-color: rgb(255, 254, 248);
+}
+
+.qtitle {
+  font-size: 30pt;
+  text-align: center;
+  padding-top: 5px;
+  font-weight: bold;
+  padding-left: 30px;
+  text-decoration: underline;
+  padding-bottom: 5px;
+  text-shadow: 1.5px 1.5px black;
+}
+/*---------------------------------Main Search------------------------------- */
 .qSearchForm {
   padding: 0px;
 }
@@ -1182,6 +1210,8 @@ option {
   margin-right: 15px;
   background-color: rgb(255, 254, 248);
 }
+
+
 
 .qUnderline {
   text-decoration: underline;
@@ -1292,6 +1322,7 @@ option {
   padding: 25px;
   border-radius: 4px;
   position: absolute;
+  z-index: 1001;
 }
 
 .qQAButton {
@@ -1363,6 +1394,12 @@ option {
 }
 
 /* ---------------^^^^^^^^^^ Modals ^^^^^^^^^^^^-------------------------------------------- */
+
+.banner {
+  height: 200px;
+  width: 100%;
+  padding-bottom: 20px;
+}
 
 /* ---------------^^^^^^^^^^^ QandA ^^^^^^^^^^^^-------------------------------------------- */
 
