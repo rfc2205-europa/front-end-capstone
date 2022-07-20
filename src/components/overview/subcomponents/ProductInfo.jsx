@@ -63,7 +63,7 @@ class ProductInfo extends React.Component {
           <div className='productInfo'>
             <div className='info'>
               <div className='infoRating'>
-                <AverageStar aveScore={this.state.avgScore}/>
+                <AverageStar aveScore={this.state.avgScore} showScore={false}/>
                 <a href='#review' style={{'marginTop': '4%'}}>Read all Reviews</a>
               </div>
               <p className="infoCategory">{this.props.product.category}</p>
@@ -98,7 +98,7 @@ class ProductInfo extends React.Component {
           <div className='productInfo'>
             <div className='info'>
               <div className='infoRating'>
-                <AverageStar aveScore={this.state.avgScore}/>
+                <AverageStar aveScore={this.state.avgScore} showScore={false}/>
                 <a href='#review' style={{'marginTop': '4%'}}>Read all Reviews</a>
               </div>
               <p className="infoCategory">{this.props.product.category}</p>

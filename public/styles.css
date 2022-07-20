@@ -91,6 +91,7 @@ body {
 .carouselContainer {
   position: relative;
   width: 100%;
+  background-color: #C9D6DF;
   box-shadow: rgba(0,0,0,0.25) 0px 2px 5px;
   /* border: 1px solid black; */
 }
@@ -98,10 +99,12 @@ body {
 /* style={{height: '900px', width: '1000px'}} */
 .image {
   /* display: block; */
-  height: 1100px;
+  height: 900px;
   width: 100%;
   object-fit: cover;
   align-self: center;
+  border-radius: 8px;
+  background-color: #F0F5F9;
 }
 
 .image:hover {
@@ -137,7 +140,7 @@ body {
   /* left: 22.825%; */
   width: 100%;
   z-index: 1;
-  box-shadow: rgba(0,0,0,.5) 0px 2px 5px;
+  /* box-shadow: rgba(0,0,0,.5) 0px 2px 5px; */
   transition: width 1s, height 1s, transform 1s;
   /* opacity: 50% */
 }
@@ -199,8 +202,10 @@ body {
   /* height: 2000px; */
   width: 100%;
   max-height: 1800px;
+  border-radius: 5px;
   /* object-fit: cover; */
   /* align-self: center; */
+  background-color: #F0F5F9;
 }
 
 .expandedImage:hover {
@@ -278,7 +283,7 @@ body {
 .features {
   flex: 1;
   /* width: 50%; */
-  margin-top: 20%;
+  margin-top: 2%;
   margin-left: 12%;
   margin-right: 12%;
 }
