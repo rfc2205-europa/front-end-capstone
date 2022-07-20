@@ -28,7 +28,7 @@ const RatingComponent = function({ratings}) {
   return (
     <div className = 'review review-rating'>
       <p className = 'review-rating-title'>ratings and reviews</p>
-      <AverageStar aveScore = {aveScore || 0}/>
+      <AverageStar aveScore = {aveScore || 0} showScore = {true}/>
       <RatingStat starCount={starCount} maxCount = {maxCount} recommended={ratings.recommended}/>
       <CharRating char = {ratings.characteristics}/>
     </div>
