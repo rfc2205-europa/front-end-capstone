@@ -85,7 +85,7 @@ class Gallery extends React.Component {
       if (this.state.photos.length > 0 && this.state.photos.length <= 7) {
         return (
           <div className='gallery'>
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
               <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
               <div className="carouselContainer">
                 <GalleryOverlay
@@ -109,7 +109,7 @@ class Gallery extends React.Component {
         console.log('more than 7 photos');
         return (
           <div className='gallery'>
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%'}}>
               <span className="galleryArrow left" onClick={this.goLeft}>&#10094;</span>
               <div className="carouselContainer">
                 <GalleryOverlay
