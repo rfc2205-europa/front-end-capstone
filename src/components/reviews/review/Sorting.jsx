@@ -9,7 +9,7 @@ const Sorting = function({num, sortFunc}) {
     <div className='review-custom-select'>
       <label className='reviewSummary'>{num} reviews, sorted by </label>
       <div className='review-custom-select'>
-        <select className='reviewSummary' onChange = {selectSort}>
+        <select className='reviewSummary' style={{color: '#C9D6DF'}} onChange = {selectSort}>
           <option value = 'relevant'>Relevant</option>
           <option value = 'helpful'>Helpful</option>
           <option value = 'newest'>Newest</option>

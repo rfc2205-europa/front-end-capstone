@@ -56,6 +56,7 @@ class Review extends React.Component {
     console.log(body.api, this.state.sortMethod)
     service.post('/retrieve', body)
      .then((res) => {
+      console.log('get here', res)
       this.setState({
         reviews: res.data.results
       })
