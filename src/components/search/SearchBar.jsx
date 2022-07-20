@@ -63,7 +63,7 @@ class SearchBar extends React.Component {
       return (
         <div
           className="searchBar"
-          style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}
+          style={{display: 'flex', width: '100%', justifyContent: 'space-between', backgroundImage: 'linear-gradient(#52616B,rgb(240, 245, 249))', paddingBottom: '20px'}}
         >
           <h3 className="qtitle" style={{color: 'white', fontSize: '40pt'}}>Europa</h3>
           <div style={{display: 'flex', width: '40%', justifyContent: 'right'}}>
@@ -77,7 +77,7 @@ class SearchBar extends React.Component {
         <div>
           <div
             className="searchBar"
-            style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}
+            style={{display: 'flex', width: '100%', justifyContent: 'space-between',  backgroundImage: 'linear-gradient(#52616B,rgb(240, 245, 249))'}}
           >
             <h3 className="qtitle" style={{color: 'white', fontSize: '40pt', textDecoration: 'none'}}>The Future of Online Retail</h3>
             <div style={{display: 'flex', width: '40%', justifyContent: 'right'}}>

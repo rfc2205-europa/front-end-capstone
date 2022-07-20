@@ -181,6 +181,7 @@ class App extends React.Component {
             searching={this.state.searching}
             getSearchResults={this.getSearchResults}
           />
+          {/* <div className="banner"></div> */}
           <Overview product_id={this.state.product_id}/>
 
           <QandA product_id={this.state.product_id}/>
