@@ -432,14 +432,16 @@ select {
   color: rgb(80,80,80);
   appearance: none;
   border: 0;
+  outline: none;
   /* text-align: left; */
 
 }
 
 .review-custom-select {
   position: relative;
-  /* display: grid; */
+  display: flex;
   overflow: hidden;
+  align-items: center;
 }
 
 option {
@@ -449,11 +451,11 @@ option {
 }
 .review-custom-arrow {
   position: absolute;
-  top: 2px;
   right: 0;
   display: block;
-  background: rgb(200,200,200);
-  height: 20px;
+  background: rgb(120,120,120);
+  /* background: rgb(200,200,200); */
+  height: 22px;
   /* height: 100%; */
   width: 1.5rem;
   pointer-events: none;
@@ -475,44 +477,42 @@ option {
 .review-custom-arrow::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid rgba(80,80,80,0.9);
-  top: 25%;
+  border-bottom: var(--size) solid rgb(230,230,230);
+  top: 35%;
 }
 
 .review-custom-arrow::after {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
-  border-top: var(--size) solid rgba(80,80,80,0.9);
+  border-top: var(--size) solid rgb(230,230,230);
   top: 70%;
 }
 
+/* .review-btn {
+  width: 120px;
+  border: none;
+  outline: none;
+} */
 
-.btn {
-  border-radius: 8px;
-  border-width: 0;
-  border:none;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 10px 12px;
+.review-btn {
+  font-size: 20px;
+  border: 0px solid black;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 5px;
+  border-radius: 4px;
+  padding: 10px;
   text-align: center;
-  transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  display: inline-block;
+  font-size: 12pt;
+  font-weight: bold;
+  margin-right: 15px;
+  background-color: rgb(255, 254, 248);
 }
 
 .btn-container {
   display: flex;
   justify-content:space-between;
+  width: 94%;
+  margin: 10px auto;
 
 }
 
@@ -524,7 +524,8 @@ option {
 }
 
 .review-review {
-  margin-right: 140px;
+  margin-right: 120px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -539,7 +540,7 @@ option {
 .review-allReview {
   display: flex;
   flex-direction: column;
-  width: 97%;
+  width: 92%;
   height: 80%;
   margin: 10px auto;
   overflow-y: auto;
@@ -548,6 +549,9 @@ option {
 .review-summary-container {
   display: flex;
   justify-content: space-between;
+  width: 94%;
+  /* height: 80%; */
+  margin: 10px auto;
 }
 
 .reviewSummary {
@@ -559,9 +563,10 @@ option {
 }
 
 .review-singleReview {
-  margin: 5px auto;
+  margin-right: 5px;
   width: 95%;
   text-align: left;
+  justify-content: flex-start;
 
 }
 .review-singleReview-divider-container {
@@ -576,14 +581,21 @@ option {
   background-color: #bfbfbf;
 }
 
-
-.review-search-input {
-  flex: 1;
-  border: 1px;
-  /* outline: none; */
+.review-search-container {
+  /* height: 15px; */
+  font-size: 15px;
+  display: flex;
+  overflow: hidden;
 }
+.review-search-input {
+  /* flex: 1; */
+  border: none;
+  background-color: rgb(230,230,230);
+  outline: none;
+}
+
 .review-search-button {
-  background: rgb(80,80,80);
+  background: rgb(120,120,120);
   /* padding: 10px 30px; */
   font-size: 15px;
   border: none;
@@ -591,6 +603,8 @@ option {
   color: #fff;
   letter-spacing: 1px;
   cursor: pointer;
+  /* text-transform: uppercase; */
+  /* text-decoration: ; */
 
 }
 
@@ -607,6 +621,19 @@ option {
   gap: 10px;
   justify-content: flex-start;
   font-family: "Times New Roman", Times, serif;
+}
+
+.review-addReview-modal-content {
+  width: 800px;
+  height: fit-content;
+  position: absolute !important;
+  left: 50%;
+  top: 100% !important;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  z-index: 1000;
+  top: 0px;
+
 }
 
 .review-addReview-popUpText {
@@ -1091,6 +1118,7 @@ option {
 .thumbnail {
   height: 100px;
   width: 100px;
+  object-fit: cover;
 }
 
 .modalView {
@@ -1107,9 +1135,9 @@ option {
 .modal-content {
   width: 800px;
   height: fit-content;
-  position: absolute;
+  position: fixed !important;
   left: 80%;
-  top: 1px;
+  top: 50% !important;
   transform: translate(-50%, -50%);
   padding: 50px;
   z-index: 1000;
@@ -1120,6 +1148,7 @@ option {
 .largeImage {
   width: 500px;
   height: 500px;
+  object-fit: cover;
 }
 
 .close {
@@ -1171,8 +1200,26 @@ option {
   font-style: italic;
 }
 
+.single-showMore-container {
+  display: flex;
+  cursor: pointer;
+}
+
 .single-showMore {
-  color:#aaa
+  color: rgb(80,80,80);
+  text-transform: uppercase;
+  position: relative;
+  left: 6px;
+
+}
+
+.single-showMore-triangle {
+  position: relative;
+  margin-top: 8px;
+  width: 0;
+  height: 0;
+  border: 7px solid rgb(80,80,80);
+  border-color: rgb(80,80,80) transparent transparent transparent;
 }
 /* ------------- review ------------- */
 

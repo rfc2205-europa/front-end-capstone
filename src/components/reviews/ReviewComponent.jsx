@@ -29,7 +29,7 @@ const ReviewComponent = function({reviews, sortFunc, product_id, needChar}) {
       {/* <AllReview displayReview = {displayReview} modelFunc = {modelFunc}/> */}
       <AllReview displayReview = {displayReview}/>
       <div className='btn-container'>
-        <button className="btn btn-moreRevew" onClick = {clickMoreReview}>More Review</button>
+        <button className="review-btn" onClick = {clickMoreReview}>More Review</button>
         <AddReview product_id={product_id} needChar={needChar}/>
       </div>
     </div>

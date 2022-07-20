@@ -130,7 +130,14 @@ const SingleReview = function({review}) {
       </div>
       <div className='single-title'>{displayReview.summary}</div>
       <p style={{whiteSpace: 'pre-line'}}>{displayReview.body.split('<br/>').join('\n')}</p>
-      {showMore? <div className = 'single-showMore' onClick = {showMoreClick}>Show More</div>:null}
+      {showMore && (
+        <div className='single-showMore-container'>
+          <div className='single-showMore-triangle'/>
+          <div className = 'single-showMore' onClick = {showMoreClick}>More</div>
+        </div>
+      )}
+
+
       <div className = 'thumbnail-container'>
         {displayReview.photos.map((photo) => {
           return <img src = {photo.url} onClick = {handleThumbnailClick} key = {photo.id} className = 'thumbnail'/>})}
