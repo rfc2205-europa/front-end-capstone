@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const AverageStar = function({aveScore}) {
+const AverageStar = function({aveScore, showScore}) {
   const [starList, setStarList] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const AverageStar = function({aveScore}) {
 
   return (
     <div className='rating-score-star-container'>
-      <h1 className='rating-score'>{Math.ceil(aveScore * 10) / 10}</h1>
+      {showScore && <h1 className='rating-score'>{Math.ceil(aveScore * 10) / 10}</h1>}
       <div className='rating-star-container'>
         {starList}
       </div>
