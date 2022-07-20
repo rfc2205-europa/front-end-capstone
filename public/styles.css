@@ -438,6 +438,7 @@ select {
   appearance: none;
   border: 0;
   outline: none;
+  background-color: white;
   /* text-align: left; */
 
 }
@@ -458,7 +459,7 @@ option {
   position: absolute;
   right: 0;
   display: block;
-  background: rgb(120,120,120);
+  background: #187498;
   /* background: rgb(200,200,200); */
   height: 22px;
   /* height: 100%; */
@@ -482,14 +483,14 @@ option {
 .review-custom-arrow::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid rgb(230,230,230);
+  border-bottom: var(--size) solid white;
   top: 35%;
 }
 
 .review-custom-arrow::after {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
-  border-top: var(--size) solid rgb(230,230,230);
+  border-top: var(--size) solid white;
   top: 70%;
 }
 
@@ -526,6 +527,8 @@ option {
   justify-content: center;
   height: 100%;
   padding: 10px;
+  /* background-color: #C9D6DF; */
+  background-color: #F0F5F9;
 }
 
 .review-review {
@@ -534,7 +537,7 @@ option {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  font-family: "Times New Roman", Times, serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
   float:right;
   width: 48%;
@@ -557,6 +560,7 @@ option {
   width: 94%;
   /* height: 80%; */
   margin: 10px auto;
+
 }
 
 .reviewSummary {
@@ -565,6 +569,7 @@ option {
   text-transform: uppercase;
   /* font-weight: bold; */
   margin-left: 10px;
+
 }
 
 .review-singleReview {
@@ -583,7 +588,7 @@ option {
   margin-top: 5px;
   height: 1px;
   flex-grow: 1;
-  background-color: #bfbfbf;
+  background-color: #C9D6DF;;
 }
 
 .review-search-container {
@@ -595,12 +600,16 @@ option {
 .review-search-input {
   /* flex: 1; */
   border: none;
-  background-color: rgb(230,230,230);
+  background-color: white;
   outline: none;
+
+}
+.review-search-input::placeholder {
+  color: #C9D6DF;
 }
 
 .review-search-button {
-  background: rgb(120,120,120);
+  background: #187498;
   /* padding: 10px 30px; */
   font-size: 15px;
   border: none;
@@ -625,7 +634,7 @@ option {
   padding-top: 20px;
   gap: 10px;
   justify-content: flex-start;
-  font-family: "Times New Roman", Times, serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .review-addReview-modal-content {
@@ -633,7 +642,7 @@ option {
   height: fit-content;
   position: absolute !important;
   left: 50%;
-  top: 100% !important;
+  top: 270% !important;
   transform: translate(-50%, -50%);
   padding: 50px;
   z-index: 1000;
@@ -681,9 +690,9 @@ option {
   flex-direction: column;
   align-items: center;
   border: none;
-  background: rgb(80,80,80);
+  background: #187498;
   color: #FFFFFF;
-  font-family: "Times New Roman", Times, serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: bold;
 
 }
@@ -691,11 +700,14 @@ option {
 
 .review-addReview-star-full {
   font-size: 40px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #187498;
 }
 
 .review-addReview-star-empty {
-  color: rgba(232, 232, 232, 0.9);
+  color: #C9D6DF;;
   font-size: 40px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .review-addReview-subtitle {
@@ -732,7 +744,7 @@ option {
   width: 100%;
   height: 100%;
   display: block;
-  background: rgb(80,80,80);
+  background: #187498;
   border-radius: 50%;
   transform: scale(0);
   transition: transform 0.15s;
@@ -794,7 +806,7 @@ option {
   padding: 7px 30px;
   font-size: 13px;
   color: #333333;
-  background-color: rgb(230,230,230);
+  background-color: #C9D6DF;
   cursor: pointer;
   transition: background 0.1s;
   /* gap: 10px; */
@@ -806,7 +818,7 @@ option {
 }
 
 .review-addReview-characteristics-radio-input:checked + .review-addReview-characteristics-radio-label {
-  background: rgb(80,80,80);
+  background: #187498;
   color: #FFFFFF;
 }
 
@@ -831,7 +843,7 @@ option {
   height: 100%;
   width: 100%;
   border: none;
-  border-bottom: 2px solid silver;
+  border-bottom: 2px solid #C9D6DF;;
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none
@@ -863,7 +875,7 @@ option {
   content: '';
   width: 100%;
   height: 100%;
-  background: #ff9800;
+  background: #187498;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -960,7 +972,7 @@ option {
   width: 20%;
   height: 700px;
   /* border: 2px solid #333333; */
-  font-family: "Times New Roman", Times, serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   overflow:auto
 }
 
@@ -976,6 +988,7 @@ option {
   flex-shrink: 1;
   justify-content: flex-start;
   align-items: center;
+  font-family: 'Times New Roman', Times, serif;
 
 }
 
@@ -989,16 +1002,16 @@ option {
   /* margin-left: 40px; */
   font-weight: bold;
   font-size: 70px;
-  color:  rgb(80,80,80);
+  color: #187498;
 }
 
 .rating-star-full {
-  color: rgb(80,80,80);
+  color: #187498;
   font-size: 30px;
 }
 
 .rating-star-empty {
-  color: rgb(220,220,220);
+  color: #C9D6DF;
   font-size: 30px;
 }
 
@@ -1006,8 +1019,8 @@ option {
   --v:50;
   background: linear-gradient(
     90deg,
-    rgb(80,80,80) calc(var(--v) * 1%),
-    rgb(220,220,220) 0%
+    #187498 calc(var(--v) * 1%),
+    #C9D6DF 0%
   );
   -webkit-background-clip: text;
   color: transparent;
@@ -1062,14 +1075,14 @@ option {
   display: flex;
   justify-content:flex-start;
   position: relative;
-  background-color: rgba(232, 232, 232, 0.9);
+  background-color: #C9D6DF;;
   width: 62%;
   margin-left: 3px;
   height: 12px;
 }
 
 .rating-stats-colorBar {
-  background-color: rgb(80,80,80);
+  background-color: #187498;
   width: 70%;
   height: 100%;
 }
@@ -1096,7 +1109,7 @@ option {
 .rating-char-line {
   width: 51px;
   height: 12px;
-  background-color: rgba(232, 232, 232, 0.9);
+  background-color: #C9D6DF;;
 }
 
 .rating-char-line-triangle-container {
@@ -1109,8 +1122,8 @@ option {
   margin-left: 96%;
   width: 0;
   height: 0;
-  border: 10px solid #333333;
-  border-color: #333333 transparent transparent transparent;
+  border: 10px solid #187498;
+  border-color: #187498 transparent transparent transparent;
 }
 
 .thumbnail-container {
@@ -1172,16 +1185,17 @@ option {
 
 .single-rating {
   display: flex;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .single-rating-star-full {
   font-size: 25px;
-  color: rgb(80,80,80);
+  color: #187498;
 }
 
 .single-rating-star-empty {
   font-size: 25px;
-  color: rgb(220,220,220);
+  color: #C9D6DF;;
 }
 
 .single-rating-reviewer-container {
@@ -1211,7 +1225,7 @@ option {
 }
 
 .single-showMore {
-  color: rgb(80,80,80);
+  color: #187498;
   text-transform: uppercase;
   position: relative;
   left: 6px;
@@ -1223,8 +1237,8 @@ option {
   margin-top: 8px;
   width: 0;
   height: 0;
-  border: 7px solid rgb(80,80,80);
-  border-color: rgb(80,80,80) transparent transparent transparent;
+  border: 7px solid #187498;
+  border-color: #187498 transparent transparent transparent;
 }
 /* ------------- review ------------- */
 
