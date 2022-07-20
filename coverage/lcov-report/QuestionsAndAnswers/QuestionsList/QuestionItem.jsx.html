@@ -208,7 +208,9 @@
 <a name='L143'></a><a href='#L143'>143</a>
 <a name='L144'></a><a href='#L144'>144</a>
 <a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -343,7 +345,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -374,10 +378,10 @@ class QuestionItem extends React.Component {
 <span class="cstat-no" title="statement not covered" >    console.log('helpful question');</span>
     // send put req to server once per load
 <span class="cstat-no" title="statement not covered" >    if (this.state.helpfulQ) {</span>
-      const {questionId} = <span class="cstat-no" title="statement not covered" >this.props.info;</span>
+      const {question_id} = <span class="cstat-no" title="statement not covered" >this.props.info;</span>
 <span class="cstat-no" title="statement not covered" >      axios.put(`http://localhost:3005/qa/questions`, {</span>
         'type': 'question',
-        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${questionId}/helpful`,
+        'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/helpful`,
       })
           .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; {
 <span class="cstat-no" title="statement not covered" >            console.log('res in client from server: helpful question: ', res);</span>
@@ -400,7 +404,7 @@ class QuestionItem extends React.Component {
     // send put req to server once per load
     // render button label onclick
 <span class="cstat-no" title="statement not covered" >    if (this.state.reportQBool) {</span>
-      let { question_id } = <span class="cstat-no" title="statement not covered" >this.props.info;</span>
+      const {question_id} = <span class="cstat-no" title="statement not covered" >this.props.info;</span>
 <span class="cstat-no" title="statement not covered" >      axios.put(`http://localhost:3005/qa/questions`, {</span>
         'type': 'question',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`,
@@ -479,7 +483,7 @@ class QuestionItem extends React.Component {
       }
     } else {
 <span class="cstat-no" title="statement not covered" >      list = sArray;</span>
-<span class="cstat-no" title="statement not covered" >      button = &lt;h5 className="qw10B" onClick={this.togButton}&gt;COLLAPSE ANSWERS&lt;/h5&gt;</span>
+<span class="cstat-no" title="statement not covered" >      button = &lt;h5 className="qw10B" onClick={this.togButton}&gt;COLLAPSE ANSWERS&lt;/h5&gt;;</span>
     }
     const ans = <span class="cstat-no" title="statement not covered" >list.map(<span class="fstat-no" title="function not covered" >(a</span>nswer) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >      &lt;AnswerItem answer={answer} key={Math.random()} fetch={this.props.fetch} /&gt;</span>
@@ -488,7 +492,9 @@ class QuestionItem extends React.Component {
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;div className="qTile"&gt;
         &lt;div className="qFirst_line"&gt;
-          &lt;h5 className="qbold13"&gt;Q: {body}&lt;/h5&gt;&lt;p className="qw10"onClick={this.incrementor}&gt;Helpful? Yes ({help})&lt;/p&gt;&lt;p className="qw10" onClick={this.reportQ}&gt;{this.state.reportQ}&lt;/p&gt;&lt;p className="qw10Underline" onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt;{<span class="cstat-no" title="statement not covered" >this.props.toggleAModal(this.props.info.question_id, this.props.info.question_body)}</span>}&gt;Add Answer&lt;/p&gt;
+          &lt;h5 className="qbold13"&gt;Q: {body}&lt;/h5&gt;&lt;a className="qw10"onClick={this.incrementor}&gt;Helpful? Yes ({help})&lt;/a&gt;&lt;a className="qw10" onClick={this.reportQ}&gt;{this.state.reportQ}&lt;/a&gt;&lt;a className="qw10Underline" onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt;{
+<span class="cstat-no" title="statement not covered" >            this.props.toggleAModal(this.props.info.question_id, this.props.info.question_body);</span>
+          }}&gt;Add Answer&lt;/a&gt;
         &lt;/div&gt;
         &lt;div className="qAList" &gt;{ans}&lt;/div&gt;
         {button}
@@ -505,7 +511,7 @@ export default QuestionItem;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jul 18 2022 15:52:21 GMT-0600 (Mountain Daylight Time)
+                at Wed Jul 20 2022 15:40:41 GMT-0600 (Mountain Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
