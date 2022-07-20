@@ -113,6 +113,20 @@ class Overview extends React.Component {
     if (this.state.product_id) {
       if (this.state.selectedStyle) {
         const {photos} = this.state.selectedStyle;
+        if (this.state.expanded) {
+          return (
+            <div >
+              <div className='topRow'>
+                <Gallery
+                  photos={photos}
+                  style={this.state.selectedStyle.style_id}
+                  expanded={this.state.expanded}
+                  expandedView={this.expand}
+                />
+              </div>
+            </div>
+          );
+        }
         return (
           <div >
             <div className='topRow'>
