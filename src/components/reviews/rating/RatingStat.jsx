@@ -3,9 +3,11 @@ import React, {useState, useEffect} from 'react';
 const RatingStat = function({maxCount, starCount, recommended}) {
   // const [recommendRate, setRecommendRate] = useState(0)
   const [starAverage, setStarAverage] = useState([]);
+
   useEffect(() => {
     const stars = [];
     for (const num of starCount) {
+      console.log('starCount: ', starCount)
       stars.push((num/maxCount * 100).toFixed(2) + '%');
     }
     setStarAverage(stars);
