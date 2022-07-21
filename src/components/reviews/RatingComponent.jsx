@@ -13,16 +13,21 @@ const RatingComponent = function({ratings}) {
     let count = 0;
     const star = [];
     let currentMax = 0;
-    for (let key in ratings.ratings) {
-      var ratingCount = Number(ratings.ratings[key]);
-      currentMax = Math.max(ratingCount, currentMax);
-      sum += ratingCount * Number(key);
-      count += ratingCount;
-      star.push(ratingCount);
+    for (let key = 5; key >=0; key--) {
+      if (ratings.ratings && key in ratings.ratings) {
+        var ratingCount = Number(ratings.ratings[key]);
+        currentMax = Math.max(ratingCount, currentMax);
+        sum += ratingCount * Number(key);
+        count += ratingCount;
+        star.push(ratingCount);
+      } else {
+        star.push(0);
+      }
     }
     setAveScore(sum/count);
     setMaxCount(currentMax);
     setStarCount(star);
+    console.log('rating stats',ratings.ratings)
   }, [ratings]);
 
   return (
