@@ -3,6 +3,7 @@ import React from 'react';
 import {createRoot} from 'react-dom/client';
 const root = createRoot(document.getElementById('root'));
 const axios = require('axios');
+const cf = require('../config.js');
 // import { inspect } from 'util';
 
 // component imports
@@ -31,7 +32,7 @@ class App extends React.Component {
     });
     const config = {
       method: 'post',
-      url: 'http://localhost:3005/retrieve',
+      url: `${cf.ip}/retrieve`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -39,7 +40,7 @@ class App extends React.Component {
     };
     axios(config)
         .then((response) => {
-          id = response.data[0].id;
+          id = response.data.id;
           console.log('selected id:', id);
           this.setState({
             product_id: id,
@@ -58,7 +59,7 @@ class App extends React.Component {
     });
     const config = {
       method: 'post',
-      url: 'http://localhost:3005/retrieve',
+      url: `${cf.ip}/retrieve`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -107,7 +108,7 @@ class App extends React.Component {
     }
     const config = {
       method: 'post',
-      url: 'http://localhost:3005/',
+      url: `${cf.ip}/`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -161,11 +162,11 @@ class App extends React.Component {
     this.getInitialProduct();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.search_products.length !== this.state.search_products.length) {
-      this.populateSearch();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.search_products.length !== this.state.search_products.length) {
+  //     this.populateSearch();
+  //   }
+  // }
 
   render() {
     if (!this.state.searching) {

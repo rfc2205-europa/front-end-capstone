@@ -33,11 +33,9 @@ class ProductInfo extends React.Component {
               count+=Number(totalScores[key]);
               const times = 0;
               while (times < totalScores[key]) {
-                console.log(key, sum);
                 sum+=Number(key);
                 times++;
               }
-              console.log(count, sum / count);
             }
             this.setState({
               avgScore: sum / count,
