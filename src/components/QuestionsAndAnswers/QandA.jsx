@@ -172,8 +172,8 @@ class QandA extends React.Component {
       <div className="q_and_a">
         <h6>QUESTIONS & ANSWERS</h6>
         <div>
-          {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.state.productId} productName={this.state.productInfo.name} fetch={this.fetch} />}
-          {this.state.openAModalView && <AModal toggle={this.openAModal} questionId={this.state.questionId} productName={this.state.productInfo.name} questionBody={this.state.questionBody} fetch={this.fetch} />}
+          {this.state.openQModalView && <QModal toggle={this.openQModal} productId={this.props.product_id} productName={this.state.productInfo.name} fetch={this.fetch} />}
+          {this.state.openAModalView && <AModal toggle={this.openAModal} productId={this.props.product_id}questionId={this.state.questionId} productName={this.state.productInfo.name} questionBody={this.state.questionBody} fetch={this.fetch} />}
         </div>
         <Search search={this.search} questions={this.state.questions} />
         <div>
