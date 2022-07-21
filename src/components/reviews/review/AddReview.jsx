@@ -3,8 +3,11 @@ import ReactDom from 'react-dom';
 import axios from 'axios';
 import {Star, Recommend, Characteristics, Summary, ReviewBody, Photo, NickName, Email} from './newReview.jsx';
 
+const cf = require('../../../../config.js');
+
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:3005',
+  baseURL: cf.ip,
+  // baseURL: 'http://127.0.0.1:3005',
   changeOrigin: true,
 });
 
@@ -14,7 +17,6 @@ const ModalView = function({clickFunc, product_id, needChar}) {
 
   const submitChars = function(e) {
     e.preventDefault();
-    // console.log(chars)
     const validateEmail = function(email) {
       const re = /\S+@\S+\.\S+/;
       return re.test(email);

@@ -969,6 +969,11 @@ option {
   /* margin-left: 40px; */
 }
 
+.rating-recommendRating-text {
+  font-size: 12px;
+
+}
+
 .rating-score-star-container, .rating-star-container{
   position: relative;
   display: flex;

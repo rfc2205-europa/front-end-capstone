@@ -3,8 +3,12 @@ import axios from 'axios';
 import RatingComponent from './RatingComponent.jsx';
 import ReviewComponent from './ReviewComponent.jsx';
 import ReactDom from 'react-dom';
+
+const cf = require('../../../config.js');
+
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:3005',
+  // baseURL: 'http://127.0.0.1:3005',
+  baseURL: cf.ip,
   changeOrigin: true,
 });
 
