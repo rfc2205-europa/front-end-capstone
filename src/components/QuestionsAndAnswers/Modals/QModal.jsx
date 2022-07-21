@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import cf from '../../../../config.js';
 
 class QModal extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class QModal extends React.Component {
     console.log('submit');
     // API call
     // POST /qa/questions
-    axios.post(`http://localhost:3005/qa/questions`, {
+    axios.post(`${cf.ip}/qa/questions`, {
       'type': 'questions.question',
       'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`,
       'body': this.state.question, // string 1000 char

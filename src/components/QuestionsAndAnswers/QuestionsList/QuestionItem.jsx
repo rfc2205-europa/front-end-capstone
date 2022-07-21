@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import AnswerItem from './AnswerItem.jsx';
+import cf from '../../../../config.js';
 
 
 class QuestionItem extends React.Component {
@@ -20,7 +21,7 @@ class QuestionItem extends React.Component {
     // send put req to server once per load
     if (this.state.helpfulQ) {
       const {question_id} = this.props.info;
-      axios.put(`http://localhost:3005/qa/questions`, {
+      axios.put(`${cf.ip}/qa/questions`, {
         'type': 'question',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/helpful`,
       })
@@ -46,7 +47,7 @@ class QuestionItem extends React.Component {
     // render button label onclick
     if (this.state.reportQBool) {
       const {question_id} = this.props.info;
-      axios.put(`http://localhost:3005/qa/questions`, {
+      axios.put(`${cf.ip}/qa/questions`, {
         'type': 'question',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/report`,
       })
