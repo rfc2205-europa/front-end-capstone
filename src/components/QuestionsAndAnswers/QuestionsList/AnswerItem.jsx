@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {format, parseISO} from 'date-fns';
+import cf from '../../../../config.js';
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class AnswerItem extends React.Component {
     console.log('helpful answer');
 
     // /qa/answers/:answer_id/helpful
-    axios.put(`http://localhost:3005/qa/answers`, {
+    axios.put(`${cf.ip}/qa/answers`, {
       'type': 'answer',
       'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/helpful`,
     })
@@ -39,7 +40,7 @@ class AnswerItem extends React.Component {
   reportA = (id) => {
     console.log('report answer');
     if (this.state.reportABool) {
-      axios.put(`http://localhost:3005/qa/answers`, {
+      axios.put(`${cf.ip}/qa/answers`, {
         'type': 'answer',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`,
       })

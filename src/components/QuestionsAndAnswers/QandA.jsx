@@ -4,6 +4,7 @@ import Search from './Search.jsx';
 import QuestionsList from './QuestionsList/QuestionsList.jsx';
 import QModal from './Modals/QModal.jsx';
 import AModal from './Modals/AModal.jsx';
+import cf from '../../../config.js';
 
 
 class QandA extends React.Component {
@@ -38,7 +39,7 @@ class QandA extends React.Component {
   fetch = (productId) => {
     productId = productId || this.state.productId;
 
-    axios.post('http://localhost:3005/retrieve', {
+    axios.post(`${cf.ip}/retrieve`, {
       api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${productId}`,
     })
         .then((res) => {
@@ -56,7 +57,7 @@ class QandA extends React.Component {
   fetchProductName = (productId) => {
     // GET /products/:product_id
     productId = productId || this.state.productId;
-    axios.post('http://localhost:3005/retrieve', {
+    axios.post(`${cf.ip}/retrieve`, {
       api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${productId}`,
     })
         .then((res) => {

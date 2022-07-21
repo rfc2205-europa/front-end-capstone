@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import cf from '../../../../config.js';
 
 class AModal extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class AModal extends React.Component {
     // API call
     // qa/questions/:question_id/answers
     if (answer && nickname && email) {
-      axios.post(`http://localhost:3005/qa/questions`, {
+      axios.post(`${cf.ip}/qa/questions`, {
         'type': 'questions.answer',
         'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${this.props.questionId}/answers`,
         'body': answer, // string 1000 char
