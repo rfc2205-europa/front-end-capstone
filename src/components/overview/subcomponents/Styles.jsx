@@ -54,7 +54,7 @@ class Styles extends React.Component {
       return (
         <div>
           <div className="styleHeader">
-            <strong>Style ></strong> <span style={{'font-style': 'italic'}}>{this.props.selectedStyle.name}</span>
+            <strong>Style ></strong> <span style={{'fontStyle': 'italic'}}>{this.props.selectedStyle.name}</span>
           </div>
           <div className="styleGrid">
             {this.state.arrayOfRows.map((row) => {

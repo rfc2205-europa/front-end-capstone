@@ -6,6 +6,7 @@ import ProductInfo from './subcomponents/ProductInfo.jsx';
 import ProductOverview from './subcomponents/ProductOverview.jsx';
 
 const axios = require('axios');
+const cf = require('../../../config.js');
 
 class Overview extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Overview extends React.Component {
       let data = JSON.stringify({'api': `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${id}`});
       const config = {
         method: 'post',
-        url: 'http://localhost:3005/retrieve',
+        url: `${cf.ip}/retrieve`,
         headers: {
           'Content-Type': 'application/json',
         },
