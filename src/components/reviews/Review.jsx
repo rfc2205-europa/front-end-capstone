@@ -31,6 +31,9 @@ class Review extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      product_id: this.props.product_id
+    });
     this.fetchReviewData();
     this.fetchRatingData();
   }
