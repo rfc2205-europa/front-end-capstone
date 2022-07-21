@@ -182,7 +182,7 @@ class App extends React.Component {
 
           <QandA product_id={this.state.product_id}/>
 
-          <Review/>
+          <Review product_id={this.state.product_id}/>
         </div>
       );
     } else {

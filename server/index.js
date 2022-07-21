@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('public'));
 
+app.use(express.static('public'));
+
 // add authentication header
 // send api request with originalUrl
 // then send api response back to client in response
