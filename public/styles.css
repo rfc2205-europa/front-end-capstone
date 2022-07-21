@@ -205,6 +205,8 @@ body {
   border-radius: 5px;
   /* object-fit: cover; */
   /* align-self: center; */
+  background-position: center;
+  background-size: cover;
   background-color: #F0F5F9;
 }
 

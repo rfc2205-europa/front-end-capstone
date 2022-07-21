@@ -3,8 +3,9 @@ import AverageStar from '../../reviews/rating/AverageStar.jsx';
 import Styles from './Styles.jsx';
 import Cart from './Cart.jsx';
 const axios = require('axios');
+const cf = require('../../../../config.js');
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:3005',
+  baseURL: cf.ip,
   changeOrigin: true,
 });
 
