@@ -1,22 +1,25 @@
 import React, {useState, useEffect} from 'react';
 
 const RatingStat = function({maxCount, starCount, recommended}) {
-  // const [recommendRate, setRecommendRate] = useState(0)
+  const [recommendRate, setRecommendRate] = useState('100%');
   const [starAverage, setStarAverage] = useState([]);
 
   useEffect(() => {
     const stars = [];
     for (const num of starCount) {
-      console.log('starCount: ', starCount)
       stars.push((num/maxCount * 100).toFixed(2) + '%');
     }
     setStarAverage(stars);
+    if (recommended) {
+      setRecommendRate((Number(recommended[true])/(Number(recommended[true])+Number(recommended[false]))*100).toFixed(2) + '%');
+    };
   }, [starCount, recommended]);
+
   // ((1/3) * 100).toFixed(2) + '%'
   return (
 
     <div className="rating-stats">
-      <div>100% of reviews recommend this product</div>
+      <div className='rating-recommendRating-text'>{recommendRate} of reviews recommend this product</div>
       <div className='rating-stats-bar'>
         <div className='rating-stats-bar-starText'>5 stars</div>
         <div className = 'rating-stats-backgroundBar'>
