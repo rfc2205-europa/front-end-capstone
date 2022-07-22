@@ -38,7 +38,6 @@ class Review extends React.Component {
     this.setState({
       product_id: this.props.product_id
     });
-    console.log('!!!',this.props.product_id)
     this.fetchReviewData(this.props.product_id);
     this.fetchRatingData(this.props.product_id);
   }
@@ -63,16 +62,22 @@ class Review extends React.Component {
     var body = {api: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}&sort=${sort}&count=100`}
     console.log(body.api, this.state.sortMethod)
     service.post('/retrieve', body)
-     .then((res) => {
-      console.log('get here', res)
-      this.setState({
-        reviews: res.data.results
-      })
-      console.log('review data from the first scratch', res.data.results);
-     })
-     .catch((err) => {
-       console.log('there is err in fetching review data!', err)
-     })
+        .then((res) => {
+          const newReviews = res.data.results.map((singleReview) => {
+            return {...singleReview, ['body']: <div style={{whiteSpace: 'pre-line'}}>{res.data.results.body}</div>};
+          });
+
+          console.log('check wor?', newReviews);
+
+          this.setState({
+            // reviews: newReviews
+            reviews: res.data.results
+          });
+          console.log('review data from the first scratch', res.data.results);
+        })
+        .catch((err) => {
+          console.log('there is err in fetching review data!', err);
+        });
   }
 
 
