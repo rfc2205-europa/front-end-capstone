@@ -7,7 +7,6 @@ import SearchBar from './review/SearchBar.jsx';
 const ReviewComponent = function({reviews, sortFunc, product_id, needChar}) {
   const [moreReview, setMoreReview] = useState(2);
   const [displayReview, setDisplayReview] = useState(reviews.slice(0, 2));
-  const [search, setSearch] = useState('')
 
   const clickMoreReview = function(e) {
     e.preventDefault();
@@ -25,9 +24,10 @@ const ReviewComponent = function({reviews, sortFunc, product_id, needChar}) {
     <div className = 'review review-review' id='review'>
       <div className='review-summary-container'>
         <Sorting num = {reviews.length} sortFunc = {sortFunc}/>
-        <SearchBar setDisplayReview = {setDisplayReview} allReviews = {reviews} setSearch={setSearch}/>
+        <SearchBar/>
       </div>
-      <AllReview displayReview = {displayReview} search={search}/>
+      {/* <AllReview displayReview = {displayReview} modelFunc = {modelFunc}/> */}
+      <AllReview displayReview = {displayReview}/>
       <div className='btn-container'>
         <button className="review-btn" onClick = {clickMoreReview}>More Review</button>
         <AddReview product_id={product_id} needChar={needChar}/>
