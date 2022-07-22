@@ -8,11 +8,11 @@ const AverageStar = function({aveScore, showScore}) {
     if (showScore) {
       for (let i=0; i<5; i++) {
         if (i <= aveScore - 1) {
-          stars.push(<span key = {i} style={{fontSize: '43px'}} className='rating-star-full'>&#9733;</span>);
+          stars.push(<span key = {i} style={{fontSize: '50px'}} className='rating-star-full'>&#9733;</span>);
         } else if (aveScore - i >= 0.25) {
-          stars.push(<span key = {i} style={{fontSize: '43px'}} className='half-rating-star'>&#9733;</span>);
+          stars.push(<span key = {i} style={{fontSize: '50px'}} className='half-rating-star'>&#9733;</span>);
         } else {
-          stars.push(<span key = {i} style={{fontSize: '43px'}} className='rating-star-empty'>&#9733;</span>);
+          stars.push(<span key = {i} style={{fontSize: '50px'}} className='rating-star-empty'>&#9733;</span>);
         }
       }
     } else {
