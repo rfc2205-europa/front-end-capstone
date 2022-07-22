@@ -22,7 +22,7 @@ const ModalView = function({src, clickFunc}) {
   );
 };
 
-const SingleReview = function({review, search}) {
+const SingleReview = function({review}) {
   const [showMore, setShowMore] = useState(false);
   const [displayReview, setDisplayReview] = useState({reviewer_name: '', date: '', summary: '', body: '', helpfulness: '', photos: []});
   const [modelLink, setModelLink] = useState('');
@@ -120,15 +120,7 @@ const SingleReview = function({review, search}) {
       }
     }
     setStars(stars);
-
-    if (search.length > 0) {
-      let body = document.getElementById(review.review_id);
-      body.innerHTML = body.textContent.replace(search, `<mark>${search}</mark>`);
-    } else if (search.length === 0) {
-      let body = document.getElementById(review.review_id);
-      body.innerHTML = body.textContent;
-    }
-  }, [search]);
+  }, []);
 
   return (
     <div className = 'review-singleReview'>
@@ -139,15 +131,15 @@ const SingleReview = function({review, search}) {
         <span className='single-reviewer'>{displayReview.reviewer_name}, {displayReview.date}</span>
       </div>
       <div className='single-title'>{displayReview.summary}</div>
-      <div id={review.review_id} style={{whiteSpace: 'pre-line'}}>{displayReview.body}</div>
-
-      {/* {console.log('checking search is changing',search)} */}
+      <p style={{whiteSpace: 'pre-line'}}>{displayReview.body.split('<br/>').join('\n')}</p>
       {showMore && (
         <div className='single-showMore-container'>
           <div className='single-showMore-triangle'/>
           <div className = 'single-showMore' onClick = {showMoreClick}>More</div>
         </div>
       )}
+
+
       <div className = 'thumbnail-container'>
         {displayReview.photos.map((photo) => {
           return <img src = {photo.url} onClick = {handleThumbnailClick} key = {photo.id} className = 'thumbnail'/>})}
