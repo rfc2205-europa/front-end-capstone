@@ -155,7 +155,7 @@ class QandA extends React.Component {
       }
     } else {
       // eslint-disable-next-line max-len
-      button = <button className="qButton" onClick={this.addQs}>Remove Added Questions and Answers</button>;
+      button = <button className="qButton" onClick={this.addQs}>REMOVE ADDED QUESTIONS AND ANSWERS</button>;
     }
 
     // collapses list when the length is 0
