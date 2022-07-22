@@ -5,15 +5,28 @@ const AverageStar = function({aveScore, showScore}) {
 
   useEffect(() => {
     const stars = [];
-    for (let i=0; i<5; i++) {
-      if (i <= aveScore - 1) {
-        stars.push(<span key = {i} className='rating-star-full'>&#9733;</span>);
-      } else if (aveScore - i >= 0.25) {
-        stars.push(<span key = {i} className='half-rating-star'>&#9733;</span>);
-      } else {
-        stars.push(<span key = {i} className='rating-star-empty'>&#9733;</span>);
+    if (showScore) {
+      for (let i=0; i<5; i++) {
+        if (i <= aveScore - 1) {
+          stars.push(<span key = {i} style={{fontSize: '43px'}} className='rating-star-full'>&#9733;</span>);
+        } else if (aveScore - i >= 0.25) {
+          stars.push(<span key = {i} style={{fontSize: '43px'}} className='half-rating-star'>&#9733;</span>);
+        } else {
+          stars.push(<span key = {i} style={{fontSize: '43px'}} className='rating-star-empty'>&#9733;</span>);
+        }
+      }
+    } else {
+      for (let i=0; i<5; i++) {
+        if (i <= aveScore - 1) {
+          stars.push(<span key = {i} className='rating-star-full'>&#9733;</span>);
+        } else if (aveScore - i >= 0.25) {
+          stars.push(<span key = {i} className='half-rating-star'>&#9733;</span>);
+        } else {
+          stars.push(<span key = {i} className='rating-star-empty'>&#9733;</span>);
+        }
       }
     }
+
     setStarList(stars);
   }, [aveScore]);
 
