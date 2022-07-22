@@ -163,6 +163,7 @@ const SingleReview = function({review, search}) {
       <div className='review-singleReview-divider-container'>
         <span className = 'review-singleReview-divider'></span>
       </div>
+      <div className='review-singleReview-blank'/>
     </div>
   );
 };
