@@ -1,4 +1,11 @@
-# front-end-capstone
+# Hack Reactor: Front End Capstone
+
+## Tale of Contents;
+  Overview
+  Team Members
+  Description
+  LightHouse Audit Results
+  Installation Instructions
 
 ## Interacting with the middleman server:
 To make a get request:
