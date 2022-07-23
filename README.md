@@ -18,13 +18,25 @@ Given a wireframe design, our group of three software engineering students had t
   - Candace Gu - Ratings And Reviews Component
 
 ## Description:
-  Products can be search and selected from the upper right search bar.  This will populate the page with product information, that can be viewed, and edited with in the individual components.  
+  Products can be search and selected from the upper right search bar.  This will populate the page with product information, that can be viewed, and edited with in the individual components.
+(![search bar](https://user-images.githubusercontent.com/41023883/180614271-dac31328-c2ba-424c-bc2e-9a5f3977a58d.png)
  
- The Product Overview allows a user to toggle through a carasel of a styles images, select new styles and view their images, as well as add products to the cart. 
+  The Product Overview allows a user to toggle through a carousel of a style's images, select new styles and view their images, as well as add products to the cart.
+(![overview](https://user-images.githubusercontent.com/41023883/180614330-7c904816-7a18-4d7e-9b27-c9d8f2106d7b.png)
+
   
- The Questions and Answers Module allows users to view all of the questions and corresponding answers to a specific product.  The user also has the ability to add questions for a product, and add answers for a question related to a product.  The existing questions and answers may be be reported for review by the user and may also be marked as helpful.  
+ The Questions and Answers Module allows users to view all of the questions and corresponding answers to a specific product.  The user also has the ability to add questions for a product, and add answers for a question related to a product.  The existing questions and answers may be be reported for review by the user and may also be marked as helpful.
+![q&a](https://user-images.githubusercontent.com/41023883/180614358-c82219d7-0ae2-476f-ba98-15ce8622afe8.png)
+![q&aModal](https://user-images.githubusercontent.com/41023883/180614417-0e67bd34-cf48-413e-ad61-71f086ed4834.png)
+
+
   
   The Ratings and Reviews Module 
+![review](https://user-images.githubusercontent.com/41023883/180614390-cb9b30b0-447e-4fde-b26e-3c6063e93b92.png)
+![reviewModal](https://user-images.githubusercontent.com/41023883/180614400-dab2bf9f-126c-41b6-9296-ed667321124f.png)
+
+
+
   
 ## Installation Instructions:
   Our application uses dependencies such as: React, Express, Axios, webpack, and babelrc. The developer will require node to be installed. You will then need to run npm install to install the dependencies, and you will also need to run the npm commands to start webpack and the server. The developer will also need their own config files conatining a GitHub personal access token and a cloudinary key, in order to use the image upload function.
